@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/stconfig/README.md.html</title>
+<meta name="Generator" content="Vim/8.0">
+<meta name="plugin-version" content="vim8.1_v1">
+<meta name="syntax" content="markdown">
+<meta name="settings" content="number_lines,use_css,pre_wrap,no_foldcolumn,expand_tabs,line_ids,prevent_copy=">
+<meta name="colorscheme" content="one">
+<style type="text/css">
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #afafaf; background-color: #000000; }
+body { font-family: monospace; color: #afafaf; background-color: #000000; }
+* { font-size: 1em; }
+.LineNr { color: #5f5f5f; }
+.markdownCode { color: #87d787; }
+.markdownCodeDelimiter { color: #87d787; }
+.markdownHeadingDelimiter { color: #af5f00; }
+.markdownH1 { color: #d75f87; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+/* function to open any folds containing a jumped-to line before jumping to it */
+function JumpToLine()
+{
+  var lineNum;
+  lineNum = window.location.hash;
+  lineNum = lineNum.substr(1); /* strip off '#' */
+
+  if (lineNum.indexOf('L') == -1) {
+    lineNum = 'L'+lineNum;
+  }
+  var lineElem = document.getElementById(lineNum);
+  /* Always jump to new location even if the line was hidden inside a fold, or
+   * we corrected the raw number to a line ID.
+   */
+  if (lineElem) {
+    lineElem.scrollIntoView(true);
+  }
+  return true;
+}
+if ('onhashchange' in window) {
+  window.onhashchange = JumpToLine;
+}
+
+-->
+</script>
+</head>
+<body onload='JumpToLine();'>
+<pre id='vimCodeElement'>
+<span id="L1" class="LineNr">1 </span><span class="markdownHeadingDelimiter"># </span><span class="markdownH1">[添加滚屏辅助]</span>
+<span id="L2" class="LineNr">2 </span>-- <span class="markdownCodeDelimiter">`</span><span class="markdownCode">&lt;ALT&gt;</span><span class="markdownCodeDelimiter">`</span>+<span class="markdownCodeDelimiter">`</span><span class="markdownCode">u</span><span class="markdownCodeDelimiter">`</span>/<span class="markdownCodeDelimiter">`</span><span class="markdownCode">d</span><span class="markdownCodeDelimiter">`</span> 翻页
+<span id="L3" class="LineNr">3 </span>-- <span class="markdownCodeDelimiter">`</span><span class="markdownCode">&lt;ALT&gt;</span><span class="markdownCodeDelimiter">`</span>+<span class="markdownCodeDelimiter">`</span><span class="markdownCode">j</span><span class="markdownCodeDelimiter">`</span>/<span class="markdownCodeDelimiter">`</span><span class="markdownCode">k</span><span class="markdownCodeDelimiter">`</span> 上下滚动
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->
