@@ -1,0 +1,103 @@
+* Aerocn Awesome
+*** Using the main branch to obtain better experience
+** Awesome wm configuration
+#+ATTR_ORG: :width 800px
+[[./src/a.png]]
+** The installation
+#+begin_src shell
+git clone https://github.com/denstiny/awesome-config.git ~/awesome-config
+bash ~/awesome-config/src/install.sh # arch/manjaro
+# if you is !arch/manjaro 根据脚本手动安装
+#+end_src
+** updata log
+*** 2021-05-09
+ * 删除自带的状态栏
+ * 使用 *polybar* 状态栏
+
+*** 2021-01-26
+	* 删除仓库垃圾文件
+	* 取消使用 *compton*
+	* 使用 *picom* 窗口渲染
+	* 添加 *picom* 配置文件 
+	* *src/install.sh* 自动安装脚本
+	安装方picom
+	#+begin_src shell
+	 > yay -S picom-jonaburg-git
+	#+end_src
+	> 渲染演示
+	_https://s3.ax1x.com/2021/01/26/sjT1sI.gif_
+*** 2021-01-25  
+	* 不使用任何依赖添加窗口圆角
+	* 改变窗口习惯
+	* 改变窗口间隔
+	* 使用窗口背景模糊特效 [[https://github.com/denstiny/compton][compton]]
+	* 添加运行compton脚本，自动切换壁纸, 请在家目录创建一个Imager文件夹存储壁纸
+      
+| 键位               | 效果                       | 注释                                     |
+|--------------------+----------------------------+------------------------------------------|
+| =mod f=              | 全屏                       |                                          |
+| =mod a=              | 向左放大窗口               |                                          |
+| =mod d=              | 向右放大窗口               |                                          |
+| =mod l=              | 锁屏幕                     |                                          |
+| =mod enter=          | 新建终端                   | 在rc.lua文件中找到=terminal=更改默认终端 |
+| =mod Shift q=        | 杀死当前窗口               |                                          |
+| =mod Shift r=        | 重启awesome                |                                          |
+| =mod span=           | 切换当前窗口浮动           | 再次按会切换平铺状态                     |
+| =mod t=              | 将浮动窗口设置最上层       |                                          |
+| =mod Shift [1...9]=  | 将当前窗口移动到其他工作区 |                                          |
+| =mod [1...9]=        | 切换工作区                 |                                          |
+| =mod tab=            | 快速切换窗口               |                                          |
+| =mod j=              | 切换上一个窗口             |                                          |
+| =mod k=              | 切换下一个窗口             |                                          |
+| =mod J=              | 和上一个窗口交换位置       |                                          |
+| =mod K=              | 和下一个窗口交换位置       |                                          |
+| =mod Shift →↑↓←=     | 移动浮动窗口               |                                          |
+| =mod Alt →↑↓←=       | 放大浮动窗口               |                                          |
+| =mod Shift Alt →↑↓←= | 缩小浮动窗口               |                                          |
+| =mod w=              | 打开菜单                   |                                          |
+| =mod s=              | 显示键位                   |                                          |
+| =mod o=              | 打开文件或者运行bash命令   |                                          |
+| =mod r=              | 运行bash命令               | 已经删除                                 |
+| =mod n=              | 隐藏当前窗口               |                                          |
+| =mod Ctrl n=         | 显示隐藏的窗口             |                                          |
+| =mod Shift span=     | 切换布局                   |                                          |
+| =mod Shift e=        | 退出awesome                |                                          |
+| =mod 最大化显示窗口=              | m             |                                          |
+** The problem
+*** picom安装失败，检查是否拥有下面的相关依赖，然后运行下面的命令
+| 依赖                                                                            |
+|---------------------------------------------------------------------------------|
+| libx11                                                                          |
+| libx11-xcb                                                                      |
+| libXext                                                                         |
+| xproto                                                                          |
+| xcb                                                                             |
+| xcb-damage                                                                      |
+| xcb-xfixes                                                                      |
+| xcb-shape                                                                       |
+| xcb-renderutil                                                                  |
+| xcb-render                                                                      |
+| xcb-randr                                                                       |
+| xcb-composite                                                                   |
+| xcb-image                                                                       |
+| xcb-present                                                                     |
+| xcb-xinerama                                                                    |
+| xcb-glx                                                                         |
+| pixman                                                                          |
+| libdbus (optional, disable with the -Ddbus=false meson configure flag)          |
+| libconfig (optional, disable with the -Dconfig_file=false meson configure flag) |
+| libGL (optional, disable with the -Dopengl=false meson configure flag)          |
+| libpcre (optional, disable with the -Dregex=false meson configure flag)         |
+| libev                                                                           |
+| uthash                                                                          |
+#+begin_src sh
+yay -S picom-jonaburg-git
+#+end_src
+*** 为什么我无法打开终端,因为我使用的是st终端，所以 `rc.lua` 默认设置为st终端,如果你是运行的脚本安装aweosme配置，你可以使用 win+o 启动 alacritty终端，然后修改 *~/.config/awesome/rc.lua* 文件中的 terminal 参数  
+*** polybar无法显示标签  Polybar does not display the label
+
+#+begin_src shell
+# 修改参数
+pin-workspaces = false
+#+end_src
+
