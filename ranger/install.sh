@@ -1,8 +1,8 @@
 # @author      : aero (2254228017@qq.com)
 # @file        : install
-# @created     : 星期五 2月 04, 2022 03:01:12 CST ( 04/02/2022 )
+# @created     : 星期一 2月 21, 2022 10:50:17 CST 
 # @github      : https://github.com/denstiny
 # @blog        : https://denstiny.github.io
 
 #!/bin/bash
-sudo pacman -S ranger highlight atool poppler w3m mediainfo
+sudo pacman -S w3m mediainfo atool highlight caca-utils ranger ueberzug
