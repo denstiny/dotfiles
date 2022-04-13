@@ -7,5 +7,6 @@
 #!/bin/bash
 # 下载字体
 sudo pacman -S noto-fonts-cjk
+cp ./*.otf ~/.local/share/fonts/
 # 设置字体
 cp font.conf /etc/fonts/conf.d/fonts.conf
