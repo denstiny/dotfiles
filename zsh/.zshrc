@@ -47,12 +47,12 @@ ZSH_THEME="robbyrussell"
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -70,7 +70,17 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions autojump)
+plugins=(
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    you-should-use
+    web-search
+    copydir
+    copyfile
+    copybuffer
+    dirhistory
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -101,3 +111,12 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 PROMPT='%{$fg[green]%} > '
 #RPS1='%{$fg[yellow]%}%~'
+
+export EDITOR=/bin/nvim
+#printf '\n%.0s' {1..$LINES}
+alias clear="printf '\n%.0s' {1..$LINES} "
+alias ters='python /mnt/home/Terslation/translation/fanyim.py'
+alias screenkey='screenkey -p fixed -g $(slop -n -f '%g')'
+alias re=ranger
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=blue'
+clear
