@@ -6,7 +6,7 @@
 
 #!/bin/bash
 # 下载字体
-sudo pacman -S noto-fonts-cjk
+sudo pacman -S noto-fonts-cjk ttf-joypixels
 cp ./*.otf ~/.local/share/fonts/
 cp ./*.ttf ~/.local/share/fonts/
 # 设置字体
