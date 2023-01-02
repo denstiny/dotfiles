@@ -16,7 +16,7 @@ function run {
 # Compositor
 #picom --config ~/.config/awesome/config/picom.conf &
 run clash
-run fcitx
+run fcitx5
 run flameshot
 #run obs
 #run qv2ray

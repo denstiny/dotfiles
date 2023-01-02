@@ -1,0 +1,6 @@
+require('other.bind-key')
+require('other.highlight')
+require('core.tree-term')
+require('other.autocmd')
+require('other.options')
+require('core.mdorg')
