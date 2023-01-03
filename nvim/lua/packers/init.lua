@@ -29,8 +29,6 @@ require('packers.undotree')
 require('packers.packer-theme')
 -- git
 require('packers.git')
--- translator
-require('packers.translator')
 -- templates
 require('packers.template')
 -- project
@@ -41,28 +39,19 @@ require('packers.test')
 require('packers.clip')
 -- scroll bar
 require('packers.scroll')
--- fcitx
-require("packers.fcitx")
 -- symbols
 require("packers.symbol-map")
 -- colord
 require('packers.colord')
--- fcitx
-require('packers.fcitx')
 -- luapad
 require('packers.luapad-config')
 require('packers.nvimsep')
 -- ufo
 require('packers.ufo-config')
--- noice
---require('packers.noice-config')
 -- lspsatga
 require('packers.lsp_saga')
---require('packers.null')
---require('packers.image')
 require('packers.fidget_config')
 require('packers.leap-move')
-require('packers.hologram')
 require('packers.lualine-config')
 require('packers.alpa-config')
 require('packers.windows')

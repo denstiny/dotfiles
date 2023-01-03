@@ -23,7 +23,7 @@ return {
   window_padding = {
     left = 0,
     right = 0,
-    top = 0,
+    top = 11,
     bottom = 0
   },
   color_scheme = "Lavandula",
@@ -31,36 +31,43 @@ return {
   harfbuzz_features = { "zero" },
   hide_tab_bar_if_only_one_tab = false,
   enable_tab_bar = false,
-  freetype_load_target = "Light",
   font_size = 16.0,
+  freetype_load_target = "Light",
   freetype_render_target = "HorizontalLcd",
-  font = font_with_fallback("Fira Code Nerd Font"),
+  underline_position = "-13px",
+  underline_thickness = "2px",
+  freetype_load_flags = 'NO_HINTING|MONOCHROME',
+  line_height = 1.9,
+  max_fps = 90,
+  keys = keyBind(),
+  window_close_confirmation = "NeverPrompt",
+  font = font_with_fallback("ComicCode Nerd Font"),
   font_rules = {
-    -- Select a fancy italic font for italic text
+    {
+      intensity = 'Bold',
+      italic = true,
+      font = wezterm.font {
+        family = 'VictorMono Nerd Font',
+        weight = 'Bold',
+        style = 'Italic',
+      },
+    },
     {
       italic = true,
-      font = font_with_fallback("UbuntuMono Nerd Font", { italic = true }),
+      intensity = 'Half',
+      font = wezterm.font {
+        family = 'VictorMono Nerd Font',
+        weight = 'DemiBold',
+        style = 'Italic',
+      },
     },
-
-    -- Similarly, a fancy bold+italic font
     {
       italic = true,
-      intensity = "Bold",
-      font = font_with_fallback("Operator Mono Lig", { bold = true, italic = true }),
-    },
-
-    -- Make regular bold text a different color to make it stand out even more
-    {
-      intensity = "Bold",
-      font = font_with_fallback("Fira Code Nerd Font", { bold = true }),
-    },
-
-    -- For half-intensity text, use a lighter weight font
-    {
-      intensity = "Half",
-      font = font_with_fallback("Fira Code Nerd Font"),
+      intensity = 'Normal',
+      font = wezterm.font {
+        family = 'UbuntuMono Nerd Font Mono',
+        style = 'Italic',
+      },
     },
   },
-  keys = keyBind(),
-  window_close_confirmation = "NeverPrompt"
 }

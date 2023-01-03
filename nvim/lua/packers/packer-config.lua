@@ -2,8 +2,8 @@ local packer = require('packer')
 local packer_util = require('packer.util')
 
 local _use = function(use)
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', commit = '325de255' }
-  --use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  --use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', commit = '325de255' }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'nvim-treesitter/playground' }
   use { 'nvim-lua/plenary.nvim' }
   use { 'wbthomason/packer.nvim' }
@@ -42,8 +42,6 @@ local _use = function(use)
   use { 'hrsh7th/cmp-nvim-lsp' }
   use { 'hrsh7th/cmp-cmdline' }
   -- color
-  --use "rebelot/kanagawa.nvim"
-  --use 'folke/tokyonight.nvim'
   use({
     'rose-pine/neovim',
     as = 'rose-pine',
@@ -96,10 +94,10 @@ local _use = function(use)
   -- 滚动条
   use('petertriho/nvim-scrollbar')
 
-  use 'mg979/vim-visual-multi'
-  use { 'machakann/vim-sandwich' }
-  use_rocks { 'lgi', 'dbus_proxy' }
-  use({ "black-desk/fcitx5-ui.nvim", rocks = { 'lgi', 'dbus_proxy' }, })
+  --use 'mg979/vim-visual-multi'
+  --use { 'machakann/vim-sandwich' }
+  -- use_rocks { 'lgi', 'dbus_proxy' }
+  -- use({ "black-desk/fcitx5-ui.nvim", rocks = { 'lgi', 'dbus_proxy' }, })
   use { 'stevearc/aerial.nvim' }
   use { 'brenoprata10/nvim-highlight-colors' }
   use { "iamcco/markdown-preview.nvim", run = "cd app && yarn install" }
@@ -108,12 +106,9 @@ local _use = function(use)
   -- lsp fold code
   use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
   -- good cmd
-  -- use { "folke/noice.nvim" }
   use { 'edluffy/hologram.nvim' }
   use { 'glepnir/lspsaga.nvim' }
-  --use { 'jose-elias-alvarez/null-ls.nvim' }
   use { 'j-hui/fidget.nvim' }
-  --use { 'Julpikar/night-owl.nvim' }
   use { 'ggandor/leap.nvim' }
   use {
     'goolord/alpha-nvim',
