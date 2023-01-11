@@ -21,7 +21,7 @@ return {
   font_size = 14.0,
   freetype_load_target = "Light",
   freetype_render_target = "HorizontalLcd",
-  underline_position = "-13px",
+  underline_position = "-11px",
   underline_thickness = "2px",
   freetype_load_flags = 'NO_HINTING|MONOCHROME',
   line_height = 1.9,
@@ -29,7 +29,8 @@ return {
   window_close_confirmation = "NeverPrompt",
   font = wezterm.font_with_fallback {
     'ComicCode Nerd Font',
-    'Fira Code',
+    '岁岁余年拼音体',
+    'FiraCode Nerd Font Mono',
     'DengXian',
   },
   font_rules = {

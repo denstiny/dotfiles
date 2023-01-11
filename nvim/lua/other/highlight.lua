@@ -1,16 +1,15 @@
 vim.cmd [[
-"colorscheme tokyonight-night
+colorscheme palenightfall
 hi EndOfBuffer guifg=bg
 hi NormalFloat guibg=bg
 hi FloatBorder guibg=bg
-hi Normal      guibg=#0D0F18
 hi NormalNC    guibg=bg
 hi SignColumn  guibg=bg
 hi @constructor gui=bold
-hi FloatBorder guifg=#292E42
-hi TelescopeBorder guifg=#292E42
-hi IndentBlanklineContextStart guisp=#519aba gui=underline
-hi IndentBlanklineContextChar guifg=#519aba
+hi FloatBorder guifg=#5B72AE
+hi TelescopeBorder guifg=#D49BFD
+hi IndentBlanklineContextStart guisp=#D49BFD gui=underline
+hi IndentBlanklineContextChar guifg=#D49BFD
 ]]
 
 local bg = vim.api.nvim_get_hl_by_name("Normal", true)["background"]

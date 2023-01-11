@@ -42,17 +42,10 @@ local _use = function(use)
   use { 'hrsh7th/cmp-nvim-lsp' }
   use { 'hrsh7th/cmp-cmdline' }
   -- color
-  use({
-    'rose-pine/neovim',
-    as = 'rose-pine',
-    tag = 'v0.1.0', -- Optional tag release
-    config = function()
-      vim.cmd('colorscheme rose-pine')
-    end
-  })
+  use { 'JoosepAlviste/palenightfall.nvim' }
   -- statusline
   use { 'ray-x/lsp_signature.nvim' }
-  use { 'nvim-lualine/lualine.nvim' }
+  use { 'feline-nvim/feline.nvim' }
   use { 'danymat/neogen' }
   use 'lukas-reineke/indent-blankline.nvim'
   use {
@@ -108,7 +101,7 @@ local _use = function(use)
   -- good cmd
   use { 'edluffy/hologram.nvim' }
   use { 'glepnir/lspsaga.nvim' }
-  use { 'j-hui/fidget.nvim' }
+  --use { 'j-hui/fidget.nvim' }
   use { 'ggandor/leap.nvim' }
   use {
     'goolord/alpha-nvim',
