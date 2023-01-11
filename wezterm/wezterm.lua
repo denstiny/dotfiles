@@ -1,18 +1,5 @@
 local wezterm = require 'wezterm';
 
--- window resize event config
---require("wezterm-resize-config")
-
--- key
-require("key-bind")
-
--- A helper function for my fallback fonts
-
-function font_with_fallback(name, params)
-  local names = { name, "DengXian", "Noto Color Emoji", "JetBrains " }
-  return wezterm.font_with_fallback(names, params)
-end
-
 wezterm.on("window-config-reloaded", function(window, pane)
   wezterm.log_info("the config was reloaded for this window!");
 end)
@@ -21,7 +8,7 @@ end)
 return {
   warn_about_missing_glyphs = false,
   window_padding = {
-    left = 0,
+    left = 5,
     right = 0,
     top = 11,
     bottom = 0
@@ -31,7 +18,7 @@ return {
   harfbuzz_features = { "zero" },
   hide_tab_bar_if_only_one_tab = false,
   enable_tab_bar = false,
-  font_size = 16.0,
+  font_size = 14.0,
   freetype_load_target = "Light",
   freetype_render_target = "HorizontalLcd",
   underline_position = "-13px",
@@ -39,15 +26,19 @@ return {
   freetype_load_flags = 'NO_HINTING|MONOCHROME',
   line_height = 1.9,
   max_fps = 90,
-  keys = keyBind(),
   window_close_confirmation = "NeverPrompt",
-  font = font_with_fallback("ComicCode Nerd Font"),
+  font = wezterm.font_with_fallback {
+    'ComicCode Nerd Font',
+    'Fira Code',
+    'DengXian',
+  },
   font_rules = {
     {
+      -- 粗斜体
       intensity = 'Bold',
       italic = true,
       font = wezterm.font {
-        family = 'VictorMono Nerd Font',
+        family = 'JetBrainsMono Nerd Font Mono',
         weight = 'Bold',
         style = 'Italic',
       },
@@ -56,7 +47,7 @@ return {
       italic = true,
       intensity = 'Half',
       font = wezterm.font {
-        family = 'VictorMono Nerd Font',
+        family = 'JetBrainsMono Nerd Font Mono',
         weight = 'DemiBold',
         style = 'Italic',
       },
@@ -70,4 +61,5 @@ return {
       },
     },
   },
+  keys = require('key-bind').keyBind()
 }
