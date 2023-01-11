@@ -5,20 +5,20 @@ if not present then
 end
 
 local theme = {
-  aqua = "#7AB0DF",
-  bg = "#050014",
-  blue = "#5FB0FC",
-  cyan = "#70C0BA",
+  aqua    = "#7AB0DF",
+  bg      = "#050014",
+  blue    = "#5FB0FC",
+  cyan    = "#70C0BA",
   darkred = "#FB7373",
-  fg = "#C7C7CA",
-  gray = "#222730",
-  green = "#79DCAA",
-  lime = "#54CED6",
-  orange = "#FFD064",
-  pink = "#D997C8",
-  purple = "#C397D8",
-  red = "#F87070",
-  yellow = "#FFE59E"
+  fg      = "#C7C7CA",
+  gray    = "#222730",
+  green   = "#79DCAA",
+  lime    = "#54CED6",
+  orange  = "#FFD064",
+  pink    = "#D997C8",
+  purple  = "#C397D8",
+  red     = "#F87070",
+  yellow  = "#FFE59E"
 }
 
 local mode_theme = {
@@ -259,12 +259,37 @@ component.scroll_bar = {
   right_sep = "block",
 }
 
-local left = {
-  component.separator
+local toy = {
+  provider = function()
+    if vim.o.columns < 120 then
+      return ""
+    end
+
+    local spinners = {
+      " ⠁",
+      " ⠂",
+      " ⠄",
+      " ⠂"
+    }
+    local ms = vim.loop.hrtime() / 1300000
+    local frame = math.floor(ms / 120) % #spinners
+    local content = string.format("%%<%s", spinners[frame + 1])
+    return content or ""
+  end,
+  hl = function()
+    local ms = vim.loop.hrtime() / 1000000
+    return {
+      fg = "yellow",
+      bg = "bg",
+      style = "bold",
+    }
+  end,
+  left_sep = "",
+  right_sep = "block",
 }
-local middle = {
-  component.separator
-}
+
+local left = { component.separator }
+local middle = { component.separator }
 local right = {
   component.vim_mode,
   component.file_type,

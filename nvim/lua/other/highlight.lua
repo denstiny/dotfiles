@@ -7,7 +7,7 @@ hi NormalNC    guibg=bg
 hi SignColumn  guibg=bg
 hi @constructor gui=bold
 hi FloatBorder guifg=#5B72AE
-hi TelescopeBorder guifg=#D49BFD
+hi TelescopeBorder guifg=#5B72AE
 hi IndentBlanklineContextStart guisp=#D49BFD gui=underline
 hi IndentBlanklineContextChar guifg=#D49BFD
 ]]
