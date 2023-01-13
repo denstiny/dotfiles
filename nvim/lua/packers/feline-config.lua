@@ -318,4 +318,11 @@ feline.setup({
   components = components,
   theme = theme,
   vi_mode_colors = mode_theme,
+  force_inactive = {
+    filetypes = {
+    },
+    buftypes = {
+    },
+    bufnames = {},
+  },
 })

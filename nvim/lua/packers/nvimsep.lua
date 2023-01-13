@@ -4,7 +4,7 @@ local api = vim.api
 colorful_winsep.setup({
   highlight = {
     fg = "#9898B5",
-    bg = "#0D0F18"
+    bg = "#050014"
   },
   interval = 30,
   no_exec_files = { "packer", "TelescopePrompt", "mason", "CompetiTest", 'NvimTree' },

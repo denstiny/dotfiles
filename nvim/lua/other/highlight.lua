@@ -2,7 +2,6 @@ vim.cmd [[
 colorscheme palenightfall
 hi EndOfBuffer guifg=bg
 hi NormalFloat guibg=bg
-hi FloatBorder guibg=bg
 hi NormalNC    guibg=bg
 hi SignColumn  guibg=bg
 hi @constructor gui=bold
@@ -10,6 +9,7 @@ hi FloatBorder guifg=#5B72AE
 hi TelescopeBorder guifg=#5B72AE
 hi IndentBlanklineContextStart guisp=#D49BFD gui=underline
 hi IndentBlanklineContextChar guifg=#D49BFD
+hi VertSplit guifg=#292E42 guibg=bg
 ]]
 
 local bg = vim.api.nvim_get_hl_by_name("Normal", true)["background"]
