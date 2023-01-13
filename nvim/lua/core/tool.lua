@@ -1,4 +1,7 @@
-local M = {}
+local M = {
+  interval = 500,
+  cpu = 0.0,
+}
 
 
 M.mergeTable = function(table1, table2)
@@ -32,6 +35,23 @@ M.mergeTable = function(table1, table2)
   return c_table
 end
 
+M.latest_pid = function()
+  local pid_str = io.popen("ps -C nvim -o %pid | tac | awk 'NR==2 {print $1}'"):read("*a")
+  local pid = string.match(pid_str, '%d+')
+  return pid
+end
+M.pid = M.latest_pid()
 
+M.cpu_load = function()
+  local cpu_load_string = io.popen("ps -p " .. M.pid .. " -o %cpu | awk 'NR==2 {print $1}'"):read("*a")
+  local cpu_load = string.match(cpu_load_string, '([0-9%.]+)')
+  return cpu_load
+end
+
+-- 异步刷新
+local timer = vim.loop.new_timer()
+timer:start(0, M.interval, vim.schedule_wrap(function()
+  M.cpu = M.cpu_load()
+end))
 
 return M

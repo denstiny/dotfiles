@@ -261,25 +261,20 @@ component.scroll_bar = {
 
 local toy = {
   provider = function()
-    if vim.o.columns < 120 then
-      return ""
-    end
-
-    local spinners = {
-      " ⠁",
-      " ⠂",
-      " ⠄",
-      " ⠂"
-    }
-    local ms = vim.loop.hrtime() / 1300000
-    local frame = math.floor(ms / 120) % #spinners
-    local content = string.format("%%<%s", spinners[frame + 1])
-    return content or ""
+    return "  " .. require('core.tool').cpu
   end,
   hl = function()
-    local ms = vim.loop.hrtime() / 1000000
+    local color = "yellow"
+    local cpu = tonumber(require("core.tool").cpu)
+    if cpu > 10 and cpu < 15 then
+      color = "yellow"
+    elseif cpu > 15 then
+      color = "red"
+    else
+      color = "green"
+    end
     return {
-      fg = "yellow",
+      fg = color,
       bg = "bg",
       style = "bold",
     }
@@ -303,6 +298,7 @@ local right = {
   component.diagnostic_warnings,
   component.diagnostic_info,
   component.diagnostic_hints,
+  toy,
   component.scroll_bar,
 }
 
