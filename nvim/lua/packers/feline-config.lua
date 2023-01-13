@@ -261,7 +261,11 @@ component.scroll_bar = {
 
 local toy = {
   provider = function()
-    return "  " .. require('core.tool').cpu
+    local cpu = require('core.tool').cpu
+    if string.len(cpu) < 4 then
+      cpu = " " .. cpu
+    end
+    return "  " .. cpu
   end,
   hl = function()
     local color = "yellow"
