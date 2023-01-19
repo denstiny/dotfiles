@@ -62,5 +62,7 @@ return {
       },
     },
   },
-  keys = require('key-bind').keyBind()
+  keys = require('key-bind').keyBind(),
+  default_cursor_style = 'BlinkingBar',
+  adjust_window_size_when_changing_font_size = false,
 }

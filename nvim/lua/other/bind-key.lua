@@ -58,7 +58,7 @@ U.nmap("<Leader>r", "<Cmd>AsyncTask file-run<cr>")
 U.nmap("<Leader>d", "<Cmd>AsyncTask file-build<cr>")
 
 --- goto preview
-U.nmap("gpd", "<Cmd>lua require('goto-preview').goto_preview_definition()<CR>")
+--U.nmap("gpd", "<Cmd>lua require('goto-preview').goto_preview_definition()<CR>")
 U.nmap("gf", "<Cmd>e <cfile><Cr>")
 
 -- telescope
@@ -72,9 +72,6 @@ U.map('i', '<C-j>', '<CMD>lua require("luasnip").jump(1)<CR>')
 U.map('i', '<C-k>', '<CMD>lua require("luasnip").jump(-1)<CR>')
 U.map('s', '<C-j>', '<CMD>lua require("luasnip").jump(1)<CR>')
 U.map('s', '<C-k>', '<CMD>lua require("luasnip").jump(-1)<CR>')
-
-
-
 
 -- symbols map
 U.nmap("ts", "<Cmd>AerialToggle<cr>")

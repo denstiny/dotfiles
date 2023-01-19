@@ -7,9 +7,10 @@ function M.keyBind()
     { key = "k", mods = "CTRL", action = wezterm.action { ScrollByLine = -1 } },
     { key = "j", mods = "CTRL", action = wezterm.action { ScrollByLine = 1 } },
     { key = "f", mods = "CTRL", action = wezterm.action { Search = { CaseSensitiveString = "" } } },
-    { key = "=", mods = "CTRL", action = "ResetFontSize" },
-    { key = "+", mods = "CTRL", action = "IncreaseFontSize" },
-    { key = "-", mods = "CTRL", action = "DecreaseFontSize" }
+    { key = "=", mods = "CTRL", action = wezterm.action.ResetFontSize },
+    { key = "+", mods = "CTRL", action = wezterm.action.IncreaseFontSize },
+    { key = "-", mods = "CTRL", action = wezterm.action.DecreaseFontSize },
+    { key = "\r", mods = "ALT", action = wezterm.action.DisableDefaultAssignment }
   }
   return keys
 end

@@ -1,5 +1,7 @@
 local has_ts, nvim_tree = pcall(require, "nvim-tree")
+local _, lsp_file_operations = pcall(require, "lsp-file-operations")
 if not has_ts then return end
+if not _ then return end
 nvim_tree.setup({
   sort_by = "case_sensitive",
   root_dirs = { "build", ".git" },
@@ -11,7 +13,13 @@ nvim_tree.setup({
       },
     },
     --side = "right"
-    side = "left"
+    side = "left",
+    hide_root_folder = true
+  },
+  update_focused_file = {
+    enable = true,
+    update_root = true,
+    ignore_list = {},
   },
   renderer = {
     group_empty = true,
@@ -20,7 +28,7 @@ nvim_tree.setup({
     },
     icons = {
       show = {
-        git = false
+        git = true
       }
     }
   },
@@ -30,4 +38,8 @@ nvim_tree.setup({
   diagnostics = {
     enable = false
   },
+  notify = {
+    threshold = vim.log.levels.OFF,
+  },
 })
+lsp_file_operations.setup()

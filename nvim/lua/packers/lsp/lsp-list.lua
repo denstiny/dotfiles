@@ -1,4 +1,3 @@
-local tool = require("core.tool")
 local M = {}
 M.lsp_server = {
   "pyright",

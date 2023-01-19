@@ -15,5 +15,6 @@ export TERM=wezterm
 source ~/.zsh/proxy.sh
 alias re=ranger
 alias ters=~/Workspace/Terslation/translation/fanyim.py
+alias apt=aptpac
 export GO111MODULE=on
 export GOPROXY=https://goproxy.cn,direct

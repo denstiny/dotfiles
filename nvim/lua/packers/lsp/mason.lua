@@ -4,6 +4,7 @@ local _, mason = pcall(require, 'mason')
 if not _ then return end
 
 mason.setup({
+  PATH = "prepend",
   ui = {
     icons = {
       package_installed = "✓",

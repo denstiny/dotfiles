@@ -52,6 +52,7 @@ local _use = function(use)
     'nvim-tree/nvim-tree.lua',
     requires = {
       'nvim-tree/nvim-web-devicons',
+      'antosha417/nvim-lsp-file-operations'
     },
     tag = 'nightly'
   }
