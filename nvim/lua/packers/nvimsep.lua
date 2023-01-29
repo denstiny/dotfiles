@@ -3,8 +3,8 @@ if not _ then return end
 local api = vim.api
 colorful_winsep.setup({
   highlight = {
-    fg = "#9898B5",
-    bg = "#050014"
+    fg = "#A9B665",
+    --bg = "#050014"
   },
   interval = 30,
   no_exec_files = { "packer", "TelescopePrompt", "mason", "CompetiTest", 'NvimTree' },

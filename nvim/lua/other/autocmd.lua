@@ -33,15 +33,15 @@ end })
 --- {{{ auto clean write output
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   group = group,
+  desc = "自动清理命令行",
   callback = function()
     local timer = vim.loop.new_timer()
     timer:start(1000, 0, vim.schedule_wrap(function()
       print(" ")
       timer:stop()
       timer:close()
-    end)
-    )
-  end
+    end))
+  end,
 })
 -- }}}
 
@@ -54,3 +54,17 @@ vim.api.nvim_create_autocmd({ "VimEnter", "BufEnter" }, {
   end
 })
 ---}}}
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  desc = "toggterm 自动进入插入模式",
+  callback = function()
+    if vim.o.filetype == "toggleterm" then
+      local timer = vim.loop.new_timer()
+      timer:start(350, 0, vim.schedule_wrap(function()
+        vim.cmd("startinsert")
+        timer:stop()
+        timer:close()
+      end))
+    end
+  end
+})

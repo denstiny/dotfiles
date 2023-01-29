@@ -7,7 +7,7 @@ vim.o.winminwidth = 10
 vim.o.equalalways = false
 windows.setup({
   ignore = {
-    buftype = { "quickfix" },
+    buftype = { "quickfix", "temrinal" },
     filetype = { "NvimTree", "neo-tree", "undotree", "gundo", "aerial", "toggleterm" }
   },
   animation = {

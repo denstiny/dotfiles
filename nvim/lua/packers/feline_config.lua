@@ -6,19 +6,19 @@ end
 
 local theme = {
   aqua    = "#7AB0DF",
-  bg      = "#050014",
   blue    = "#5FB0FC",
-  cyan    = "#70C0BA",
-  darkred = "#FB7373",
+  bg      = "#232120",
+  cyan    = "#8DC600",
+  darkred = "#EA6962",
   fg      = "#C7C7CA",
   gray    = "#222730",
-  green   = "#79DCAA",
+  green   = "#87B47D",
   lime    = "#54CED6",
-  orange  = "#FFD064",
+  orange  = "#F7BB3B",
   pink    = "#D997C8",
   purple  = "#C397D8",
-  red     = "#F87070",
-  yellow  = "#FFE59E"
+  red     = "#EA6962",
+  yellow  = "#F7BB3B"
 }
 
 local mode_theme = {

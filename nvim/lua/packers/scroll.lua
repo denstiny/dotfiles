@@ -3,7 +3,7 @@ if not has_ts then return end
 scrollbar.setup({
   show = true,
   handle = {
-    color = "#221F34",
+    color = "#3C3836",
   },
   marks = {
   },

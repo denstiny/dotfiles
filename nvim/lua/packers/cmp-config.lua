@@ -123,6 +123,7 @@ cmp.setup {
   preselect = cmp.PreselectMode.None,
   sources = {
     { name = "nvim_lsp", priority = 12 },
+    { name = "crates" },
     --{ name = "neorg", priority = 10 },
     --{name = "nvim_lsp_signature_help"},
     { name = "luasnip", priority = 11 },

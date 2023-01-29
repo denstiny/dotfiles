@@ -42,7 +42,7 @@ local _use = function(use)
   use { 'hrsh7th/cmp-nvim-lsp' }
   use { 'hrsh7th/cmp-cmdline' }
   -- color
-  use { 'JoosepAlviste/palenightfall.nvim' }
+  use { "GwHisHere/concoctis.nvim" }
   -- statusline
   use { 'ray-x/lsp_signature.nvim' }
   use { 'feline-nvim/feline.nvim' }
@@ -112,6 +112,14 @@ local _use = function(use)
       "anuvyklack/middleclass",
       "anuvyklack/animation.nvim"
     },
+  }
+  use {
+    'saecki/crates.nvim',
+    event = { "BufRead Cargo.toml" },
+    requires = { { 'nvim-lua/plenary.nvim' } },
+    config = function()
+      require('crates').setup()
+    end,
   }
   --use { 'stolen-programmer/dev-nanny.nvim' }
 

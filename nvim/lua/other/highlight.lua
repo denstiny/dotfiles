@@ -1,14 +1,17 @@
 vim.cmd [[
-colorscheme palenightfall
+colorscheme concoctis
+hi Normal guibg=#232120
 hi EndOfBuffer guifg=bg
 hi NormalFloat guibg=bg
 hi NormalNC    guibg=bg
 hi SignColumn  guibg=bg
 hi @constructor gui=bold
 hi FloatBorder guifg=#5B72AE
+hi WinBar guibg=bg
+hi WinBarNc guibg=bg
 hi TelescopeBorder guifg=#5B72AE
-hi IndentBlanklineContextStart guisp=#D49BFD gui=underline
-hi IndentBlanklineContextChar guifg=#D49BFD
+hi IndentBlanklineContextStart guisp=#EA6962 gui=underline
+hi IndentBlanklineContextChar guifg=#EA6962
 hi DiagnosticSignHint  gui=underline cterm=underline guisp=#7982B4
 hi DiagnosticSignInfo  gui=underline cterm=underline guisp=#82aaff
 hi DiagnosticSignError gui=undercurl cterm=undercurl guisp=#ff5370

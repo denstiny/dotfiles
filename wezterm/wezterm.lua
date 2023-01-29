@@ -39,7 +39,7 @@ return {
       intensity = 'Bold',
       italic = true,
       font = wezterm.font {
-        family = 'JetBrainsMono Nerd Font Mono',
+        family = 'FiraCode Nerd Font Mono',
         weight = 'Bold',
         style = 'Italic',
       },
@@ -57,7 +57,7 @@ return {
       italic = true,
       intensity = 'Normal',
       font = wezterm.font {
-        family = 'UbuntuMono Nerd Font Mono',
+        family = 'Maple Mono',
         style = 'Italic',
       },
     },
