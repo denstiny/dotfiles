@@ -8,12 +8,12 @@ end)
 return {
   warn_about_missing_glyphs = false,
   window_padding = {
-    left = 5,
+    left = 7,
     right = 0,
-    top = 11,
+    top = 19,
     bottom = 0
   },
-  color_scheme = "Lavandula",
+  color_scheme = "arcoiris",
   scrollback_lines = 99999,
   harfbuzz_features = { "zero" },
   hide_tab_bar_if_only_one_tab = false,

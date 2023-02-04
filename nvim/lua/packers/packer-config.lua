@@ -1,152 +1,157 @@
-local packer = require('packer')
-local packer_util = require('packer.util')
+local packer = require("packer")
+local packer_util = require("packer.util")
 
 local _use = function(use)
-  --use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', commit = '325de255' }
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use { 'nvim-treesitter/playground' }
-  use { 'nvim-lua/plenary.nvim' }
-  use { 'wbthomason/packer.nvim' }
-  use "folke/neodev.nvim"
-  use { 'lewis6991/impatient.nvim' }
-  use { 'rcarriga/nvim-notify', config = function()
-    vim.opt.termguicolors = true
-    vim.notify = require("notify")
-    vim.notify.setup({
-      background_colour = "#16161E",
-    })
-  end }
-  use { 'p00f/clangd_extensions.nvim' }
-  use 'simrat39/rust-tools.nvim'
-  use {
-    'neovim/nvim-lspconfig',
-    requires = {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-    }
-  }
-  use { 'hrsh7th/nvim-cmp' }
-  --use { 'tzachar/cmp-tabnine', run = './install.sh' }
-  use { 'hrsh7th/cmp-nvim-lua' }
-  use { 'onsails/lspkind-nvim' }
-  use { 'hrsh7th/cmp-nvim-lsp-signature-help' }
-  use { 'windwp/nvim-autopairs' }
-  use({ "kylechui/nvim-surround", tag = "*", })
-  use { 'hrsh7th/cmp-buffer' }
-  use { 'hrsh7th/cmp-path' }
-  use { 'L3MON4D3/LuaSnip', requires = { 'rafamadriz/friendly-snippets' } }
-  use { 'saadparwaiz1/cmp_luasnip' }
-  use { 'hrsh7th/cmp-calc' }
-  use { 'dmitmel/cmp-digraphs' }
-  use { 'f3fora/cmp-spell' }
-  use { 'hrsh7th/cmp-nvim-lsp' }
-  use { 'hrsh7th/cmp-cmdline' }
-  -- color
-  use { "GwHisHere/concoctis.nvim" }
-  -- statusline
-  use { 'ray-x/lsp_signature.nvim' }
-  use { 'feline-nvim/feline.nvim' }
-  use { 'danymat/neogen' }
-  use 'lukas-reineke/indent-blankline.nvim'
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons',
-      'antosha417/nvim-lsp-file-operations'
-    },
-    tag = 'nightly'
-  }
-  use { 'akinsho/toggleterm.nvim' }
-  use { 'folke/trouble.nvim' }
-  use { 'nvim-telescope/telescope.nvim', 'nvim-telescope/telescope-packer.nvim',
-    requires = { { 'nvim-lua/plenary.nvim' } } }
-  --debug
-  use 'mfussenegger/nvim-dap'
-  use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
-  --use { "Pocco81/dap-buddy.nvim", tag = 'dev' }
-  use { "jayp0521/mason-nvim-dap.nvim" }
-  -- tasks
-  use { 'GustavoKatel/tasks.nvim' }
-  -- start time
-  use { 'dstein64/vim-startuptime' }
-  use { 'skywind3000/asyncrun.vim', requires = { 'skywind3000/asynctasks.vim' } }
-  -- hlslens
-  use { 'kevinhwang91/nvim-hlslens' }
-  -- undo tree
-  use { 'mbbill/undotree' }
-  use { 'lewis6991/gitsigns.nvim' }
-  use { 'tpope/vim-surround' }
-  --use { 'voldikss/vim-translator' }
-  use { 'tibabit/vim-templates' }
-  use { 'ahmedkhalf/project.nvim' }
-  use {
-    'xeluxee/competitest.nvim',
-    requires = 'MunifTanjim/nui.nvim',
-  }
-  -- clip list
-  use { "AckslD/nvim-neoclip.lua", }
-  -- 滚动条
-  use('petertriho/nvim-scrollbar')
+	--use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', commit = '325de255' }
+	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+	use({ "nvim-treesitter/playground" })
+	use({ "nvim-lua/plenary.nvim" })
+	use({ "wbthomason/packer.nvim" })
+	use("folke/neodev.nvim")
+	use({ "lewis6991/impatient.nvim" })
+	use({
+		"rcarriga/nvim-notify",
+		config = function()
+			vim.opt.termguicolors = true
+			vim.notify = require("notify")
+			vim.notify.setup({
+				background_colour = "#16161E",
+			})
+		end,
+	})
+	use({ "p00f/clangd_extensions.nvim" })
+	use("simrat39/rust-tools.nvim")
+	use({
+		"neovim/nvim-lspconfig",
+		requires = {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+		},
+	})
+	use({ "hrsh7th/nvim-cmp" })
+	--use { 'tzachar/cmp-tabnine', run = './install.sh' }
+	use({ "hrsh7th/cmp-nvim-lua" })
+	use({ "onsails/lspkind-nvim" })
+	use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
+	use({ "windwp/nvim-autopairs" })
+	use({ "kylechui/nvim-surround", tag = "*" })
+	use({ "hrsh7th/cmp-buffer" })
+	use({ "hrsh7th/cmp-path" })
+	use({ "L3MON4D3/LuaSnip", requires = { "rafamadriz/friendly-snippets" } })
+	use({ "saadparwaiz1/cmp_luasnip" })
+	use({ "hrsh7th/cmp-calc" })
+	use({ "dmitmel/cmp-digraphs" })
+	use({ "f3fora/cmp-spell" })
+	use({ "hrsh7th/cmp-nvim-lsp" })
+	use({ "hrsh7th/cmp-cmdline" })
+	-- color
+	use({ "GwHisHere/concoctis.nvim" })
+	-- statusline
+	use({ "ray-x/lsp_signature.nvim" })
+	use({ "feline-nvim/feline.nvim" })
+	use({ "danymat/neogen" })
+	use("lukas-reineke/indent-blankline.nvim")
+	use({
+		"nvim-tree/nvim-tree.lua",
+		requires = {
+			"nvim-tree/nvim-web-devicons",
+			"antosha417/nvim-lsp-file-operations",
+		},
+		tag = "nightly",
+	})
+	use({ "akinsho/toggleterm.nvim" })
+	use({ "folke/trouble.nvim" })
+	use({
+		"nvim-telescope/telescope.nvim",
+		"nvim-telescope/telescope-packer.nvim",
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
+	--debug
+	use({ "rcarriga/nvim-dap-ui", cmd = "DapContinue", requires = { "mfussenegger/nvim-dap" } })
+	--use { "Pocco81/dap-buddy.nvim", tag = 'dev' }
+	use({ "jayp0521/mason-nvim-dap.nvim" })
+	-- tasks
+	use({ "GustavoKatel/tasks.nvim" })
+	-- start time
+	use({ "dstein64/vim-startuptime" })
+	use({ "skywind3000/asyncrun.vim", requires = { "skywind3000/asynctasks.vim" } })
+	-- hlslens
+	use({ "kevinhwang91/nvim-hlslens" })
+	-- undo tree
+	use({ "mbbill/undotree" })
+	use({ "lewis6991/gitsigns.nvim" })
+	use({ "tpope/vim-surround" })
+	--use { 'voldikss/vim-translator' }
+	use({ "tibabit/vim-templates" })
+	use({ "ahmedkhalf/project.nvim" })
+	use({
+		"xeluxee/competitest.nvim",
+		requires = "MunifTanjim/nui.nvim",
+	})
+	-- clip list
+	use({ "AckslD/nvim-neoclip.lua" })
+	-- 滚动条
+	use("petertriho/nvim-scrollbar")
 
-  --use 'mg979/vim-visual-multi'
-  --use { 'machakann/vim-sandwich' }
-  -- use_rocks { 'lgi', 'dbus_proxy' }
-  -- use({ "black-desk/fcitx5-ui.nvim", rocks = { 'lgi', 'dbus_proxy' }, })
-  use { 'stevearc/aerial.nvim' }
-  use { 'brenoprata10/nvim-highlight-colors' }
-  use { "iamcco/markdown-preview.nvim", run = "cd app && yarn install" }
-  use 'rafcamlet/nvim-luapad'
-  use { 'nvim-zh/colorful-winsep.nvim' }
-  -- lsp fold code
-  use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
-  -- good cmd
-  use { 'edluffy/hologram.nvim' }
-  use { 'glepnir/lspsaga.nvim' }
-  --use { 'j-hui/fidget.nvim' }
-  use { 'ggandor/leap.nvim' }
-  use {
-    'goolord/alpha-nvim',
-  }
-  use { "anuvyklack/windows.nvim",
-    requires = {
-      "anuvyklack/middleclass",
-      "anuvyklack/animation.nvim"
-    },
-  }
-  use {
-    'saecki/crates.nvim',
-    event = { "BufRead Cargo.toml" },
-    requires = { { 'nvim-lua/plenary.nvim' } },
-    config = function()
-      require('crates').setup()
-    end,
-  }
-  --use { 'stolen-programmer/dev-nanny.nvim' }
-
-
+	--use 'mg979/vim-visual-multi'
+	--use { 'machakann/vim-sandwich' }
+	-- use_rocks { 'lgi', 'dbus_proxy' }
+	-- use({ "black-desk/fcitx5-ui.nvim", rocks = { 'lgi', 'dbus_proxy' }, })
+	use({ "stevearc/aerial.nvim" })
+	use({ "brenoprata10/nvim-highlight-colors" })
+	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })
+	use("rafcamlet/nvim-luapad")
+	use({ "nvim-zh/colorful-winsep.nvim" })
+	-- lsp fold code
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
+	-- good cmd
+	use({ "edluffy/hologram.nvim" })
+	use({ "glepnir/lspsaga.nvim" })
+	--use { 'j-hui/fidget.nvim' }
+	use({ "ggandor/leap.nvim" })
+	use({
+		"goolord/alpha-nvim",
+	})
+	use({
+		"anuvyklack/windows.nvim",
+		requires = {
+			"anuvyklack/middleclass",
+			"anuvyklack/animation.nvim",
+		},
+	})
+	use({ "vim-autoformat/vim-autoformat" })
+	use({
+		"saecki/crates.nvim",
+		event = { "BufRead Cargo.toml" },
+		requires = { { "nvim-lua/plenary.nvim" } },
+		config = function()
+			require("crates").setup()
+		end,
+	})
+	--use { 'stolen-programmer/dev-nanny.nvim' }
 end
-local path = packer_util.join_paths(vim.fn.stdpath('data'), 'plugin', 'packer_compiled.lua')
+local path = packer_util.join_paths(vim.fn.stdpath("data"), "plugin", "packer_compiled.lua")
 local file = io.open(path)
 if file then
-  file:close()
-  vim.cmd("luafile " .. path)
+	file:close()
+	vim.cmd("luafile " .. path)
 end
 
 packer.init({
-  compile_path = path,
-  auto_clean = true,
-  compile_on_sync = true,
-  git = { clone_timeout = 288, default_url_format = "git@github.com:%s" },
-  max_jobs = 30,
-  display = {
-    prompt_border = 'rounded',
-    open_fn = function()
-      return packer_util.float({ border = "single" })
-    end,
-  },
-  luarocks = {
-    python_cmd = 'python'
-  },
+	compile_path = path,
+	auto_clean = true,
+	compile_on_sync = true,
+	git = { clone_timeout = 288, default_url_format = "git@github.com:%s" },
+	max_jobs = 30,
+	display = {
+		prompt_border = "rounded",
+		open_fn = function()
+			return packer_util.float({ border = "single" })
+		end,
+	},
+	luarocks = {
+		python_cmd = "python",
+	},
 })
 
 return packer.startup(_use)

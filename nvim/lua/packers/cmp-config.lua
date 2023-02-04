@@ -1,6 +1,8 @@
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  return col ~= 0 and
+             vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col)
+                 :match("%s") == nil
 end
 local has_cmp, cmp = pcall(require, "cmp")
 if not has_cmp then return end
@@ -36,7 +38,7 @@ lspkind.init({
     Operator = " ",
     TypeParameter = " ",
     cmp_tabnine = ""
-  },
+  }
 })
 
 local source_mapping = {
@@ -48,11 +50,10 @@ local source_mapping = {
   luasnip = "[SN]"
 }
 
-
 -- tabnine
---local tabnine = require('cmp_tabnine.config')
+-- local tabnine = require('cmp_tabnine.config')
 
---tabnine.setup({
+-- tabnine.setup({
 --  max_lines = 1000,
 --  max_num_results = 20,
 --  sort = true,
@@ -64,18 +65,18 @@ local source_mapping = {
 --    -- lua = true
 --  },
 --  show_prediction_strength = false
---})
+-- })
 
 cmp.setup {
   mapping = {
-    --["<CR>"] = cmp.mapping.confirm({ select = true }),
+    -- ["<CR>"] = cmp.mapping.confirm({ select = true }),
     ["<CR>"] = cmp.mapping(function(fallback)
       if cmp.get_selected_entry() then
-        cmp.confirm({ select = true })
+        cmp.confirm({select = true})
       else
         fallback()
       end
-    end, { "i", "c" }),
+    end, {"i", "c"}),
     ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-n>"] = cmp.mapping.select_next_item(),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -83,7 +84,7 @@ cmp.setup {
     ["<C-e>"] = cmp.mapping.close(),
     ["<C-l>"] = cmp.mapping.confirm({
       select = true,
-      behavior = cmp.ConfirmBehavior.Replace,
+      behavior = cmp.ConfirmBehavior.Replace
     }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -93,14 +94,14 @@ cmp.setup {
       else
         fallback()
       end
-    end, { "i", "s" }),
+    end, {"i", "s"}),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       else
         fallback()
       end
-    end, { "i", "s" }),
+    end, {"i", "s"}),
     ["<C-j>"] = cmp.mapping(function(fallback)
       if require('neogen').jumpable(-1) then
         require('neogen').jump_next()
@@ -109,7 +110,7 @@ cmp.setup {
       else
         fallback()
       end
-    end, { "i", "s" }),
+    end, {"i", "s"}),
     ["<C-k>"] = cmp.mapping(function(fallback)
       if require('neogen').jumpable(1) then
         require('neogen').jump_prev()
@@ -118,53 +119,45 @@ cmp.setup {
       else
         fallback()
       end
-    end, { "i", "s" }),
+    end, {"i", "s"})
   },
   preselect = cmp.PreselectMode.None,
   sources = {
-    { name = "nvim_lsp", priority = 12 },
-    { name = "crates" },
-    --{ name = "neorg", priority = 10 },
-    --{name = "nvim_lsp_signature_help"},
-    { name = "luasnip", priority = 11 },
-    { name = "nvim_lua" },
-    { name = "buffer", priority = 11 },
-    { name = "path", priority = 10 },
-    { name = "calc" },
-    --{ name = 'cmp_tabnine', priority = 10 },
-    --{name = "digraphs"},
-    { name = "spell" },
+    {name = "nvim_lsp", priority = 12}, {name = "crates"},
+    -- { name = "neorg", priority = 10 },
+    -- {name = "nvim_lsp_signature_help"},
+    {name = "luasnip", priority = 11}, {name = "nvim_lua"},
+    {name = "buffer", priority = 11}, {name = "path", priority = 10},
+    {name = "calc"}, -- { name = 'cmp_tabnine', priority = 10 },
+    -- {name = "digraphs"},
+    {name = "spell"}
   },
   sorting = {
     comparators = {
-      cmp.config.compare.locality,
-      cmp.config.compare.recently_used,
-      cmp.config.compare.score,
-      cmp.config.compare.exact,
-      cmp.config.compare.order,
-      cmp.config.compare.offset,
-      cmp.config.compare.kind,
-      cmp.config.compare.sort_text,
-      cmp.config.compare.length,
-    },
+      cmp.config.compare.locality, cmp.config.compare.recently_used,
+      cmp.config.compare.score, cmp.config.compare.exact,
+      cmp.config.compare.order, cmp.config.compare.offset,
+      cmp.config.compare.kind, cmp.config.compare.sort_text,
+      cmp.config.compare.length
+    }
   },
   formatting = {
-    fields = { 'kind', 'abbr', 'menu' },
-    --format = kind.cmp_format {
+    fields = {'kind', 'abbr', 'menu'},
+    -- format = kind.cmp_format {
     --  with_text = false,
     --  maxwidth = 80,
-    --},
+    -- },
     format = function(entry, vim_item)
-      --vim.notify(entry.source.name)
-      vim_item.kind = lspkind.symbolic(vim_item.kind, { mode = "symbol" })
+      -- vim.notify(entry.source.name)
+      vim_item.kind = lspkind.symbolic(vim_item.kind, {mode = "symbol"})
       vim_item.menu = source_mapping[entry.source.name]
       if entry.source.name == "cmp_tabnine" then
         vim_item.kind = ""
         -- show  score
-        --local detail = (entry.completion_item.data or {}).detail
-        --if detail and detail:find('.*%%.*') then
+        -- local detail = (entry.completion_item.data or {}).detail
+        -- if detail and detail:find('.*%%.*') then
         --  vim_item.kind = vim_item.kind .. ' ' .. detail
-        --end
+        -- end
 
         if (entry.completion_item.data or {}).multiline then
           vim_item.kind = vim_item.kind .. ' ' .. '[ML]'
@@ -175,30 +168,22 @@ cmp.setup {
       return vim_item
     end
   },
-  snippet = {
-    expand = function(args)
-      snip.lsp_expand(args.body)
-    end
-  },
-  experimental = {
-    ghost_text = true,
-  },
+  snippet = {expand = function(args) snip.lsp_expand(args.body) end},
+  experimental = {ghost_text = true},
   window = {
     completion = {
-      border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
-      winhighlight = 'FloatBorder:FloatBorder',
+      border = {'┌', '─', '┐', '│', '┘', '─', '└', '│'},
+      winhighlight = 'FloatBorder:FloatBorder'
     },
     documentation = {
       max_width = 50,
-      border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
-      winhighlight = 'Normal:CmpPmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
+      border = {'╭', '─', '╮', '│', '╯', '─', '╰', '│'},
+      winhighlight = 'Normal:CmpPmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None'
     }
-  },
+  }
 }
 cmp.setup.filetype('gitcommit', {
   sources = cmp.config.sources({
-    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-  }, {
-    { name = 'buffer' },
-  })
+    {name = 'cmp_git'} -- You can specify the `cmp_git` source if you were installed it.
+  }, {{name = 'buffer'}})
 })
