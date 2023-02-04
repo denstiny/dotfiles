@@ -1,9 +1,9 @@
 /**
- * @author      : {{NAME}} ({{EMAIL}})
- * @file        : {{FILE}}
- * @created     : {{TIMESTAMP}}
- * @github      : https://github.com/denstiny
- * @blog        : https://denstiny.github.io
+  @author      : {{NAME}} ({{EMAIL}})
+  @file        : {{FILE}}
+  @created     : {{TIMESTAMP}}
+  @github      : https://github.com/denstiny
+  @blog        : https://denstiny.github.io
  */
 
 #include <iostream>
@@ -12,11 +12,11 @@ using namespace std;
 
 class Solution {
   public:
-
+  
 };
 
 
-int main(int argc, char **argv) {
-  
+int main (int argc, char** argv) {
+  {{CURSOR}}
   return 0;
 }
