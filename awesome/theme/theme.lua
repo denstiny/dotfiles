@@ -4,7 +4,7 @@ local xresources = require("beautiful.xresources")
 local naughty = require("naughty")
 local dpi = xresources.apply_dpi
 local xrdb = xresources.get_current_theme()
-local gfs = require('gears.filesystem')
+local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 local beautiful = require("beautiful")
 
@@ -14,19 +14,19 @@ local theme = {}
 
 theme.font = "Sarasa Mono K 13"
 
-theme.dir = string.format('%s/.config/awesome/theme', os.getenv('HOME'))
+theme.dir = string.format("%s/.config/awesome/theme", os.getenv("HOME"))
 
-theme.bg_normal   = "#1A1B26"
-theme.bg_focus    = "#1A1B26"
-theme.bg_urgent   = "#1A1B26"
+theme.bg_normal = "#1A1B26"
+theme.bg_focus = "#1A1B26"
+theme.bg_urgent = "#1A1B26"
 theme.bg_minimize = "#1A1B26"
-theme.bg_systray  = theme.bg_normal
+theme.bg_systray = theme.bg_normal
 
-theme.useless_gap   = 18
-theme.border_width  = 1
+theme.useless_gap = 18
+theme.border_width = 1
 theme.border_radius = 20
 theme.border_normal = "#4E5173"
-theme.border_focus  = "#8C91FA"
+theme.border_focus = "#8C91FA"
 theme.border_marked = "#4E5173"
 
 -- widgets
@@ -63,19 +63,19 @@ theme.tag_preview_widget_margin = 0
 
 -- titlebar
 
-theme.titlebar_close_button_normal      = gfs.get_configuration_dir() .. "theme/titlebar/inactive.png"
-theme.titlebar_close_button_focus       = gfs.get_configuration_dir() .. "theme/titlebar/close.png"
+theme.titlebar_close_button_normal = gfs.get_configuration_dir() .. "theme/titlebar/inactive.png"
+theme.titlebar_close_button_focus = gfs.get_configuration_dir() .. "theme/titlebar/close.png"
 theme.titlebar_close_button_focus_hover = gfs.get_configuration_dir() .. "theme/titlebar/close_hover.png"
 
-theme.titlebar_minimize_button_normal      = gfs.get_configuration_dir() .. "theme/titlebar/inactive.png"
-theme.titlebar_minimize_button_focus       = gfs.get_configuration_dir() .. "theme/titlebar/minimize.png"
+theme.titlebar_minimize_button_normal = gfs.get_configuration_dir() .. "theme/titlebar/inactive.png"
+theme.titlebar_minimize_button_focus = gfs.get_configuration_dir() .. "theme/titlebar/minimize.png"
 theme.titlebar_minimize_button_focus_hover = gfs.get_configuration_dir() .. "theme/titlebar/minimize_hover.png"
 
-theme.titlebar_floating_button_normal_inactive      = gfs.get_configuration_dir() .. "theme/titlebar/inactive.png"
-theme.titlebar_floating_button_focus_inactive       = gfs.get_configuration_dir() .. "theme/titlebar/floating.png"
-theme.titlebar_floating_button_normal_active        = gfs.get_configuration_dir() .. "theme/titlebar/inactive.png"
-theme.titlebar_floating_button_focus_active         = gfs.get_configuration_dir() .. "theme/titlebar/floating.png"
-theme.titlebar_floating_button_focus_active_hover   = gfs.get_configuration_dir() .. "theme/titlebar/floating_hover.png"
+theme.titlebar_floating_button_normal_inactive = gfs.get_configuration_dir() .. "theme/titlebar/inactive.png"
+theme.titlebar_floating_button_focus_inactive = gfs.get_configuration_dir() .. "theme/titlebar/floating.png"
+theme.titlebar_floating_button_normal_active = gfs.get_configuration_dir() .. "theme/titlebar/inactive.png"
+theme.titlebar_floating_button_focus_active = gfs.get_configuration_dir() .. "theme/titlebar/floating.png"
+theme.titlebar_floating_button_focus_active_hover = gfs.get_configuration_dir() .. "theme/titlebar/floating_hover.png"
 theme.titlebar_floating_button_focus_inactive_hover = gfs.get_configuration_dir() .. "theme/titlebar/floating_hover.png"
 
 theme.icon_theme = nil

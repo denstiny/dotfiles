@@ -18,7 +18,7 @@ xrandr --output eDP --mode 1920x1200 --left-of HDMI-A-0 --auto
 run clash
 run fcitx5
 run flameshot
-#run obs
+run obs
 #run qv2ray
 # open start emacs server
 #run emacs --daemon

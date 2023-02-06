@@ -10,7 +10,7 @@ local cpu_idle_script = [[
   "]]
 
 awful.widget.watch(cpu_idle_script, update_interval, function(widget, stdout)
-    local cpu_idle = stdout
-    cpu_idle = string.gsub(cpu_idle, '^%s*(.-)%s*$', '%1')
-    awesome.emit_signal("signal::cpu", 100 - tonumber(cpu_idle))
+	local cpu_idle = stdout
+	cpu_idle = string.gsub(cpu_idle, "^%s*(.-)%s*$", "%1")
+	awesome.emit_signal("signal::cpu", 100 - tonumber(cpu_idle))
 end)
