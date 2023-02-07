@@ -29,7 +29,7 @@ local _use = function(use)
 		},
 	})
 	use({ "hrsh7th/nvim-cmp" })
-	--use { 'tzachar/cmp-tabnine', run = './install.sh' }
+	use({ "tzachar/cmp-tabnine", run = "./install.sh" })
 	use({ "hrsh7th/cmp-nvim-lua" })
 	use({ "onsails/lspkind-nvim" })
 	use({ "hrsh7th/cmp-nvim-lsp-signature-help" })

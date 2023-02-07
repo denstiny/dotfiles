@@ -15,7 +15,7 @@ lock=$$
 touch ~/.shell.lok$lock 
 echo "创建进程锁文件"
 
-# bash ~/.config/awesome/shell/blue.sh $lock  && echo "执行blue" &
+bash ~/.config/awesome/shell/blue.sh $lock  && echo "执行blue" &
 while true
 do
 	ls -a ~/ | grep shell.lok$lock &> /dev/null
