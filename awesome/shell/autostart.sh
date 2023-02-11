@@ -15,7 +15,7 @@ xrandr --output eDP --mode 1920x1200 --left-of HDMI-A-0 --auto
 #xrandr --output HDMI1 --rotate  normal
 # Compositor
 #picom --config ~/.config/awesome/config/picom.conf &
-run clash
+run clash-for-windows
 run fcitx5
 run flameshot
 run obs

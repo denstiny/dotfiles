@@ -10,7 +10,7 @@ M.lsp_server = {
   "clangd",
   "sumneko_lua",
   "jdtls",
-  "gopls",
+  --"gopls",
   --"csharp_ls",
   --"r_language_server",
   "rust_analyzer",

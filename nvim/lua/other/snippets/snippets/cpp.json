@@ -38,5 +38,9 @@
   "log":{
       "prefix":"log",
       "body":["std::cerr << \"log: \" << ${1:log} << endl;"]
+  },
+  "fun":{
+    "prefix": "fun",
+    "body": ["${1:type} ${2:fun_name} (${3:args}) {","  ${4}","}"]
   }
 }

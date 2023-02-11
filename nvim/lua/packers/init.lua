@@ -22,7 +22,7 @@ require("packers.dap")
 -- asynrun & asyntask
 require("packers.asynrun")
 -- hlslens
-require("packers.hlslens")
+require("packers.hlslens-config")
 -- undo tree
 require("packers.undotree")
 --color theme

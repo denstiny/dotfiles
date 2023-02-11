@@ -48,7 +48,9 @@ local _use = function(use)
 	use({ "GwHisHere/concoctis.nvim" })
 	-- statusline
 	use({ "ray-x/lsp_signature.nvim" })
-	use({ "feline-nvim/feline.nvim" })
+	use({ "feline-nvim/feline.nvim",config = function() 
+    vim.opt.termguicolors = true
+  end })
 	use({ "danymat/neogen" })
 	use("lukas-reineke/indent-blankline.nvim")
 	use({

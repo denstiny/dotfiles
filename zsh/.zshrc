@@ -12,9 +12,21 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim'
 fi
-export proxy=http://127.0.0.1
+
+proxy ()
+{
+  export http_proxy=http://127.0.0.1:7890
+  export https_proxy=http://127.0.0.1:7890
+}
+uproxy ()
+{
+  unset http_proxy
+  unset https_proxy
+}
+
+
+
 export TERM=wezterm
-source ~/.zsh/proxy.sh
 alias re=ranger
 alias ters=~/Workspace/Terslation/translation/fanyim.py
 alias apt=aptpac

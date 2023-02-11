@@ -9,8 +9,7 @@ muted_old = 0
 local function emit_volume_info()
 	awful.spawn.easy_async_with_shell("pamixer --get-volume-human", function(stdout)
 		local volume = stdout:match("(%d+)")
-		local muted
-		local muted_int = muted and 1 or 0
+		local muted_int = 0
 		local volume_int = tonumber(volume)
 		if stdout == "muted" then
 			volume = volume_old

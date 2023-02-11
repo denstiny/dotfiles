@@ -6,4 +6,5 @@
 
 #!/usr/bin/env bash
 
-sudo pacman -S brightnessctl xorg-xbacklight inotify-tools
+sudo pacman -S brightnessctl xorg-xbacklight inotify-tools flameshot pamixer
+echo "options hid_apple fnmode=2" >> /etc/modprobe.d/hid_apple.conf

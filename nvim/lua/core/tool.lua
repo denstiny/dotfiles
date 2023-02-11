@@ -36,9 +36,35 @@ M.mergeTable = function(table1, table2)
 end
 --}}}
 
+--{{ 文件路径称转换唯一字符串
+M.file_key = function(file_path)
+	file_path = string.gsub(file_path, "^" .. os.getenv("HOME"), "~")
+	file_path = string.gsub(file_path, "/", "=+")
+	return file_path .. "="
+end
+--}}}
+
+--{{ 插件view文件和当前文件
+M.check_mkview = function(file_path)
+	if not M.file_exists(file_path) then
+		return false
+	end
+	return true
+end
+--}}}
+
+--{{ 文件路径唯一字符串转换成路径
+M.file_key_to_path = function(file_key)
+	local path = string.gsub(file_key, "=+", "/")
+	path = string.gsub(file_key, "=$", "")
+	path = string.gsub(path, "^~", os.getenv("HOME"))
+	return path
+end
+--}}
+
 --{{ 获取当前nvim的pid
 M.latest_pid = function()
-	local pid_str = io.popen("ps -C nvim -o %pid | tac | awk 'NR==2 {print $1}'"):read("*a")
+	local pid_str = io.popen("ps -C nvim -o %pid | tac | awk 'NR==1 {print $1}'"):read("*a")
 	local pid = string.match(pid_str, "%d+")
 	return pid
 end
@@ -64,4 +90,15 @@ timer:start(
 	end)
 )
 
+--{{ 判断文件是否存在
+M.file_exists = function(file_path)
+	local file = io.open(file_path)
+	if file then
+		file:close()
+		return true
+	else
+		return false
+	end
+end
+--}}}
 return M

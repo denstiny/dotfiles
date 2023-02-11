@@ -12,7 +12,7 @@ opt.mouse = "a"
 opt.number = true
 opt.numberwidth = 2
 opt.ruler = false
-opt.shortmess:append "sI"
+opt.shortmess:append("sI")
 opt.signcolumn = "yes"
 opt.splitbelow = true
 opt.splitright = true
@@ -21,10 +21,12 @@ opt.timeoutlen = 400
 opt.updatetime = 250
 opt.cursorline = true
 opt.laststatus = 3
-opt.mouse = 'i'
+opt.mouse = "i"
 opt.pumheight = 15
 opt.helpheight = 10
 opt.showtabline = 0
+opt.viewdir = os.getenv("HOME") .. "/.vim_view/"
+
 opt.guifont = "ComicCodeLigatures Nerd Font:h9"
 -- vim.opt.fillchars = {
 --   horiz     = '━',
@@ -37,7 +39,6 @@ opt.guifont = "ComicCodeLigatures Nerd Font:h9"
 --   eob       = ' '
 -- }
 
-
-vim.cmd [[
+vim.cmd([[
 set noswapfile
-]]
+]])

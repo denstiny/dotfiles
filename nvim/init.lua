@@ -13,6 +13,7 @@
 
 --- First Start
 require("core.FirstStart")
+--- packers
 require("packers")
 --- other
 require("other")

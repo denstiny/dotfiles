@@ -1,4 +1,5 @@
 local group = vim.api.nvim_create_augroup("denstiny_aero", { clear = true })
+local tool = require("core.tool")
 
 --- {{{ close last tool win
 local backlist = { "qf", "NvimTree" }
@@ -83,8 +84,38 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 
 --{{ 自动格式化
 vim.api.nvim_create_autocmd({ "BufWrite" }, {
-	desc = "使用 formatter.nvim 格式化代码", callback = function()
+	group = group,
+	desc = "使用 formatter.nvim 格式化代码",
+	callback = function()
 		vim.cmd("Autoformat")
+	end,
+})
+--}}}
+
+--{{ 自动保存当前buffer编辑状态
+vim.api.nvim_create_autocmd({ "BufWritePost", "BufLeave", "WinLeave" }, {
+	desc = "自动创建保存会话",
+	group = group,
+	callback = function()
+		if vim.fn.expand("%:p") ~= "" and tool.file_exists(vim.fn.expand("%:p")) then
+			vim.cmd("mkview")
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+	desc = "自动加载会话",
+	group = group,
+	callback = function(opt)
+		if not tool.check_mkview(opt.file) then
+			return
+		end
+
+		local filekey = tool.file_key(opt.file)
+		local file_key_path = os.getenv("HOME") .. "/.vim_view/" .. filekey
+		if tool.file_exists(file_key_path) then
+			vim.cmd("loadview")
+		end
 	end,
 })
 --}}}
