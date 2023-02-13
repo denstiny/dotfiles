@@ -110,12 +110,36 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 		if not tool.check_mkview(opt.file) then
 			return
 		end
-
 		local filekey = tool.file_key(opt.file)
 		local file_key_path = os.getenv("HOME") .. "/.vim_view/" .. filekey
 		if tool.file_exists(file_key_path) then
 			vim.cmd("loadview")
 		end
+	end,
+})
+--}}}
+
+--{{ 自动设置颜色
+vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+	desc = "自动同步颜色到背景色",
+	group = group,
+	callback = function()
+		vim.cmd([[
+        hi Normal guibg=#090300
+        hi EndOfBuffer guifg=bg
+        hi LineNr      guibg=bg
+        hi NormalFloat guibg=bg
+        hi NormalNC    guibg=bg
+        hi SignColumn  guibg=bg
+        hi WinBar      guibg=bg
+        hi WinBarNc    guibg=bg
+        hi VertSplit   guibg=bg
+        hi FloatBorder guibg=bg
+        hi TSPunctBracket guifg=#665c54
+        hi clear CmpItemAbbr
+        hi clear MatchParen
+        hi MatchParen gui=bold,underline guisp=#92826A
+      ]])
 	end,
 })
 --}}}

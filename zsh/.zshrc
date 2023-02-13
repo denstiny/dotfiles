@@ -1,7 +1,10 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 plugins=(git zsh-autosuggestions autopep8 command-not-found calc zlong_alert)
-
+setopt AUTO_PUSHD                  
+setopt PUSHD_MINUS                 
+setopt CDABLE_VARS                 
+autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
 zlong_send_notifications=false
 zlong_duration=1

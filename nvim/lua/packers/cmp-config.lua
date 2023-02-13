@@ -123,30 +123,30 @@ cmp.setup({
 	},
 	preselect = cmp.PreselectMode.None,
 	sources = {
-		{ name = "nvim_lsp", priority = 12 },
+		{ name = "nvim_lsp", priority = 8 },
 		{ name = "crates" },
 		-- { name = "neorg", priority = 10 },
 		-- {name = "nvim_lsp_signature_help"},
-		{ name = "luasnip", priority = 12 },
+		{ name = "luasnip", priority = 7 },
 		{ name = "nvim_lua" },
-		{ name = "buffer", priority = 11 },
-		{ name = "path", priority = 10 },
+		{ name = "buffer", priority = 7 },
+		{ name = "path", priority = 4 },
 		{ name = "calc" },
-		{ name = "cmp_tabnine", priority = 10 },
+		{ name = "cmp_tabnine", priority = 8 },
 		-- {name = "digraphs"},
 		{ name = "spell" },
 	},
 	sorting = {
 		comparators = {
-			cmp.config.compare.locality,
+			cmp.config.compare.exact,
 			cmp.config.compare.recently_used,
 			cmp.config.compare.score,
-			cmp.config.compare.exact,
+			cmp.config.compare.locality,
 			cmp.config.compare.order,
 			cmp.config.compare.offset,
 			cmp.config.compare.kind,
 			cmp.config.compare.sort_text,
-			cmp.config.compare.length,
+			--cmp.config.compare.length,
 		},
 	},
 	formatting = {
@@ -185,7 +185,7 @@ cmp.setup({
 	window = {
 		completion = {
 			border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
-			winhighlight = "FloatBorder:FloatBorder",
+			winhighlight = "FloatBorder:FloatBorder,CursorLine:CursorLine",
 		},
 		documentation = {
 			max_width = 50,

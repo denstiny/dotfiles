@@ -22,13 +22,39 @@ end
 --- { custom lsp config
 
 --- { sumneko_lua
-local _, neodev = pcall(require, "neodev")
-if _ then
-	local seeting = neodev.setup({}).settings
-	lspconfig["sumneko_lua"].setup(vim.tbl_deep_extend("force", opts, seeting))
-end
+--local _, neodev = pcall(require, "neodev")
+--if _ then
+--	local seeting = neodev.setup({}).settings
+--	lspconfig["lua_lsp"].setup(vim.tbl_deep_extend("force", opts, seeting))
+--end
+lspconfig["lua_ls"].setup({
+	settings = {
+		Lua = {
+			--runtime = {
+			--	version = "LuaJIT",
+			--},
+			diagnostics = {
+				globals = { "vim" },
+			},
+			--workspace = {
+			--	library = vim.api.nvim_get_runtime_file("", true),
+			--},
+			workspace = {
+				library = {
+					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+				},
+			},
+			telemetry = {
+				enable = false,
+			},
+			maxPreload = 100000,
+			preloadFileSize = 10000,
+		},
+	},
+})
 ----}
---
+
 --- { rust tools
 local _, rust_tools = pcall(require, "rust-tools")
 if _ then

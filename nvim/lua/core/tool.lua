@@ -1,3 +1,5 @@
+local fn = vim.fn
+
 local M = {
 	interval = 500,
 	cpu = 0.0,
@@ -101,4 +103,11 @@ M.file_exists = function(file_path)
 	end
 end
 --}}}
+
+--{{ 获取搞两组颜色
+M.get_color = function(group, attr)
+	return fn.synIDattr(fn.synIDtrans(fn.hlID(group)), attr)
+end
+--}}}
+
 return M

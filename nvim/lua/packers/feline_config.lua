@@ -7,7 +7,7 @@ end
 local theme = {
 	aqua = "#7AB0DF",
 	blue = "#5FB0FC",
-	bg = "#232120",
+	bg = "#090300",
 	cyan = "#8DC600",
 	darkred = "#EA6962",
 	fg = "#C7C7CA",
@@ -265,7 +265,7 @@ local toy = {
 		if string.len(cpu) < 4 then
 			cpu = " " .. cpu
 		end
-		return "  " .. cpu
+		return "   " .. cpu
 	end,
 	hl = function()
 		local color = "yellow"

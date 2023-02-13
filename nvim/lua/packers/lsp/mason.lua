@@ -1,20 +1,22 @@
 --- { mason
 
-local _, mason = pcall(require, 'mason')
-if not _ then return end
+local _, mason = pcall(require, "mason")
+if not _ then
+	return
+end
 
 mason.setup({
-  PATH = "prepend",
-  ui = {
-    icons = {
-      package_installed = "✓",
-      package_pending = "➜",
-      package_uninstalled = "✗"
-    }
-  },
-  pip = {
-    install_args = { "--proxy", "127.0.0.1:7890" },
-  }
+	PATH = "prepend",
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
+	},
+	pip = {
+		install_args = { "--proxy", "127.0.0.1:7890" },
+	},
 })
 
 ---}

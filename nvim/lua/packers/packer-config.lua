@@ -45,12 +45,15 @@ local _use = function(use)
 	use({ "hrsh7th/cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-cmdline" })
 	-- color
-	use({ "GwHisHere/concoctis.nvim" })
+	use({ "RRethy/nvim-base16" })
 	-- statusline
 	use({ "ray-x/lsp_signature.nvim" })
-	use({ "feline-nvim/feline.nvim",config = function() 
-    vim.opt.termguicolors = true
-  end })
+	use({
+		"feline-nvim/feline.nvim",
+		config = function()
+			vim.opt.termguicolors = true
+		end,
+	})
 	use({ "danymat/neogen" })
 	use("lukas-reineke/indent-blankline.nvim")
 	use({
@@ -101,6 +104,7 @@ local _use = function(use)
 	-- use({ "black-desk/fcitx5-ui.nvim", rocks = { 'lgi', 'dbus_proxy' }, })
 	use({ "stevearc/aerial.nvim" })
 	use({ "brenoprata10/nvim-highlight-colors" })
+	use({ "chxuan/change-colorscheme" })
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })
 	use("rafcamlet/nvim-luapad")
 	use({ "nvim-zh/colorful-winsep.nvim" })

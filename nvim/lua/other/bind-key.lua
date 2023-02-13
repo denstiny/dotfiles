@@ -1,16 +1,16 @@
 local U = require("core.bind-tool")
-vim.g.mapleader = ';'
+vim.g.mapleader = ";"
 --- nvim tree
 U.nmap("tr", "<Cmd>NvimTreeFindFileToggle<cr>")
 -- term
 function _G.set_terminal_keymaps()
-  local opts = { noremap = true }
-  vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-\\>', "<Cmd>ToggleTermTree<cr>", opts)
+	local opts = { noremap = true }
+	vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
+	vim.api.nvim_buf_set_keymap(0, "t", "<C-\\>", "<Cmd>ToggleTermTree<cr>", opts)
 end
 
-U.nmap('<C-\\>', "<Cmd>ToggleTermTree<cr>")
-vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+U.nmap("<C-\\>", "<Cmd>ToggleTermTree<cr>")
+vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
 -- colpy text
 U.nmap(";y", '"+y')
@@ -24,7 +24,6 @@ U.nmap("<A-q>", "<Cmd>wqall!<cr>")
 U.nmap("<C-p>", [["+p]])
 U.vmap("<C-p>", [["+p]])
 
-
 -- 扩展窗口大小
 U.nmap("<C-l>", "<Cmd>vertical res +5<cr>")
 U.nmap("<C-h>", "<Cmd>vertical res -5<cr>")
@@ -33,7 +32,6 @@ U.nmap("<C-k>", "<Cmd>res -5<cr>")
 
 -- fold
 U.nmap("<tab>", "<Cmd>normal za<cr>")
-
 
 --U.nmap("<Leader>ad", "<Cmd>lua addStartify_bookmark()<cr>")
 --- lsp tree
@@ -68,15 +66,15 @@ U.nmap("B", "<Cmd>Telescope buffers<cr>")
 U.nmap("<C-f>", "<Cmd>Telescope find_files<cr>")
 
 -- luasnip
-U.map('i', '<C-j>', '<CMD>lua require("luasnip").jump(1)<CR>')
-U.map('i', '<C-k>', '<CMD>lua require("luasnip").jump(-1)<CR>')
-U.map('s', '<C-j>', '<CMD>lua require("luasnip").jump(1)<CR>')
-U.map('s', '<C-k>', '<CMD>lua require("luasnip").jump(-1)<CR>')
+U.map("i", "<C-j>", '<CMD>lua require("luasnip").jump(1)<CR>')
+U.map("i", "<C-k>", '<CMD>lua require("luasnip").jump(-1)<CR>')
+U.map("s", "<C-j>", '<CMD>lua require("luasnip").jump(1)<CR>')
+U.map("s", "<C-k>", '<CMD>lua require("luasnip").jump(-1)<CR>')
 
 -- symbols map
 U.nmap("ts", "<Cmd>AerialToggle<cr>")
 -- fold lsp
-U.nmap("tp", "<Cmd>lua vim.diagnostic.open_float(nil, {focus=false, scope=\"cursor\"})<CR>")
+U.nmap("tp", '<Cmd>lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})<CR>')
 -- 注释
 U.nmap("<Leader>nf", "<Cmd>lua require('neogen').generate()<CR>")
 
@@ -94,4 +92,4 @@ U.nmap("<A-p>", "<Cmd>Telescope projects theme=dropdown<cr>")
 U.imap("<C-Space>", "<Cmd>lua require'fcitx5-ui'.toggle()<cr>")
 U.nmap("<C-Space>", "<Cmd>lua require'fcitx5-ui'.toggle()<cr>")
 -- windows
-U.nmap('<space>', "<Cmd>WindowsMaximize<cr>")
+U.nmap("<space>", "<Cmd>WindowsMaximize<cr>")
