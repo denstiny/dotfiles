@@ -110,4 +110,16 @@ M.get_color = function(group, attr)
 end
 --}}}
 
+--{{ 遍历buffer 获取buffer,返回buffer列表
+M.get_buf_list = function()
+	local bufs = {}
+	local winnr = fn.winnr("$")
+	for i = 1, winnr do
+		local win_id = fn.win_getid(i)
+		local buf_id = fn.winbufnr(win_id)
+		table.insert(bufs, buf_id)
+	end
+	return bufs
+end
+--}}}
 return M

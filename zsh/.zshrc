@@ -9,6 +9,8 @@ source $ZSH/oh-my-zsh.sh
 zlong_send_notifications=false
 zlong_duration=1
 zlong_ignore_cmds="vim ssh nvim ranger re"
+eval "$(lua ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/z.lua/z.lua --init zsh)"
+eval "$(atuin init zsh)"
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'

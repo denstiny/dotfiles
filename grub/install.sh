@@ -5,5 +5,6 @@
 # @blog        : https://denstiny.github.io
 
 #!/bin/bash
-sudo cp -r catppuccin-grub-theme /usr/share/grub/themes/
-sudo nvim /etc/default/grub
+cp -r catppuccin-grub-theme /usr/share/grub/themes/
+echo 'GRUB_THEME="/usr/share/grub/themes/catppuccin-grub-theme/theme.txt"' >> /etc/default/grub
+grub-mkconfig -o /boot/grub/grub.cfg

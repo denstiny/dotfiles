@@ -133,8 +133,7 @@ local _use = function(use)
 		config = function()
 			require("crates").setup()
 		end,
-	})
-	--use { 'stolen-programmer/dev-nanny.nvim' }
+	}) --use { 'stolen-programmer/dev-nanny.nvim' }
 end
 local path = packer_util.join_paths(vim.fn.stdpath("data"), "plugin", "packer_compiled.lua")
 local file = io.open(path)

@@ -143,3 +143,23 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
 	end,
 })
 --}}}
+
+--{{ 使用quit的时候自动清理当前的buffer
+vim.api.nvim_create_autocmd({ "QuitPre" }, {
+	desc = "自动清理不用的buffer",
+	group = group,
+	callback = function(opt)
+		local buf = opt.buf
+		local bufs = tool.get_buf_list()
+		local key = 0
+		for i = 1, #bufs do
+			if bufs[i] == buf then
+				key = key + 1
+			end
+		end
+		if key < 2 then
+			vim.api.nvim_command("bd")
+		end
+	end,
+})
+--}}}
