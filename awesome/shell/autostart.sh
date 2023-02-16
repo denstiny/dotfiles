@@ -27,3 +27,5 @@ run obs
 #setxkbmap -option caps:swapescape
 ###  Change the wallpaper
 bash ~/.config/awesome/shell/backgrund.sh
+xset dpms 0 0 0 
+xset s noblank && xset s noexpose && xset s off
