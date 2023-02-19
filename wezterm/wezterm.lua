@@ -33,6 +33,7 @@ return {
 		"ComicCode Nerd Font",
 		"青鸟华光简隶变",
 		"FiraCode Nerd Font Mono",
+		"Maple Mono",
 		"DengXian",
 	}),
 	font_rules = {

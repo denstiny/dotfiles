@@ -86,7 +86,8 @@ if _ then
 				"--clang-tidy-checks=bugprone-*, clang-analyzer-*, google-*, modernize-*, performance-*, portability-*, readability-*, -bugprone-too-small-loop-variable, -clang-analyzer-cplusplus.NewDelete, -clang-analyzer-cplusplus.NewDeleteLeaks, -modernize-use-nodiscard, -modernize-avoid-c-arrays, -readability-magic-numbers, -bugprone-branch-clone, -bugprone-signed-char-misuse, -bugprone-unhandled-self-assignment, -clang-diagnostic-implicit-int-float-conversion, -modernize-use-auto, -modernize-use-trailing-return-type, -readability-convert-member-functions-to-static, -readability-make-member-function-const, -readability-qualified-auto, -readability-redundant-access-specifiers,",
 				"--completion-style=detailed",
 				"--cross-file-rename=true",
-				"--header-insertion=iwyu",
+				--"--header-insertion=iwyu", -- 补全时自动导入头文件
+				"--header-insertion=never", -- 禁止自动导入头文件
 				"--pch-storage=memory",
 				"--function-arg-placeholders=true",
 				"--log=verbose",

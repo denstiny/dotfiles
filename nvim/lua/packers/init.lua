@@ -40,7 +40,7 @@ require("packers.clip")
 -- scroll bar
 require("packers.scroll")
 -- symbols
-require("packers.symbol-map")
+--require("packers.symbol-map")
 -- colord
 require("packers.colord")
 -- luapad

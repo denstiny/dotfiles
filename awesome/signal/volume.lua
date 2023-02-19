@@ -12,7 +12,7 @@ local function emit_volume_info()
 		local muted_int = 0
 		local volume_int = tonumber(volume)
 		if stdout == "muted" then
-			volume = volume_old
+			volume_int = volume_old
 			muted_int = 1
 		end
 		if volume_int ~= volume_old or muted_int ~= muted_old then

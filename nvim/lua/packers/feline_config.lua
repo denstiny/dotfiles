@@ -3,7 +3,6 @@ local present, feline = pcall(require, "feline")
 if not present then
 	return
 end
-
 local theme = {
 	aqua = "#7AB0DF",
 	blue = "#5FB0FC",

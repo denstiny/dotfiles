@@ -1,6 +1,7 @@
 local gfs = require("gears.filesystem")
 local gears = require("gears")
 local awful = require("awful")
+local theme = require("theme.theme")
 require("awful.autofocus")
 
 local wibox = require("wibox")
@@ -85,7 +86,7 @@ awful.screen.connect_for_each_screen(function(s)
 		layout = {
 			spacing = 0,
 			spacing_widget = {
-				color = "#181e23",
+				color = theme.bg_normal,
 				shape = gears.shape.rounded_rect,
 				widget = wibox.widget.separator,
 			},

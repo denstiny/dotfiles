@@ -34,8 +34,8 @@ U.nmap("<C-k>", "<Cmd>res -5<cr>")
 U.nmap("<tab>", "<Cmd>normal za<cr>")
 
 --U.nmap("<Leader>ad", "<Cmd>lua addStartify_bookmark()<cr>")
---- lsp tree
-U.nmap("ts", "<Cmd>SymbolsOutline<cr>")
+-- symbols map
+U.nmap("ts", "<Cmd>Lspsaga outline<cr>")
 
 -- Dap Config
 U.nmap("<F5>", "<Cmd>DapContinue<cr>") -- 启动调试
@@ -71,8 +71,6 @@ U.map("i", "<C-k>", '<CMD>lua require("luasnip").jump(-1)<CR>')
 U.map("s", "<C-j>", '<CMD>lua require("luasnip").jump(1)<CR>')
 U.map("s", "<C-k>", '<CMD>lua require("luasnip").jump(-1)<CR>')
 
--- symbols map
-U.nmap("ts", "<Cmd>AerialToggle<cr>")
 -- fold lsp
 U.nmap("tp", '<Cmd>lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})<CR>')
 -- 注释
@@ -89,7 +87,7 @@ U.nmap("<A-t>", "<Cmd>echo &filetype<cr>")
 U.nmap("<A-p>", "<Cmd>Telescope projects theme=dropdown<cr>")
 U.nmap("<A-p>", "<Cmd>Telescope projects theme=dropdown<cr>")
 -- fcitx
-U.imap("<C-Space>", "<Cmd>lua require'fcitx5-ui'.toggle()<cr>")
-U.nmap("<C-Space>", "<Cmd>lua require'fcitx5-ui'.toggle()<cr>")
+--U.imap("<C-Space>", "<Cmd>lua require'fcitx5-ui'.toggle()<cr>")
+--U.nmap("<C-Space>", "<Cmd>lua require'fcitx5-ui'.toggle()<cr>")
 -- windows
 U.nmap("<space>", "<Cmd>WindowsMaximize<cr>")

@@ -102,7 +102,7 @@ local _use = function(use)
 	--use { 'machakann/vim-sandwich' }
 	-- use_rocks { 'lgi', 'dbus_proxy' }
 	-- use({ "black-desk/fcitx5-ui.nvim", rocks = { 'lgi', 'dbus_proxy' }, })
-	use({ "stevearc/aerial.nvim" })
+	--use({ "stevearc/aerial.nvim" })
 	use({ "brenoprata10/nvim-highlight-colors" })
 	use({ "chxuan/change-colorscheme" })
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })

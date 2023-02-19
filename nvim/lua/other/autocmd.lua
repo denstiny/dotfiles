@@ -1,5 +1,7 @@
 local group = vim.api.nvim_create_augroup("denstiny_aero", { clear = true })
 local tool = require("core.tool")
+local api = vim.api
+local fn = vim.fn
 
 --- {{{ close last tool win
 local backlist = { "qf", "NvimTree" }
@@ -158,8 +160,18 @@ vim.api.nvim_create_autocmd({ "QuitPre" }, {
 			end
 		end
 		if key < 2 then
-			vim.api.nvim_command("bd")
+			api.nvim_buf_delete(buf, {})
 		end
+	end,
+})
+--}}}
+
+--{{ 当从编辑模式切换到正常模式则输入法切换成英文
+api.nvim_create_autocmd({ "InsertEnter", "InsertLeave" }, {
+	group = group,
+	desc = "自动切换中英文输入法",
+	callback = function()
+		-- TODO: 代办
 	end,
 })
 --}}}

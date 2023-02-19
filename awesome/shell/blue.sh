@@ -9,6 +9,7 @@ Keyboard ()
     echo "启用默认键盘"
   else
     xinput --disable AT\ Translated\ Set\ 2\ keyboard
+    setxkbmap -option caps:swapescape
     echo "关闭默认键盘"
   fi
 }
@@ -36,7 +37,7 @@ Run() {
 }
 
 while [[ Run ]]; do
-  Keyboard
+  #Keyboard
   Mouse
   sleep 1
 done
