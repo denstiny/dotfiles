@@ -104,13 +104,13 @@ M.file_exists = function(file_path)
 end
 --}}}
 
---{{ 获取搞两组颜色
+--{{ 获取高亮组颜色
 M.get_color = function(group, attr)
 	return fn.synIDattr(fn.synIDtrans(fn.hlID(group)), attr)
 end
 --}}}
 
---{{ 遍历buffer 获取buffer,返回buffer列表
+--{{ 遍历当前窗口的所有bufer 获取buffer,返回buffer列表
 M.get_buf_list = function()
 	local bufs = {}
 	local winnr = fn.winnr("$")
@@ -122,4 +122,5 @@ M.get_buf_list = function()
 	return bufs
 end
 --}}}
+
 return M

@@ -7,7 +7,7 @@ local _use = function(use)
 	use({ "nvim-treesitter/playground" })
 	use({ "nvim-lua/plenary.nvim" })
 	use({ "wbthomason/packer.nvim" })
-	use("folke/neodev.nvim")
+	use({ "folke/neodev.nvim" })
 	use({ "lewis6991/impatient.nvim" })
 	use({
 		"rcarriga/nvim-notify",
@@ -20,7 +20,7 @@ local _use = function(use)
 		end,
 	})
 	use({ "p00f/clangd_extensions.nvim" })
-	use("simrat39/rust-tools.nvim")
+	use({ "simrat39/rust-tools.nvim" })
 	use({
 		"neovim/nvim-lspconfig",
 		requires = {
@@ -55,7 +55,7 @@ local _use = function(use)
 		end,
 	})
 	use({ "danymat/neogen" })
-	use("lukas-reineke/indent-blankline.nvim")
+	use({ "lukas-reineke/indent-blankline.nvim" })
 	use({
 		"nvim-tree/nvim-tree.lua",
 		requires = {
@@ -96,7 +96,7 @@ local _use = function(use)
 	-- clip list
 	use({ "AckslD/nvim-neoclip.lua" })
 	-- 滚动条
-	use("petertriho/nvim-scrollbar")
+	use({ "petertriho/nvim-scrollbar" })
 
 	--use 'mg979/vim-visual-multi'
 	--use { 'machakann/vim-sandwich' }
@@ -113,6 +113,15 @@ local _use = function(use)
 	-- good cmd
 	use({ "edluffy/hologram.nvim" })
 	use({ "glepnir/lspsaga.nvim" })
+	use({
+		"utilyre/barbecue.nvim",
+		tag = "*",
+		requires = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons", -- optional dependency
+		},
+		after = "nvim-web-devicons", -- keep this if you're using NvChad
+	})
 	--use { 'j-hui/fidget.nvim' }
 	use({ "ggandor/leap.nvim" })
 	use({

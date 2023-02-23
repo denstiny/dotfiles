@@ -50,6 +50,7 @@ require("packers.nvimsep")
 require("packers.ufo-config")
 -- lspsatga
 require("packers.lsp_saga")
+require("packers.winbar")
 --require('packers.fidget_config')
 require("packers.leap-move")
 require("packers.alpa-config")

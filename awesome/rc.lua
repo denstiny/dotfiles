@@ -36,18 +36,18 @@ awful.spawn.with_shell("bash ~/.config/awesome/shell/autostart.sh")
 -- keyd have issue in here
 -- awful.spawn.with_shell("setxkbmap -option caps:swapescape")
 
-awful.screen.connect_for_each_screen(function(s)
-	bling.module.tiled_wallpaper("O", s, {
-		fg = "#828da1",
-		bg = "#1b1f27",
-		offset_y = 20,
-		offset_x = 20,
-		font = "Sarasa Mono K Bold",
-		font_size = 8,
-		padding = 100,
-		zickzack = true,
-	})
-end)
+--awful.screen.connect_for_each_screen(function(s)
+--	bling.module.tiled_wallpaper("O", s, {
+--		fg = "#828da1",
+--		bg = "#1b1f27",
+--		offset_y = 20,
+--		offset_x = 20,
+--		font = "Sarasa Mono K Bold",
+--		font_size = 8,
+--		padding = 100,
+--		zickzack = true,
+--	})
+--end)
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {

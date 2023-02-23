@@ -171,7 +171,7 @@ cmp.setup({
 					vim_item.kind = vim_item.kind .. " " .. "[ML]"
 				end
 			end
-			local maxwidth = 60
+			local maxwidth = 40
 			vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
 			return vim_item
 		end,
@@ -184,12 +184,14 @@ cmp.setup({
 	experimental = { ghost_text = true },
 	window = {
 		completion = {
-			border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+			--border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+			border = { "┌", " ", "┐", "│", "┘", " ", "└", "│" },
 			winhighlight = "FloatBorder:FloatBorder,CursorLine:CursorLine",
 		},
 		documentation = {
 			max_width = 50,
-			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+			--border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+			border = { "┌", " ", "┐", "│", "┘", " ", "└", "│" },
 			winhighlight = "Normal:CmpPmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
 		},
 	},

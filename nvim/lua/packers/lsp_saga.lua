@@ -71,4 +71,7 @@ lspsaga.setup({
 		enable = true,
 		frequency = 7,
 	},
+	symbol_in_winbar = {
+		enable = false,
+	},
 })
