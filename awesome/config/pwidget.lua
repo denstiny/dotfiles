@@ -185,7 +185,7 @@ local voice_progress = wibox.widget({
 awful.popup({
 	widget = {
 		{
-			separated("声音", 50),
+			separated("音量", 50),
 			{
 				value = 70,
 				forced_height = 10,

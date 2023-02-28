@@ -8,6 +8,7 @@ M.lsp_server = {
 	"jsonls",
 	--"vuels",
 	"clangd",
+	"lua_ls",
 	--"lua-language-server",
 	--"jdtls",
 	--"gopls",

@@ -9,7 +9,7 @@ function run {
 }
 
 # Resolution
-xrandr --output eDP --mode 1920x1200 --left-of HDMI-A-0 --auto
+#xrandr --output eDP --mode 1920x1200 --left-of HDMI-A-0 --auto
 #xrandr --output eDP1 --auto --primary
 #xrandr --output HDMI1 --right-of eDP1 --auto
 #xrandr --output HDMI1 --rotate  normal

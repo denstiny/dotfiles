@@ -12,8 +12,4 @@
 --   Config files for NEOVIM. Created by Denstiny Aaro Urdaniz
 
 --- First Start
-require("core.FirstStart")
---- packers
-require("packers")
---- other
-require("other")
+require("core.firststart")

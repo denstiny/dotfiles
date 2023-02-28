@@ -6,7 +6,7 @@
 
 local M = {
 	client = {},
-  formatter = {}
+	formatter = {},
 }
 function M.on_list(options)
 	vim.fn.setqflist({}, " ", options)

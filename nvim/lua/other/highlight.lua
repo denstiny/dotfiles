@@ -1,6 +1,5 @@
 vim.cmd([[
 " 3024"
-colorscheme base16-darktooth
 "hi Normal guibg=#090300
 "hi EndOfBuffer guifg=bg
 "hi LineNr      guibg=bg
@@ -21,6 +20,6 @@ hi DiagnosticSignError gui=undercurl cterm=undercurl guisp=#ff5370
 hi DiagnosticSignWarn  gui=undercurl cterm=undercurl guisp=#f78c6c
 hi LspSagaLightBulb    gui=bold
 ]])
-local bg = string.format("#%06x", vim.api.nvim_get_hl_by_name("Normal", true)["background"])
+--local bg = string.format("#%06x", vim.api.nvim_get_hl_by_name("Normal", true)["background"])
 --local bg = vim.api.nvim_get_hl_by_name("Normal", true)["background"]
 --vim.g.Mycolor = require("core.tool").get_color("Normal", "bg#")
