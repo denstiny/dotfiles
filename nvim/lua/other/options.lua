@@ -8,7 +8,7 @@ opt.shiftwidth = 2
 opt.fillchars = { eob = " " }
 opt.ignorecase = true
 opt.smartcase = true
-opt.mouse = "a"
+opt.mouse = "ni"
 opt.number = true
 opt.numberwidth = 2
 opt.ruler = false

@@ -210,14 +210,14 @@ local buttons = {
 		dashboard.button("F", "  Find text", ":Telescope live_grep <CR>"),
 		dashboard.button("e", "  Edit None Buffer", ":enew<CR>"),
 		dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
-		dashboard.button("u", "  Update plugins", ":PackerSync<CR>"),
+		dashboard.button("u", "  Update plugins", ":Lazy sync<CR>"),
 		dashboard.button("q", "  Quit", ":q<CR>"),
 	},
 	position = "center",
 }
 
 -- Foot must be a table so that its height is correctly measured
-local num_plugins_loaded = #vim.fn.globpath(vim.fn.stdpath("data") .. "/site/pack/packer/start", "*", 0, 1)
+local num_plugins_loaded = #vim.fn.globpath(vim.fn.stdpath("data") .. "/lazy", "*", 0, 1)
 
 local footer = {
 	type = "text",

@@ -90,7 +90,6 @@ local function lsp_keymaps(bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gp", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gn", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "da", "<Cmd>Trouble workspace_diagnostics<cr>", opts)
 end
 
 M.on_attach = function(client, bufnr)

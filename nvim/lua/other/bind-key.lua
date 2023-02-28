@@ -81,7 +81,7 @@ U.nmap("<a-H>", "<Cmd>Telescope help_tags<cr>")
 -- Alpha
 U.nmap("H", "<cmd>Alpha<cr>")
 -- colip list
-U.nmap("<C-p>", "<Cmd>Telescope neoclip a<cr>")
+--U.nmap("<C-p>", "<Cmd>Telescope neoclip a<cr>")
 U.nmap("<A-t>", "<Cmd>echo &filetype<cr>")
 -- Open project
 U.nmap("<A-p>", "<Cmd>Telescope projects theme=dropdown<cr>")

@@ -1,5 +1,12 @@
 return {
 	{
+		"lewis6991/impatient.nvim",
+		priority = 100,
+		config = function()
+			require("impatient")
+		end,
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		config = function()
 			require("packers.cmp-config")
@@ -15,19 +22,28 @@ return {
 			{ "dmitmel/cmp-digraphs" },
 			{ "f3fora/cmp-spell" },
 			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "hrsh7th/cmp-cmdline" },
+			--{ "hrsh7th/cmp-cmdline" },
 		},
 		event = "InsertEnter",
 	},
 	{
 		"L3MON4D3/LuaSnip",
-		dependencies = {
-			{ "rafamadriz/friendly-snippets" },
-		},
 		config = function()
-			require("packers.luasnip")
+			require("packers.snip")
 		end,
+		dependencies = {
+			"Leiyi548/friendly-snippets",
+		},
+		version = "<CurrentMajor>.*",
+		build = "make install_jsregexp",
 		lazy = true,
+	},
+	{
+		"danymat/neogen",
+		config = function()
+			require("packers.neogen")
+		end,
+		event = "InsertEnter",
 	},
 	{
 		"windwp/nvim-autopairs",
@@ -50,12 +66,13 @@ return {
 			{ "williamboman/mason.nvim" },
 			{ "williamboman/mason-lspconfig.nvim" },
 		},
+		event = { "BufReadPre", "BufWritePost" },
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		dependencies = {
-			{ "nvim-treesitter/playground" },
+			{ "nvim-treesitter/playground", lazy = true },
 		},
 		config = function()
 			require("packers.treesitter")
@@ -159,6 +176,7 @@ return {
 		config = function()
 			require("packers.lsp_saga")
 		end,
+		event = { "BufReadPre", "BufWritePost" },
 	},
 	{
 		"skywind3000/asyncrun.vim",
@@ -214,6 +232,7 @@ return {
 		config = function()
 			require("packers.winbar")
 		end,
+		event = { "BufReadPre", "BufWritePost" },
 	},
 	{
 		"anuvyklack/windows.nvim",
@@ -225,5 +244,35 @@ return {
 			require("packers.windows")
 		end,
 		event = "WinNew",
+		cmd = "WindowsMaximize",
 	},
+	{
+		"nvim-telescope/telescope.nvim",
+		cmd = "Telescope",
+		config = function()
+			require("packers.telescope")
+		end,
+	},
+	{
+		"brenoprata10/nvim-highlight-colors",
+		config = function()
+			require("packers.colord")
+		end,
+		event = { "BufReadPre", "BufWritePost" },
+	},
+	{
+		"ggandor/leap.nvim",
+		config = function()
+			require("packers.leap-move")
+		end,
+		event = { "BufReadPre", "BufWritePost" },
+	},
+	{
+		"saecki/crates.nvim",
+		event = { "BufRead *.toml" },
+		config = function()
+			require("crates").setup()
+		end,
+	},
+	{ "iamcco/markdown-preview.nvim", build = "cd app && yarn install", event = "BufRead *.md" },
 }
