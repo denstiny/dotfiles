@@ -115,7 +115,7 @@ return {
 	{
 		"ray-x/lsp_signature.nvim",
 		config = function()
-			require("packers.lsp_signature")
+			asynrequire("packers.lsp_signature")
 		end,
 		event = "CursorMovedI",
 	},
@@ -136,23 +136,26 @@ return {
 			{ "antosha417/nvim-lsp-file-operations" },
 		},
 		config = function()
-			require("packers.nvimtree")
+			asynrequire("packers.nvimtree")
 		end,
 		tag = "nightly",
 		cmd = "NvimTreeFindFileToggle",
 	},
 	{
 		"akinsho/toggleterm.nvim",
-		config = function()
-			require("packers.toggleterm")
-			require("core.tree-term")
+		init = function()
+			asynrequire("core.tree-term")
 		end,
+		config = function()
+			asynrequire("packers.toggleterm")
+		end,
+		event = "BufEnter",
 	},
 	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
 	{
 		"nvim-zh/colorful-winsep.nvim",
 		config = function()
-			require("packers.nvimsep")
+			asynrequire("packers.nvimsep")
 		end,
 		event = { "WinNew" },
 	},
@@ -177,7 +180,7 @@ return {
 	{
 		"glepnir/lspsaga.nvim",
 		config = function()
-			require("packers.lsp_saga")
+			asynrequire("packers.lsp_saga")
 		end,
 		event = { "BufReadPre", "BufWritePost", "BufNewFile" },
 	},
@@ -187,7 +190,7 @@ return {
 			{ "skywind3000/asynctasks.vim" },
 		},
 		config = function()
-			require("packers.asynrun")
+			asynrequire("packers.asynrun")
 		end,
 		cmd = "AsyncTask",
 	},
@@ -202,14 +205,14 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
-			require("packers.git")
+			asynrequire("packers.git")
 		end,
 		cmd = "Gitsigns",
 	},
 	{
 		"tibabit/vim-templates",
 		config = function()
-			require("packers.template")
+			asynrequire("packers.template")
 		end,
 		cmd = "TemplateInit",
 		event = "BufNewFile",
@@ -217,14 +220,14 @@ return {
 	{
 		"ahmedkhalf/project.nvim",
 		config = function()
-			require("packers.project")
+			asynrequire("packers.project")
 		end,
 		lazy = true,
 	},
 	{
 		"petertriho/nvim-scrollbar",
 		config = function()
-			require("packers.scroll")
+			asynrequire("packers.scroll")
 		end,
 		event = { "BufReadPre", "BufNewFile" },
 	},
@@ -247,7 +250,7 @@ return {
 			{ "anuvyklack/animation.nvim" },
 		},
 		config = function()
-			require("packers.windows")
+			asynrequire("packers.windows")
 		end,
 		event = "WinNew",
 		cmd = "WindowsMaximize",
@@ -256,7 +259,7 @@ return {
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		config = function()
-			require("packers.telescope")
+			asynrequire("packers.telescope")
 		end,
 	},
 	{
@@ -269,14 +272,14 @@ return {
 	{
 		"ggandor/leap.nvim",
 		config = function()
-			require("packers.leap-move")
+			asynrequire("packers.leap-move")
 		end,
 		event = { "BufReadPre", "BufWritePost", "BufNewFile" },
 	},
 	{
 		"saecki/crates.nvim",
 		config = function()
-			require("crates").setup()
+			asynrequire("crates").setup()
 		end,
 		event = { "BufRead *.toml" },
 	},

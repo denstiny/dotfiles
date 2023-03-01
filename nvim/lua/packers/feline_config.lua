@@ -6,7 +6,7 @@ end
 local theme = {
 	aqua = "#7AB0DF",
 	blue = "#5FB0FC",
-	bg = "#090300",
+	bg = "#000000",
 	cyan = "#8DC600",
 	darkred = "#EA6962",
 	fg = "#C7C7CA",

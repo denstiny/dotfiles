@@ -40,16 +40,9 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	group = group,
 	desc = "自动清理命令行",
 	callback = function()
-		local timer = vim.loop.new_timer()
-		timer:start(
-			1000,
-			0,
-			vim.schedule_wrap(function()
-				print(" ")
-				timer:stop()
-				timer:close()
-			end)
-		)
+		vim.defer_fn(function()
+			print(" ")
+		end, 1000)
 	end,
 })
 -- }}}
@@ -58,8 +51,10 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 vim.api.nvim_create_autocmd({ "VimEnter", "BufEnter" }, {
 	group = group,
 	callback = function()
-		vim.opt.formatoptions:remove("o")
-		vim.opt.formatoptions:remove("r")
+		vim.defer_fn(function()
+			vim.opt.formatoptions:remove("o")
+			vim.opt.formatoptions:remove("r")
+		end, 0)
 	end,
 })
 ---}}}
@@ -69,16 +64,11 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 	desc = "toggterm 自动进入插入模式",
 	callback = function()
 		if vim.o.filetype == "toggleterm" then
-			local timer = vim.loop.new_timer()
-			timer:start(
-				350,
-				0,
-				vim.schedule_wrap(function()
+			vim.defer_fn(function()
+				if vim.bo.filetype == "toggleterm" then
 					vim.cmd("startinsert")
-					timer:stop()
-					timer:close()
-				end)
-			)
+				end
+			end, 0)
 		end
 	end,
 })
@@ -127,7 +117,7 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
 	group = group,
 	callback = function()
 		vim.cmd([[
-        hi Normal guibg=#090300
+        hi Normal guibg=#000000
         hi EndOfBuffer guifg=bg
         hi LineNr      guibg=bg
         hi NormalFloat guibg=bg

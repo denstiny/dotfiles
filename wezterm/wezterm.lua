@@ -9,7 +9,7 @@ return {
 	window_padding = {
 		left = 7,
 		right = 0,
-		top = 19,
+		top = 25,
 		bottom = 0,
 	},
 	color_scheme = "Catppuccin Frappe",
