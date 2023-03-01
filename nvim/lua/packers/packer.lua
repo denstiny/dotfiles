@@ -1,3 +1,5 @@
+local asynrequire = require("core.utils").asynerquire
+
 return {
 	{
 		"lewis6991/impatient.nvim",
@@ -66,7 +68,7 @@ return {
 			{ "williamboman/mason.nvim" },
 			{ "williamboman/mason-lspconfig.nvim" },
 		},
-		event = { "BufReadPre", "BufWritePost" },
+		event = { "BufReadPre", "BufWritePost", "BufNewFile" },
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -75,8 +77,9 @@ return {
 			{ "nvim-treesitter/playground", lazy = true },
 		},
 		config = function()
-			require("packers.treesitter")
+			asynrequire("packers.treesitter")
 		end,
+		event = { "BufReadPre", "BufNewFile" },
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -176,7 +179,7 @@ return {
 		config = function()
 			require("packers.lsp_saga")
 		end,
-		event = { "BufReadPre", "BufWritePost" },
+		event = { "BufReadPre", "BufWritePost", "BufNewFile" },
 	},
 	{
 		"skywind3000/asyncrun.vim",
@@ -191,7 +194,7 @@ return {
 	{
 		"kevinhwang91/nvim-hlslens",
 		config = function()
-			require("packers.hlslens-config")
+			asynrequire("packers.hlslens-config")
 		end,
 		event = { "SearchWrapped", "CursorMoved" },
 	},
@@ -208,6 +211,8 @@ return {
 		config = function()
 			require("packers.template")
 		end,
+		cmd = "TemplateInit",
+		event = "BufNewFile",
 	},
 	{
 		"ahmedkhalf/project.nvim",
@@ -221,6 +226,7 @@ return {
 		config = function()
 			require("packers.scroll")
 		end,
+		event = { "BufReadPre", "BufNewFile" },
 	},
 	{
 		"utilyre/barbecue.nvim",
@@ -258,21 +264,21 @@ return {
 		config = function()
 			require("packers.colord")
 		end,
-		event = { "BufReadPre", "BufWritePost" },
+		event = { "BufReadPre", "BufWritePost", "BufNewFile" },
 	},
 	{
 		"ggandor/leap.nvim",
 		config = function()
 			require("packers.leap-move")
 		end,
-		event = { "BufReadPre", "BufWritePost" },
+		event = { "BufReadPre", "BufWritePost", "BufNewFile" },
 	},
 	{
 		"saecki/crates.nvim",
-		event = { "BufRead *.toml" },
 		config = function()
 			require("crates").setup()
 		end,
+		event = { "BufRead *.toml" },
 	},
 	{ "iamcco/markdown-preview.nvim", build = "cd app && yarn install", event = "BufRead *.md" },
 }

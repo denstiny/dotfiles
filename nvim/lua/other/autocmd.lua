@@ -1,5 +1,5 @@
 local group = vim.api.nvim_create_augroup("denstiny_aero", { clear = true })
-local tool = require("core.tool")
+local tool = require("core.utils")
 local api = vim.api
 local fn = vim.fn
 
@@ -172,6 +172,16 @@ api.nvim_create_autocmd({ "InsertEnter", "InsertLeave" }, {
 	desc = "自动切换中英文输入法",
 	callback = function()
 		-- TODO: 代办
+	end,
+})
+--}}}
+
+--{{ 自动加载模板
+api.nvim_create_autocmd({ "BufNewFile" }, {
+	group = group,
+	desc = "自动加载模板",
+	callback = function()
+		vim.cmd("TemplateInit")
 	end,
 })
 --}}}

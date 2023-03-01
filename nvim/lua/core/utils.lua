@@ -123,4 +123,26 @@ M.get_buf_list = function()
 end
 --}}}
 
+--{{ 安装插件并加载
+function M.insert_load_plugin(plug, path, config)
+	local lazypath = vim.fn.stdpath("data") .. "/lazy/" .. path
+	if not vim.loop.fs_stat(lazypath) then
+		vim.fn.system({
+			"git",
+			"clone",
+			"--depth 1",
+			"https://github.com/" .. plug .. ".git",
+			lazypath,
+		})
+	end
+	vim.opt.rtp:prepend(lazypath)
+	config()
+end
+--}}}
+
+function M.asynerquire(mode)
+	vim.defer_fn(function()
+		require(mode)
+	end, 0)
+end
 return M

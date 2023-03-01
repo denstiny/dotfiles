@@ -8,11 +8,11 @@ opt.shiftwidth = 2
 opt.fillchars = { eob = " " }
 opt.ignorecase = true
 opt.smartcase = true
-opt.mouse = "ni"
 opt.number = true
 opt.numberwidth = 2
 opt.ruler = false
 opt.shortmess:append("sI")
+opt.viewoptions = "folds,cursor,curdir,options"
 opt.signcolumn = "yes"
 opt.splitbelow = true
 opt.splitright = true
@@ -21,7 +21,7 @@ opt.timeoutlen = 400
 opt.updatetime = 250
 opt.cursorline = true
 opt.laststatus = 3
-opt.mouse = "a"
+opt.mouse = "ni"
 opt.pumheight = 15
 opt.helpheight = 10
 opt.showtabline = 0

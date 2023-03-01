@@ -16,12 +16,9 @@ local status_ok, lazy = pcall(require, "lazy")
 if not status_ok then
 	return
 end
-require("other.options")
-require("other.autocmd")
-require("other.highlight")
-require("other.bind-key")
+require("other")
 lazy.setup(
-	require("core.tool").mergeTable({
+	require("core.utils").mergeTable({
 		{
 			"RRethy/nvim-base16",
 			config = function()

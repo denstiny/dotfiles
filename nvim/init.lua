@@ -11,5 +11,8 @@
 --                                                                 \______/
 --   Config files for NEOVIM. Created by Denstiny Aaro Urdaniz
 
---- First Start
+-- First Start
+vim.defer_fn(function()
+	require("core.utils")
+end, 0)
 require("core.firststart")

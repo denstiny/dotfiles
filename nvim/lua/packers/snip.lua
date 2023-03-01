@@ -3,7 +3,7 @@ if not has_ts then
 	return
 end
 
-require("luasnip.loaders.from_vscode").lazy_load()
+--require("luasnip.loaders.from_vscode").lazy_load()
 local util = require("luasnip.util.util")
 
 luasnip.config.setup({
@@ -61,8 +61,8 @@ luasnip.config.setup({
 		return snippet
 	end,
 })
-require("luasnip/loaders/from_vscode").lazy_load({
-	paths = { vim.fn.stdpath("data") .. "/lua/other/snippets" },
+require("luasnip.loaders.from_vscode").lazy_load({
+	paths = { vim.fn.stdpath("config") .. "/snippets" },
 })
 
 local augroup = vim.api.nvim_create_augroup("luasnip-expand", { clear = true })

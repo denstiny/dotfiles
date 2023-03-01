@@ -290,7 +290,7 @@ component.scroll_bar = {
 
 local toy = {
 	provider = function()
-		local cpu = require("core.tool").cpu
+		local cpu = require("core.utils").cpu
 		if string.len(cpu) < 4 then
 			cpu = " " .. cpu
 		end
@@ -298,7 +298,7 @@ local toy = {
 	end,
 	hl = function()
 		local color = "yellow"
-		local cpu = tonumber(require("core.tool").cpu)
+		local cpu = tonumber(require("core.utils").cpu)
 		if cpu > 10 and cpu < 15 then
 			color = "yellow"
 		elseif cpu > 15 then
