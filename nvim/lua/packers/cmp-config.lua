@@ -127,7 +127,7 @@ cmp.setup({
 		{ name = "crates" },
 		-- { name = "neorg", priority = 10 },
 		-- {name = "nvim_lsp_signature_help"},
-		{ name = "luasnip", priority = 7 },
+		{ name = "luasnip", priority = 9 },
 		{ name = "nvim_lua" },
 		{ name = "buffer", priority = 7 },
 		{ name = "path", priority = 4 },
