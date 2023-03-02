@@ -92,7 +92,7 @@ awful.popup({
 		{
 			--separated("负载",50),
 			{
-				image = gfs.get_configuration_dir() .. "theme/layouts/user.jpg",
+				image = gfs.get_configuration_dir() .. "theme/layouts/aero.jpg",
 				resize = false,
 				widget = wibox.widget.imagebox,
 			},
