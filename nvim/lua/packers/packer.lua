@@ -77,7 +77,7 @@ return {
 			{ "nvim-treesitter/playground", lazy = true },
 		},
 		config = function()
-			asynrequire("packers.treesitter")
+			require("packers.treesitter")
 		end,
 		event = { "BufReadPre", "BufNewFile" },
 	},
@@ -212,7 +212,7 @@ return {
 	{
 		"tibabit/vim-templates",
 		config = function()
-			asynrequire("packers.template")
+			require("packers.template")
 		end,
 		cmd = "TemplateInit",
 		event = "BufNewFile",

@@ -4,6 +4,6 @@ if not _ then
 end
 barbecue.setup({
 	theme = {
-		normal = { bg = "#090300" },
+		normal = { bg = "#000000" },
 	},
 })
