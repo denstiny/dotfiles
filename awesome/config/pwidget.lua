@@ -86,7 +86,7 @@ awesome.connect_signal("signal::charger", function(charger)
 	end
 end)
 
--- 显示 cpu 小部件
+-- show cpu widget
 awful.popup({
 	widget = {
 		{
@@ -120,7 +120,7 @@ awful.popup({
 	visible = true,
 })
 
--- 屏幕亮度小部件
+-- screen brightness widget
 local brightness_progress = wibox.widget({
 	color = "#9ccfd8",
 	background_color = "#00000000",
@@ -134,7 +134,7 @@ local brightness_progress = wibox.widget({
 	widget = wibox.widget.progressbar,
 })
 
--- 显示屏幕亮度小部件
+-- show screen brightness widget
 awful.popup({
 	widget = {
 		{
@@ -162,12 +162,12 @@ awful.popup({
 	visible = true,
 })
 
--- 更新亮度小部件数据
+-- update screen brightness widget
 awesome.connect_signal("signal::brightness", function(value)
 	brightness_progress.value = value
 end)
 
--- 声音小部件
+--  Sound the widget
 local voice_progress = wibox.widget({
 	color = "#c4a7e7",
 	background_color = "#00000000",
@@ -181,7 +181,7 @@ local voice_progress = wibox.widget({
 	widget = wibox.widget.progressbar,
 })
 
--- 显示声音小部件
+-- show sound the widget
 awful.popup({
 	widget = {
 		{
@@ -209,7 +209,7 @@ awful.popup({
 	visible = true,
 })
 
--- 更新声音小部件数据
+-- update sound the widget
 awesome.connect_signal("signal::volume", function(volume_int, muted)
 	voice_progress.value = volume_int
 	if muted then
