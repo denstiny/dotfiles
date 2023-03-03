@@ -28,6 +28,7 @@ return {
 	freetype_load_flags = "NO_HINTING|MONOCHROME",
 	line_height = 1.9,
 	max_fps = 90,
+	window_background_opacity = 0.8,
 	window_close_confirmation = "NeverPrompt",
 	font = wezterm.font_with_fallback({
 		"ComicCode Nerd Font",

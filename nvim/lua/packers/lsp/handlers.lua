@@ -98,12 +98,6 @@ M.on_attach = function(client, bufnr)
 	--require('nvim-navic').attach(client,bufnr)
 	require("lsp_signature").on_attach()
 	if client.supports_method("textDocument/formatting") then
-		require("core.lsp_vim").client[vim.api.nvim_get_current_buf()] = client
-		vim.api.nvim_create_autocmd("BufDelete", {
-			callback = function()
-				require("core.lsp_vim").client[vim.api.nvim_get_current_buf()] = nil
-			end,
-		})
 	end
 end
 

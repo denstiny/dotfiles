@@ -160,9 +160,7 @@ vim.api.nvim_create_autocmd({ "QuitPre" }, {
 api.nvim_create_autocmd({ "InsertEnter", "InsertLeave" }, {
 	group = group,
 	desc = "自动切换中英文输入法",
-	callback = function()
-		-- TODO: 代办
-	end,
+	callback = function() end,
 })
 --}}}
 

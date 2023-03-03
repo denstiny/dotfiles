@@ -36,7 +36,6 @@ return {
 		dependencies = {
 			"Leiyi548/friendly-snippets",
 		},
-		version = "<CurrentMajor>.*",
 		build = "make install_jsregexp",
 		lazy = true,
 	},
@@ -136,7 +135,7 @@ return {
 			{ "antosha417/nvim-lsp-file-operations" },
 		},
 		config = function()
-			asynrequire("packers.nvimtree")
+			require("packers.nvimtree")
 		end,
 		tag = "nightly",
 		cmd = "NvimTreeFindFileToggle",
@@ -190,7 +189,7 @@ return {
 			{ "skywind3000/asynctasks.vim" },
 		},
 		config = function()
-			asynrequire("packers.asynrun")
+			require("packers.asynrun")
 		end,
 		cmd = "AsyncTask",
 	},

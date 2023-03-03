@@ -1,14 +1,4 @@
 vim.cmd([[
-" 3024"
-"hi Normal guibg=#090300
-"hi EndOfBuffer guifg=bg
-"hi LineNr      guibg=bg
-"hi NormalFloat guibg=bg
-"hi NormalNC    guibg=bg
-"hi SignColumn  guibg=bg
-"hi WinBar      guibg=bg
-"hi WinBarNc    guibg=bg
-"hi VertSplit   guibg=bg
 hi @constructor gui=bold
 "hi FloatBorder guifg=#5B72AE
 hi TelescopeBorder guifg=#5B72AE

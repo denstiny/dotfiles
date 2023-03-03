@@ -26,7 +26,7 @@ lazy.setup(
 			end,
 		},
 		{
-			"feline-nvim/feline.nvim",
+			"freddiehaddad/feline.nvim",
 			config = function()
 				vim.opt.termguicolors = true
 				require("packers.feline_config")
