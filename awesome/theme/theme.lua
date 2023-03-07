@@ -77,7 +77,6 @@ theme.titlebar_floating_button_normal_active = gfs.get_configuration_dir() .. "t
 theme.titlebar_floating_button_focus_active = gfs.get_configuration_dir() .. "theme/titlebar/floating.png"
 theme.titlebar_floating_button_focus_active_hover = gfs.get_configuration_dir() .. "theme/titlebar/floating_hover.png"
 theme.titlebar_floating_button_focus_inactive_hover = gfs.get_configuration_dir() .. "theme/titlebar/floating_hover.png"
-
 theme.icon_theme = nil
 
 return theme

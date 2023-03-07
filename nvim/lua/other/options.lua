@@ -1,4 +1,5 @@
 local opt = vim.opt
+local g = vim.g
 opt.showmode = false
 opt.expandtab = true
 opt.smartindent = true

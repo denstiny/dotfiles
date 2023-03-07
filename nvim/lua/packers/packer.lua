@@ -2,13 +2,6 @@ local asynrequire = require("core.utils").asynerquire
 
 return {
 	{
-		"lewis6991/impatient.nvim",
-		priority = 100,
-		config = function()
-			require("impatient")
-		end,
-	},
-	{
 		"hrsh7th/nvim-cmp",
 		config = function()
 			require("packers.cmp-config")
@@ -24,7 +17,6 @@ return {
 			{ "dmitmel/cmp-digraphs" },
 			{ "f3fora/cmp-spell" },
 			{ "hrsh7th/cmp-nvim-lsp" },
-			--{ "hrsh7th/cmp-cmdline" },
 		},
 		event = "InsertEnter",
 	},
@@ -67,28 +59,26 @@ return {
 			{ "williamboman/mason.nvim" },
 			{ "williamboman/mason-lspconfig.nvim" },
 		},
+		config = function()
+			require("packers.lsp")
+		end,
 		event = { "BufReadPre", "BufWritePost", "BufNewFile" },
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		dependencies = {
-			{ "nvim-treesitter/playground", lazy = true },
-		},
 		config = function()
-			require("packers.treesitter")
+			asynrequire("packers.treesitter")
 		end,
-		event = { "BufReadPre", "BufNewFile" },
+		event = { "BufReadPost", "BufNewFile" },
 	},
 	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
+		"nvim-treesitter/playground",
+		cmd = {
+			"TSPlaygroundToggle",
+			"TSNodeUnderCursor",
+			"TSHighlightCapturesUnderCursor",
 		},
-		config = function()
-			require("packers.lsp")
-		end,
 	},
 	{
 		"rcarriga/nvim-dap-ui",
@@ -127,6 +117,7 @@ return {
 				background_colour = "#16161E",
 			})
 		end,
+		event = "VeryLazy",
 	},
 	{
 		"nvim-tree/nvim-tree.lua",
@@ -148,7 +139,7 @@ return {
 		config = function()
 			asynrequire("packers.toggleterm")
 		end,
-		event = "BufEnter",
+		event = "VeryLazy",
 	},
 	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
 	{
@@ -166,6 +157,7 @@ return {
 		config = function()
 			require("packers.ufo-config")
 		end,
+		lazy = true,
 	},
 	{
 		"goolord/alpha-nvim",
@@ -214,7 +206,6 @@ return {
 			require("packers.template")
 		end,
 		cmd = "TemplateInit",
-		event = "BufNewFile",
 	},
 	{
 		"ahmedkhalf/project.nvim",
@@ -240,7 +231,7 @@ return {
 		config = function()
 			require("packers.winbar")
 		end,
-		event = { "BufReadPre", "BufWritePost" },
+		event = { "BufReadPre", "BufWritePost", "BufNewFile" },
 	},
 	{
 		"anuvyklack/windows.nvim",
@@ -277,10 +268,15 @@ return {
 	},
 	{
 		"saecki/crates.nvim",
-		config = function()
-			asynrequire("crates").setup()
-		end,
+		config = true,
 		event = { "BufRead *.toml" },
 	},
 	{ "iamcco/markdown-preview.nvim", build = "cd app && yarn install", event = "BufRead *.md" },
+	{
+		"RaafatTurki/hex.nvim",
+		config = function()
+			require("packers.neozoom")
+		end,
+		cmd = { "HexDump", "HexAssemble", "HexToggle" },
+	},
 }

@@ -15,4 +15,5 @@
 vim.defer_fn(function()
 	require("core.utils")
 end, 0)
+require("other")
 require("core.firststart")

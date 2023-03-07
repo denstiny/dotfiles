@@ -32,6 +32,7 @@ lspconfig["lua_ls"].setup(vim.tbl_deep_extend("force", opts, {
 			workspace = {
 				library = {
 					--[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+					--["/usr/share/awesome/lib"] = true,
 					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
 				},
 				checkThirdParty = false,
@@ -40,10 +41,14 @@ lspconfig["lua_ls"].setup(vim.tbl_deep_extend("force", opts, {
 				enable = false,
 			},
 			completion = {
-				callSnippet = "Replace",
+				--callSnippet = "Replace",
+				callSnippet = "Both",
+				keywordSnippet = "Both",
+				displayContext = 2,
+				postfix = ":",
+				maxPreload = 100000,
+				preloadFileSize = 10000,
 			},
-			maxPreload = 100000,
-			preloadFileSize = 10000,
 		},
 	},
 }))

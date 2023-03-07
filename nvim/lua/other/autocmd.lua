@@ -25,15 +25,15 @@ vim.api.nvim_create_autocmd({ "WinEnter" }, {
 })
 -- }}}
 
-vim.api.nvim_create_autocmd("BufReadPost", {
-	pattern = "*",
-	callback = function()
-		local row, col = unpack(vim.api.nvim_buf_get_mark(0, '"'))
-		if { row, col } ~= { 0, 0 } and row < vim.fn.line("$") then
-			vim.api.nvim_win_set_cursor(0, { row, 0 })
-		end
-	end,
-})
+--vim.api.nvim_create_autocmd("BufReadPost", {
+--	pattern = "*",
+--	callback = function()
+--		local row, col = unpack(vim.api.nvim_buf_get_mark(0, '"'))
+--		if { row, col } ~= { 0, 0 } and row < vim.fn.line("$") then
+--			vim.api.nvim_win_set_cursor(0, { row, 0 })
+--		end
+--	end,
+--})
 
 --- {{{ auto clean write output
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
@@ -102,10 +102,14 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 		if not tool.check_mkview(opt.file) then
 			return
 		end
+		require("ufo")
 		local filekey = tool.file_key(opt.file)
 		local file_key_path = os.getenv("HOME") .. "/.vim_view/" .. filekey
 		if tool.file_exists(file_key_path) then
-			vim.cmd("loadview")
+			xpcall(vim.cmd, function(msg)
+				os.remove(file_key_path)
+				print(msg)
+			end, "loadview")
 		end
 	end,
 })
@@ -117,7 +121,7 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
 	group = group,
 	callback = function()
 		vim.cmd([[
-        hi Normal guibg=#000000
+        hi Normal guibg=None
         hi EndOfBuffer guifg=bg
         hi LineNr      guibg=bg
         hi NormalFloat guibg=bg
@@ -150,7 +154,11 @@ vim.api.nvim_create_autocmd({ "QuitPre" }, {
 			end
 		end
 		if key < 2 then
-			api.nvim_buf_delete(buf, {})
+			--	api.nvim_buf_delete(buf, {})
+			xpcall(vim.cmd, function(msg)
+				print(msg)
+				return true
+			end, "bdelete " .. buf)
 		end
 	end,
 })
@@ -169,6 +177,7 @@ api.nvim_create_autocmd({ "BufNewFile" }, {
 	group = group,
 	desc = "自动加载模板",
 	callback = function()
+		require("packers.template")
 		vim.cmd("TemplateInit")
 	end,
 })

@@ -16,7 +16,6 @@ local status_ok, lazy = pcall(require, "lazy")
 if not status_ok then
 	return
 end
-require("other")
 lazy.setup(
 	require("core.utils").mergeTable({
 		{
@@ -32,7 +31,7 @@ lazy.setup(
 				require("packers.feline_config")
 			end,
 			dependencies = {
-				"nvim-tree/nvim-web-devicons",
+				{ "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
 			},
 		},
 	}, require("packers.packer")),

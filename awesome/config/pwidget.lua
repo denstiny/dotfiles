@@ -1,4 +1,3 @@
--- 显示自定义小部件
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
@@ -8,8 +7,9 @@ local awful = require("awful")
 local gears = require("gears")
 local gfs = require("gears.filesystem")
 local cpu = require("signal.pcpu")
+local theme = require("theme.theme")
 
--- 电池控件
+-- battery widget
 local battery_progress = wibox.widget({
 	color = "#1AE51A",
 	background_color = "#00000000",
@@ -23,7 +23,6 @@ local battery_progress = wibox.widget({
 	widget = wibox.widget.progressbar,
 })
 
--- 分隔符
 local separated = function(var, width)
 	return {
 		font = "SHYF-2020 16",
@@ -34,7 +33,7 @@ local separated = function(var, width)
 	}
 end
 
--- 显示电池小部件
+-- show battery widget
 awful.popup({
 	widget = {
 		{
@@ -62,7 +61,7 @@ awful.popup({
 	visible = true,
 })
 
--- 更新电池部件数据
+-- update battery widget data
 awesome.connect_signal("signal::battery", function(value)
 	battery_progress.value = value
 	if value < 70 and value > 50 then
@@ -90,7 +89,6 @@ end)
 awful.popup({
 	widget = {
 		{
-			--separated("负载",50),
 			{
 				image = gfs.get_configuration_dir() .. "theme/layouts/aero.jpg",
 				resize = false,

@@ -6,6 +6,7 @@ end
 local theme = {
 	aqua = "#7AB0DF",
 	blue = "#5FB0FC",
+	transparent = "NONE",
 	bg = "#000000",
 	cyan = "#8DC600",
 	darkred = "#EA6962",
@@ -101,7 +102,7 @@ component.separator = {
 	provider = "",
 	hl = {
 		fg = "bg",
-		bg = "bg",
+		bg = "transparent",
 	},
 }
 
