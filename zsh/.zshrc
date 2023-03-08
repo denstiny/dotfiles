@@ -35,6 +35,6 @@ uproxy ()
 
 export TERM=wezterm
 alias re=ranger
-alias ters=~/Workspace/Terslation/translation/fanyim.py
+alias ters=~/Public/Terslation/translation/fanyim.py
 alias apt=aptpac
 #alias wallpaper_picker=~/.config/hypr/scripts/wallpaper/wallpaper_picker
