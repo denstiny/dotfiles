@@ -16,13 +16,13 @@ function run {
 # Compositor
 #picom --config ~/.config/awesome/config/picom.conf &
 run cfw
-#run fcitx5
+run fcitx5
 run flameshot
 run obs
 #run qv2ray
 # open start emacs server
 #run emacs --daemon
-ibus-daemon -x -d
+#ibus-daemon -x -d
 ####  swap Esc caps
 #setxkbmap -option caps:swapescape
 ###  Change the wallpaper
