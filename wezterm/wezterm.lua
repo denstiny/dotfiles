@@ -25,7 +25,7 @@ return {
 	harfbuzz_features = { "zero" },
 	hide_tab_bar_if_only_one_tab = false,
 	enable_tab_bar = false,
-	font_size = 16.0,
+	font_size = 17.0,
 	freetype_load_target = "Light",
 	freetype_render_target = "HorizontalLcd",
 	underline_position = "-13px",

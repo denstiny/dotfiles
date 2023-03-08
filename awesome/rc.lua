@@ -168,6 +168,14 @@ awful.rules.rules = {
 			placement = awful.placement.no_offscreen,
 		},
 	},
+  {
+		rule_any = {
+			instance = { "Clash for Windows","clash for windows" },
+		},
+		properties = {
+      minimized = true,
+		},
+  }
 }
 
 -- {{{ Signals

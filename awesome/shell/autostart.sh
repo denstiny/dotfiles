@@ -15,17 +15,18 @@ function run {
 #xrandr --output HDMI1 --rotate  normal
 # Compositor
 #picom --config ~/.config/awesome/config/picom.conf &
-run clash-for-windows
-run fcitx5
+run cfw
+#run fcitx5
 run flameshot
 run obs
 #run qv2ray
 # open start emacs server
 #run emacs --daemon
-
+ibus-daemon -x -d
 ####  swap Esc caps
 #setxkbmap -option caps:swapescape
 ###  Change the wallpaper
 xset dpms 0 0 0 
 xset s noblank && xset s noexpose && xset s off
 bash ~/.config/awesome/shell/backgrund.sh &
+echo 2 >> /sys/module/hid_apple/parameters/fnmode

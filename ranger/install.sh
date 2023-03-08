@@ -5,4 +5,4 @@
 # @blog        : https://denstiny.github.io
 
 #!/bin/bash
-sudo pacman -S w3m mediainfo atool highlight caca-utils ranger ueberzug
+sudo pacman -S w3m mediainfo atool highlight ueberzug
