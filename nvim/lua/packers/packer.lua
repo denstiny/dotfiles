@@ -132,14 +132,11 @@ return {
 		cmd = "NvimTreeFindFileToggle",
 	},
 	{
-		"akinsho/toggleterm.nvim",
-		init = function()
-			asynrequire("core.tree-term")
-		end,
+		"nyngwang/NeoTerm.lua",
 		config = function()
-			asynrequire("packers.toggleterm")
+			require("packers.term")
 		end,
-		event = "VeryLazy",
+		cmd = "NeoTermToggle",
 	},
 	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
 	{

@@ -61,14 +61,13 @@ vim.api.nvim_create_autocmd({ "VimEnter", "BufEnter" }, {
 
 --{{
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
-	desc = "toggterm 自动进入插入模式",
+	desc = "term 自动进入插入模式",
 	callback = function()
-		if vim.o.filetype == "toggleterm" then
+		if vim.o.filetype == "neo-term" then
+			vim.opt.number = false
 			vim.defer_fn(function()
-				if vim.bo.filetype == "toggleterm" then
-					vim.cmd("startinsert")
-				end
-			end, 0)
+				vim.cmd("startinsert")
+			end, 60)
 		end
 	end,
 })
