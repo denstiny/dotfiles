@@ -59,20 +59,6 @@ vim.api.nvim_create_autocmd({ "VimEnter", "BufEnter" }, {
 })
 ---}}}
 
---{{
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-	desc = "term 自动进入插入模式",
-	callback = function()
-		if vim.o.filetype == "neo-term" then
-			vim.opt.number = false
-			vim.defer_fn(function()
-				vim.cmd("startinsert")
-			end, 60)
-		end
-	end,
-})
---}}}
-
 --{{ 自动格式化
 vim.api.nvim_create_autocmd({ "BufWrite" }, {
 	group = group,
@@ -84,7 +70,7 @@ vim.api.nvim_create_autocmd({ "BufWrite" }, {
 --}}}
 
 --{{ 自动保存当前buffer编辑状态
-vim.api.nvim_create_autocmd({ "BufWritePost", "BufLeave", "WinLeave" }, {
+vim.api.nvim_create_autocmd({ "BufWritePost", "BufLeave", "WinLeave", "BufWritePre" }, {
 	desc = "自动创建保存会话",
 	group = group,
 	callback = function()

@@ -56,7 +56,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			{ "williamboman/mason.nvim" },
+			{ "williamboman/mason.nvim", cmd = { "Mason" } },
 			{ "williamboman/mason-lspconfig.nvim" },
 		},
 		config = function()
@@ -132,11 +132,11 @@ return {
 		cmd = "NvimTreeFindFileToggle",
 	},
 	{
-		"nyngwang/NeoTerm.lua",
+		"akinsho/toggleterm.nvim",
 		config = function()
 			require("packers.term")
 		end,
-		cmd = "NeoTermToggle",
+		cmd = "ToggleTerm",
 	},
 	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
 	{
@@ -239,7 +239,8 @@ return {
 		config = function()
 			asynrequire("packers.windows")
 		end,
-		event = "WinNew",
+		--event = "WinNew",
+		lazy = true,
 		cmd = "WindowsMaximize",
 	},
 	{

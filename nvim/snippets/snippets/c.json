@@ -5,12 +5,12 @@
     "description": "ISO date time stamp"
   },
   "//":{
-      "prefix": "/**/",
+      "prefix": "/l",
       "body" : ["/* ${1:annotation} */"],
       "description": "annotation"
   },
   "/*":{
-      "prefix": "/**/",
+      "prefix": "/c",
       "body" : ["/*","  ${1:annotation}","*/"],
       "description": "annotation"
   },
