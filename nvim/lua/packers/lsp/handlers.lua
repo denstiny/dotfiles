@@ -56,11 +56,6 @@ M.LspDiagnosticsPopupHandler = function()
 	end
 end
 
-vim.api.nvim_create_autocmd({ "CursorHold" }, {
-	callback = function()
-		--M.LspDiagnosticsPopupHandler()
-	end,
-})
 -- }}
 
 local function lsp_highlight_document(client)
@@ -95,10 +90,12 @@ end
 M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
-	--require('nvim-navic').attach(client,bufnr)
-	require("lsp_signature").on_attach()
-	if client.supports_method("textDocument/formatting") then
-	end
+	require("lsp_signature").on_attach({
+		bind = true, -- This is mandatory, otherwise border config won't get registered.
+		handler_opts = {
+			border = "rounded",
+		},
+	}, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -124,10 +121,7 @@ capabilities.textDocument.completion.completionItem = {
 	},
 }
 
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-	return
-end
-
+local cmp_nvim_lsp = require("cmp_nvim_lsp")
 M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+
 return M

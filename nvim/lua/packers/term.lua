@@ -20,14 +20,5 @@ toggleterm.setup({
 			link = "Normal",
 		},
 	},
-	on_open = function()
-		local nvimtree = require("nvim-tree")
-		local nvimtree_view = require("nvim-tree.view")
-		if nvimtree_view.is_visible() then
-			local nvimtree_width = vim.fn.winwidth(nvimtree_view.get_winnr())
-			nvimtree.toggle()
-			nvimtree_view.View.width = nvimtree_width
-			nvimtree.toggle(false, true)
-		end
-	end,
+	on_open = function() end,
 })

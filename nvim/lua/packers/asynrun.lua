@@ -12,3 +12,11 @@ vim.g.asyncrun_trim = 1
 vim.g.asyncrun_open = 1
 vim.g.asynctasks_term_pos = "tab"
 vim.g.asynctasks_term_reuse = 1
+
+local M = {
+	test = function()
+		local file_name = vim.fn.expand("%:t:r")
+		vim.api.nvim_exec("AsyncTask test-" .. file_name, nil)
+	end,
+}
+return M

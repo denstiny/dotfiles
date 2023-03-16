@@ -23,7 +23,7 @@ opt.updatetime = 250
 opt.cursorline = true
 opt.laststatus = 3
 opt.mouse = "ni"
-opt.pumheight = 15
+opt.pumheight = 5
 opt.helpheight = 10
 opt.showtabline = 0
 opt.viewdir = os.getenv("HOME") .. "/.vim_view/"
@@ -31,13 +31,3 @@ opt.background = "dark"
 opt.guifont = "ComicCodeLigatures Nerd Font:h9"
 opt.clipboard:prepend("unnamed")
 opt.swapfile = false
--- vim.opt.fillchars = {
---   horiz     = '━',
---   horizup   = '┻',
---   horizdown = '┳',
---   vert      = '┃',
---   vertleft  = '┫',
---   vertright = '┣',
---   verthoriz = '╋',
---   eob       = ' '
--- }

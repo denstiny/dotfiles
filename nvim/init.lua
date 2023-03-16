@@ -10,7 +10,6 @@
 --                                                                 |  $$$$$$/
 --                                                                 \______/
 --   Config files for NEOVIM. Created by Denstiny Aaro Urdaniz
-
 -- First Start
 vim.defer_fn(function()
 	require("core.utils")

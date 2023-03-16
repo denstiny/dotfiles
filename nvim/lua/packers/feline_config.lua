@@ -317,11 +317,13 @@ local toy = {
 	right_sep = "block",
 }
 
-local left = { component.separator }
-local middle = { component.separator }
-local right = {
+local left = {
 	component.vim_mode,
 	component.file_type,
+	component.separator,
+}
+local middle = { component.separator }
+local right = {
 	component.lsp,
 	component.git_branch,
 	component.git_add,

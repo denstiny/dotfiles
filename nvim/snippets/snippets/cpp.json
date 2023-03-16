@@ -42,5 +42,16 @@
   "fun":{
     "prefix": "fun",
     "body": ["${1:type} ${2:fun_name} (${3:args}) {","  ${4}","}"]
+  },
+  "Main function template": {
+    "prefix": "main",
+    "body": [
+      "int main (int argc, char *argv[])",
+      "{",
+      "\t$1",
+      "\treturn 0;",
+      "}"
+    ],
+    "description": "A standard main function for a C++ program"
   }
 }

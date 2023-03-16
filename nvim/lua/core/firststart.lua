@@ -19,9 +19,9 @@ end
 lazy.setup(
 	require("core.utils").mergeTable({
 		{
-			"RRethy/nvim-base16",
+			"rebelot/kanagawa.nvim",
 			config = function()
-				vim.cmd("colorscheme base16-darktooth")
+				vim.cmd("colorscheme kanagawa")
 			end,
 		},
 		{

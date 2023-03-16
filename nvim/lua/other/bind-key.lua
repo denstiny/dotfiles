@@ -49,10 +49,11 @@ U.nmap("<F2>", "<Cmd>DapToggleRepl<cr>")
 U.nmap("<Leader>z", "<Cmd>lua Truezen()<cr>")
 
 -- undo tree
-U.nmap("L", "<Cmd>UndotreeToggle<cr>")
+U.nmap("L", "<Cmd>UndotreeToggle<cr><Cmd>UndotreeFocus<cr>")
 --  Async Task
 U.nmap("<Leader>r", "<Cmd>AsyncTask file-run<cr>")
 U.nmap("<Leader>d", "<Cmd>AsyncTask file-build<cr>")
+U.nmap("<Leader>t", "<cmd>AsyncTask file-test<cr>")
 
 --- goto preview
 --U.nmap("gpd", "<Cmd>lua require('goto-preview').goto_preview_definition()<CR>")

@@ -28,6 +28,9 @@ treesitter_config.setup({
 		"comment",
 	},
 	auto_install = true,
+	rainbow = {
+		enable = true,
+	},
 	highlight = {
 		enable = true,
 		disable = function(lang, buf)

@@ -1,7 +1,4 @@
-local has_ts, nvim_autopairs = pcall(require, "nvim-autopairs")
-if not has_ts then
-	return
-end
+local nvim_autopairs = require("nvim-autopairs")
 nvim_autopairs.setup({})
 local npairs = require("nvim-autopairs")
 local Rule = require("nvim-autopairs.rule")

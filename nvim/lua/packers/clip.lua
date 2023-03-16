@@ -1,7 +1,4 @@
-local has_ts, neoclip = pcall(require, "neoclip")
-if not has_ts then
-	return
-end
+local neoclip = require("neoclip")
 neoclip.setup({
 	history = 1000,
 	enable_persistent_history = false,

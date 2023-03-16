@@ -2,10 +2,7 @@ local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
-local has_cmp, cmp = pcall(require, "cmp")
-if not has_cmp then
-	return
-end
+local cmp = require("cmp")
 local snip = require("luasnip")
 local lspkind = require("lspkind")
 
@@ -156,7 +153,6 @@ cmp.setup({
 		--  maxwidth = 80,
 		-- },
 		format = function(entry, vim_item)
-			-- vim.notify(entry.source.name)
 			vim_item.kind = lspkind.symbolic(vim_item.kind, { mode = "symbol" })
 			vim_item.menu = source_mapping[entry.source.name]
 			if entry.source.name == "cmp_tabnine" then

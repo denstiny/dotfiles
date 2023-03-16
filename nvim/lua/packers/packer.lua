@@ -1,5 +1,3 @@
-local asynrequire = require("core.utils").asynerquire
-
 return {
 	{
 		"hrsh7th/nvim-cmp",
@@ -10,13 +8,27 @@ return {
 			{ "hrsh7th/cmp-nvim-lua" },
 			{ "onsails/lspkind-nvim" },
 			{ "hrsh7th/cmp-nvim-lsp-signature-help" },
-			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-buffer", option = { keyword_pattern = [[\k\+]] } },
 			{ "hrsh7th/cmp-path" },
 			{ "saadparwaiz1/cmp_luasnip" },
 			{ "hrsh7th/cmp-calc" },
 			{ "dmitmel/cmp-digraphs" },
 			{ "f3fora/cmp-spell" },
 			{ "hrsh7th/cmp-nvim-lsp" },
+			--{
+			--	"zbirenbaum/copilot.lua",
+			--	opts = {
+			--		panel = { enabled = false },
+			--		suggestion = {
+			--			enable = true,
+			--			auto_trigger = true,
+			--			keymap = false,
+			--		},
+			--		filetypes = {
+			--			markdown = true,
+			--		},
+			--	},
+			--},
 		},
 		event = "InsertEnter",
 	},
@@ -33,6 +45,7 @@ return {
 	},
 	{
 		"danymat/neogen",
+		desc = "注释",
 		config = function()
 			require("packers.neogen")
 		end,
@@ -67,8 +80,11 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+		dependencies = {
+			"HiPhish/nvim-ts-rainbow2",
+		},
 		config = function()
-			asynrequire("packers.treesitter")
+			require("packers.treesitter")
 		end,
 		event = { "BufReadPost", "BufNewFile" },
 	},
@@ -104,9 +120,17 @@ return {
 	{
 		"ray-x/lsp_signature.nvim",
 		config = function()
-			asynrequire("packers.lsp_signature")
+			require("packers.lsp_signature")
 		end,
-		event = "CursorMovedI",
+		event = "VeryLazy",
+	},
+	{
+		"alohaia/fcitx.nvim",
+		config = function()
+			require("fcitx")({
+				-- options
+			})
+		end,
 	},
 	{
 		"rcarriga/nvim-notify",
@@ -142,7 +166,7 @@ return {
 	{
 		"nvim-zh/colorful-winsep.nvim",
 		config = function()
-			asynrequire("packers.nvimsep")
+			require("packers.nvimsep")
 		end,
 		event = { "WinNew" },
 	},
@@ -158,6 +182,7 @@ return {
 	},
 	{
 		"goolord/alpha-nvim",
+		desc = "启动界面",
 		config = function()
 			require("packers.alpa-config")
 		end,
@@ -168,12 +193,13 @@ return {
 	{
 		"glepnir/lspsaga.nvim",
 		config = function()
-			asynrequire("packers.lsp_saga")
+			require("packers.lsp_saga")
 		end,
 		event = { "BufReadPre", "BufWritePost", "BufNewFile" },
 	},
 	{
 		"skywind3000/asyncrun.vim",
+		desc = "任务管理",
 		dependencies = {
 			{ "skywind3000/asynctasks.vim" },
 		},
@@ -185,20 +211,22 @@ return {
 	{
 		"kevinhwang91/nvim-hlslens",
 		config = function()
-			asynrequire("packers.hlslens-config")
+			require("packers.hlslens-config")
 		end,
 		event = { "SearchWrapped", "CursorMoved" },
 	},
-	{ "mbbill/undotree", cmd = "UndotreeToggle" },
+	{ "mbbill/undotree", desc = "撤销树", cmd = "UndotreeToggle" },
 	{
 		"lewis6991/gitsigns.nvim",
+		desc = "git 信息",
 		config = function()
-			asynrequire("packers.git")
+			require("packers.git")
 		end,
 		cmd = "Gitsigns",
 	},
 	{
 		"tibabit/vim-templates",
+		desc = "文件模板",
 		config = function()
 			require("packers.template")
 		end,
@@ -206,20 +234,23 @@ return {
 	},
 	{
 		"ahmedkhalf/project.nvim",
+		desc = "历史项目插件",
 		config = function()
-			asynrequire("packers.project")
+			require("packers.project")
 		end,
 		lazy = true,
 	},
 	{
 		"petertriho/nvim-scrollbar",
+		desc = "滚动条",
 		config = function()
-			asynrequire("packers.scroll")
+			require("packers.scroll")
 		end,
 		event = { "BufReadPre", "BufNewFile" },
 	},
 	{
 		"utilyre/barbecue.nvim",
+		desc = "winbar",
 		dependencies = {
 			"SmiteshP/nvim-navic",
 			"nvim-tree/nvim-web-devicons",
@@ -232,26 +263,28 @@ return {
 	},
 	{
 		"anuvyklack/windows.nvim",
+		desc = "窗口缩放动画",
+		cond = false,
 		dependencies = {
 			{ "anuvyklack/middleclass" },
 			{ "anuvyklack/animation.nvim" },
 		},
 		config = function()
-			asynrequire("packers.windows")
+			require("packers.windows")
 		end,
-		--event = "WinNew",
-		lazy = true,
+		event = "WinNew",
 		cmd = "WindowsMaximize",
 	},
 	{
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		config = function()
-			asynrequire("packers.telescope")
+			require("packers.telescope")
 		end,
 	},
 	{
 		"brenoprata10/nvim-highlight-colors",
+		desc = "高亮16进制编码颜色",
 		config = function()
 			require("packers.colord")
 		end,
@@ -259,22 +292,66 @@ return {
 	},
 	{
 		"ggandor/leap.nvim",
+		desc = "快速移动",
 		config = function()
-			asynrequire("packers.leap-move")
+			require("packers.leap-move")
 		end,
 		event = { "BufReadPre", "BufWritePost", "BufNewFile" },
 	},
 	{
 		"saecki/crates.nvim",
+		desc = "rust-cmp 包提示信息",
 		config = true,
 		event = { "BufRead *.toml" },
 	},
 	{ "iamcco/markdown-preview.nvim", build = "cd app && yarn install", event = "BufRead *.md" },
 	{
 		"RaafatTurki/hex.nvim",
+		desc = "帮助编辑二进制文件",
 		config = function()
 			require("packers.neozoom")
 		end,
 		cmd = { "HexDump", "HexAssemble", "HexToggle" },
+	},
+	{
+		"mg979/vim-visual-multi",
+		desc = "多光标",
+		keys = {
+			{ "<C-n>", mode = "n" },
+		},
+	},
+	{
+		"kylechui/nvim-surround",
+		desc = "块包裹符号替换修改插件",
+		config = function()
+			require("packers.surround")
+		end,
+		keys = {
+			{ "S", mode = "v" },
+			{ "cs", mode = "n" },
+			{ "ds", mode = "n" },
+		},
+	},
+	{
+		"tamton-aquib/keys.nvim",
+		config = true,
+		cmd = "KeysToggle",
+	},
+	{
+		"linty-org/readline.nvim",
+		config = function()
+			local readline = require("readline")
+			vim.keymap.set("!", "<M-f>", readline.forward_word)
+			vim.keymap.set("!", "<M-b>", readline.backward_word)
+			vim.keymap.set("!", "<C-a>", readline.beginning_of_line)
+			vim.keymap.set("!", "<C-e>", readline.end_of_line)
+			vim.keymap.set("!", "<M-d>", readline.kill_word)
+			vim.keymap.set("!", "<M-BS>", readline.backward_kill_word)
+			vim.keymap.set("!", "<C-k>", readline.kill_line)
+			vim.keymap.set("!", "<C-u>", readline.backward_kill_line)
+			vim.keymap.set("!", "<C-h>", "<left>")
+			vim.keymap.set("!", "<C-l>", "<right>")
+		end,
+		event = "VeryLazy",
 	},
 }

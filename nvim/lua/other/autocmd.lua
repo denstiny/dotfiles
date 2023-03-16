@@ -116,6 +116,7 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
         hi WinBarNc    guibg=bg
         hi VertSplit   guibg=bg
         hi FloatBorder guibg=bg
+        hi TelescopeBorder guibg=bg
         hi TSPunctBracket guifg=#665c54
         hi clear CmpItemAbbr
         hi clear MatchParen
@@ -149,14 +150,6 @@ vim.api.nvim_create_autocmd({ "QuitPre" }, {
 })
 --}}}
 
---{{ 当从编辑模式切换到正常模式则输入法切换成英文
-api.nvim_create_autocmd({ "InsertEnter", "InsertLeave" }, {
-	group = group,
-	desc = "自动切换中英文输入法",
-	callback = function() end,
-})
---}}}
-
 --{{ 自动加载模板
 api.nvim_create_autocmd({ "BufNewFile" }, {
 	group = group,
@@ -167,3 +160,19 @@ api.nvim_create_autocmd({ "BufNewFile" }, {
 	end,
 })
 --}}}
+
+--api.nvim_create_autocmd({ "CursorMovedI" }, {
+--	group = group,
+--	callback = function()
+--		local curline = vim.fn.getline(".")
+--		local curline_len = string.len(curline)
+--		print(curline_len)
+--		local char = curline:sub(curline_len, curline_len)
+--		if char > "~" then
+--			print("中文")
+--		end
+--		if char <= "~" then
+--			print("英文")
+--		end
+--	end,
+--})

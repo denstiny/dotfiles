@@ -28,12 +28,14 @@ lspconfig["lua_ls"].setup(vim.tbl_deep_extend("force", opts, {
 			diagnostics = {
 				enable = true,
 				globals = { "vim" },
+				disable = { "lowercase-global" },
 			},
 			workspace = {
 				library = {
-					--[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 					--["/usr/share/awesome/lib"] = true,
 					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+					--[vim.fn.expand("~/.local/share/xmake/core/language/language.lua")] = true,
 				},
 				checkThirdParty = false,
 			},
@@ -57,7 +59,6 @@ lspconfig["lua_ls"].setup(vim.tbl_deep_extend("force", opts, {
 --- { rust tools
 local _, rust_tools = pcall(require, "rust-tools")
 if _ then
-	--cap.textDocument.completion.completionItem.preselectSupport = false
 	lspconfig["rust_analyzer"] = rust_tools.setup({
 		server = {
 			on_attach = handlers.on_attach,
@@ -91,8 +92,8 @@ if _ then
 				"--clang-tidy-checks=bugprone-*, clang-analyzer-*, google-*, modernize-*, performance-*, portability-*, readability-*, -bugprone-too-small-loop-variable, -clang-analyzer-cplusplus.NewDelete, -clang-analyzer-cplusplus.NewDeleteLeaks, -modernize-use-nodiscard, -modernize-avoid-c-arrays, -readability-magic-numbers, -bugprone-branch-clone, -bugprone-signed-char-misuse, -bugprone-unhandled-self-assignment, -clang-diagnostic-implicit-int-float-conversion, -modernize-use-auto, -modernize-use-trailing-return-type, -readability-convert-member-functions-to-static, -readability-make-member-function-const, -readability-qualified-auto, -readability-redundant-access-specifiers,",
 				"--completion-style=detailed",
 				"--cross-file-rename=true",
-				--"--header-insertion=iwyu", -- 补全时自动导入头文件
-				"--header-insertion=never", -- 禁止自动导入头文件
+				--"--header-insertion=iwyu", -- completion auto import header file
+				"--header-insertion=never", -- disable completion auto import header file
 				"--pch-storage=memory",
 				"--function-arg-placeholders=true",
 				"--log=verbose",
