@@ -1,0 +1,9 @@
+[user]
+	name = denstiny
+	email = 2254228017@qq.com
+
+[http]
+		proxy = socks5://127.0.0.1:7890
+[https]
+		proxy = socks5://127.0.0.1:7890
+
