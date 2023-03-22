@@ -36,9 +36,9 @@ uproxy ()
 export TERM=wezterm
 alias re=ranger
 alias ters=~/Public/Terslation/translation/fanyim.py
-alias apt=aptpac
+#alias apt=aptpac
 #alias wallpaper_picker=~/.config/hypr/scripts/wallpaper/wallpaper_picker
 
 # >>> xmake >>>
-[[ -s "$HOME/.xmake/profile" ]] && source "$HOME/.xmake/profile" # load xmake profile
+#[[ -s "$HOME/.xmake/profile" ]] && source "$HOME/.xmake/profile" # load xmake profile
 # <<< xmake <<<
