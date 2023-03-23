@@ -118,9 +118,9 @@ plugin.add({
 	"rebelot/kanagawa.nvim",
 	config = function()
 		--vim.defer_fn(function()
-		--require("plugin.ui.theme.kanagawa")
+		require("plugin.ui.theme.kanagawa")
 		vim.cmd("colorscheme kanagawa")
 		--end, 0)
 	end,
-	--event = "UiEnter",
+	event = "UiEnter",
 })
