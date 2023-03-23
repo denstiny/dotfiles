@@ -59,7 +59,9 @@ plugin.add({
 	"goolord/alpha-nvim",
 	desc = "启动界面",
 	config = function()
-		require("plugin.ui.alpha")
+		if vim.bo.filetype == "" and vim.fn.expand("%:p") == "" then
+			require("plugin.ui.alpha")
+		end
 	end,
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
