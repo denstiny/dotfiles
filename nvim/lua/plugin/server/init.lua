@@ -9,8 +9,7 @@ plugin.add({
 	config = function()
 		require("plugin.server.lsp")
 	end,
-	--event = { "BufReadPre", "BufWritePost", "BufNewFile" },
-	event = "UiEnter",
+	event = { "BufReadPre", "BufWritePost", "BufNewFile" },
 })
 
 plugin.add({
@@ -22,7 +21,7 @@ plugin.add({
 	config = function()
 		require("plugin.server.treesitter")
 	end,
-	cmd = "TSEnable",
+	cmd = { "TSEnable", "TSInstall", "TSInstallInfo", "TSModuleInfo" },
 })
 
 plugin.add({

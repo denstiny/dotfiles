@@ -6,7 +6,7 @@ plugin.add({
 	config = function()
 		require("plugin.tool.neogen")
 	end,
-	event = "InsertEnter",
+	event = "LspAttach",
 })
 
 plugin.add({
@@ -27,6 +27,9 @@ plugin.add({
 
 plugin.add({
 	"alohaia/fcitx.nvim",
+	config = function()
+		require("plugin.tool.fcitx")
+	end,
 	event = "InsertEnter",
 })
 
@@ -94,7 +97,7 @@ plugin.add({
 	config = function()
 		require("plugin.tool.lspaga")
 	end,
-	event = { "BufReadPre", "BufWritePost", "BufNewFile" },
+	event = { "LspAttach" },
 })
 
 plugin.add({
@@ -111,4 +114,22 @@ plugin.add({
 		require("plugin.tool.telescope")
 	end,
 	cmd = "Telescope",
+})
+
+plugin.add({
+	"ruifm/gitlinker.nvim",
+	dependencies = "nvim-lua/plenary.nvim",
+	opts = {},
+	keys = {
+		{
+			"<leader>gb",
+			'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
+			mode = "v",
+		},
+		{
+			"<leader>gb",
+			'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
+			mode = "n",
+		},
+	},
 })

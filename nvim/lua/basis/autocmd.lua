@@ -58,8 +58,13 @@ autocmd({ "FileType" }, { command = [[set formatoptions-=cro]] })
 ---}}}
 
 --- {{{ treesitter lazy load
-autocmd({ "FileType" }, {
+autocmd({ "FileType", "BufNewFile" }, {
 	callback = function(opt)
+		if opt.event == "BufNewFile" then
+			vim.cmd("TSEnable highlight")
+			vim.cmd("TSEnable rainbow")
+			return
+		end
 		local max_filesize = 50 * 1024 -- 50 KB
 		local status, stat = pcall(vim.loop.fs_stat, opt.file)
 		if status and stat then

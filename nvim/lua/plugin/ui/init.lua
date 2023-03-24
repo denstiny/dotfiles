@@ -18,7 +18,7 @@ plugin.add({
 		{ "hrsh7th/cmp-nvim-lsp" },
 	},
 	--event = "InsertEnter",
-	event = "UiEnter",
+	event = "LspAttach",
 })
 
 plugin.add({
@@ -39,7 +39,7 @@ plugin.add({
 		require("plugin.ui.nvimtree")
 	end,
 	tag = "nightly",
-	cmd = "NvimTreeFindFileToggle",
+	cmd = { "NvimTreeFindFileToggle", "NvimTreeOpen" },
 })
 
 plugin.add({
@@ -117,10 +117,8 @@ plugin.add({
 plugin.add({
 	"rebelot/kanagawa.nvim",
 	config = function()
-		--vim.defer_fn(function()
 		require("plugin.ui.theme.kanagawa")
 		vim.cmd("colorscheme kanagawa")
-		--end, 0)
 	end,
 	event = "UiEnter",
 })
