@@ -217,11 +217,11 @@ local footer = {
 	val = { num_plugins_loaded .. " plugins ﮣ loaded" },
 	opts = { position = "center", hl = "Comment" },
 }
-local _time = require("lazy").stats().startuptime
-local time = {
+local time = require("lazy").stats().startuptime
+local startuptime = {
 	type = "text",
-	val = { "Startuptime: " .. _time - _time % 0.01 },
-	opts = { position = "center", hl = "Comment" },
+	val = { "Startuptime: " .. time - time % 0.01 },
+	opts = { position = "center", hl = "Typedef" },
 }
 
 local opts = {
@@ -231,7 +231,7 @@ local opts = {
 		{ type = "padding", val = 3 },
 		greetHeading,
 		footer,
-		time,
+		startuptime,
 		{ type = "padding", val = 1 },
 		section_mru,
 		{ type = "padding", val = 2 },

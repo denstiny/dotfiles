@@ -23,7 +23,6 @@ plugin.add({
 		require("plugin.server.treesitter")
 	end,
 	cmd = "TSEnable",
-	event = { "BufReadPost", "BufNewFile" },
 })
 
 plugin.add({
