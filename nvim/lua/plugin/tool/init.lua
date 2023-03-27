@@ -97,7 +97,8 @@ plugin.add({
 	config = function()
 		require("plugin.tool.lspaga")
 	end,
-	event = { "LspAttach" },
+	event = "LspAttach",
+	commit = "3654252",
 })
 
 plugin.add({
