@@ -35,7 +35,6 @@ plugin.add({
 
 plugin.add({
 	"skywind3000/asyncrun.vim",
-	desc = "任务管理",
 	dependencies = {
 		{ "skywind3000/asynctasks.vim" },
 	},
@@ -66,7 +65,7 @@ plugin.add({
 plugin.add({
 	"iamcco/markdown-preview.nvim",
 	build = "cd app && yarn install",
-	event = "BufRead *.md",
+	event = "BufReadPost *.md",
 })
 
 plugin.add({

@@ -9,6 +9,7 @@ local sign = function(opts)
 	})
 end
 
+vim.lsp.set_log_level("off")
 sign({ name = "DiagnosticSignError", text = "✘" })
 sign({ name = "DiagnosticSignWarn", text = "▲" })
 sign({ name = "DiagnosticSignHint", text = "⚑" })
