@@ -8,6 +8,21 @@ lspsaga.setup({
 		scroll_down = "<C-f>",
 		scroll_up = "<C-b>",
 	},
+	outline = {
+		win_position = "right",
+		win_with = "",
+		win_width = 40,
+		preview_width = 0.4,
+		show_detail = true,
+		auto_preview = false,
+		auto_refresh = true,
+		auto_close = true,
+		custom_sort = nil,
+		keys = {
+			expand_or_collapse = "o",
+			quit = "q",
+		},
+	},
 	request_timeout = 2000,
 	finder = {
 		--percentage

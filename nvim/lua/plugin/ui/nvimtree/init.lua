@@ -33,9 +33,7 @@ nvim_tree.setup({
 			},
 		},
 	},
-	filters = {
-		dotfiles = true,
-	},
+	filters = {},
 	diagnostics = {
 		enable = false,
 	},

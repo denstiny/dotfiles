@@ -28,8 +28,8 @@ return {
 	font_size = 17.0,
 	freetype_load_target = "Light",
 	freetype_render_target = "HorizontalLcd",
-	underline_position = "-13px",
-	underline_thickness = "1px",
+	underline_position = "-14px",
+	underline_thickness = "2pt",
 	freetype_load_flags = "NO_HINTING|MONOCHROME",
 	line_height = 1.9,
 	max_fps = 90,
@@ -74,5 +74,5 @@ return {
 	keys = require("key-bind").keyBind(),
 	default_cursor_style = "BlinkingBar",
 	adjust_window_size_when_changing_font_size = false,
-  use_ime = true
+	use_ime = true,
 }

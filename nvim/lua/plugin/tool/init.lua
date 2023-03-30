@@ -97,7 +97,6 @@ plugin.add({
 		require("plugin.tool.lspaga")
 	end,
 	event = "LspAttach",
-	commit = "3654252",
 })
 
 plugin.add({
@@ -119,17 +118,16 @@ plugin.add({
 plugin.add({
 	"ruifm/gitlinker.nvim",
 	dependencies = "nvim-lua/plenary.nvim",
-	opts = {},
-	keys = {
-		{
-			"<leader>gb",
-			'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
-			mode = "v",
-		},
-		{
-			"<leader>gb",
-			'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
-			mode = "n",
-		},
-	},
+	config = function()
+		require("plugin.tool.gitlinker")
+	end,
+	event = "UiEnter",
+})
+
+plugin.add({
+	"junegunn/vim-easy-align",
+	config = function()
+		require("plugin.tool.align")
+	end,
+	event = "UiEnter",
 })

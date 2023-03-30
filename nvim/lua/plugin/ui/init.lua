@@ -118,7 +118,25 @@ plugin.add({
 	"rebelot/kanagawa.nvim",
 	config = function()
 		require("plugin.ui.theme.kanagawa")
-		vim.cmd("colorscheme kanagawa")
+	end,
+	event = "UiEnter",
+	cond = true,
+})
+
+plugin.add({
+	"rose-pine/neovim",
+	name = "rose-pine",
+	config = function()
+		require("plugin.ui.theme.rose-pine")
+	end,
+	cond = false,
+	event = "UiEnter",
+})
+
+plugin.add({
+	"lukas-reineke/indent-blankline.nvim",
+	config = function()
+		require("plugin.ui.indent-blankline")
 	end,
 	event = "UiEnter",
 })

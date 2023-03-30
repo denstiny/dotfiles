@@ -1,4 +1,6 @@
 require("basis.option")
 require("basis.hi")
 require("basis.autocmd")
-require("basis.bind-key")
+vim.defer_fn(function()
+	require("basis.bind-key")
+end, 0)
