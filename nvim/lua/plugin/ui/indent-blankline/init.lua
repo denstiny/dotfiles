@@ -10,6 +10,7 @@ end
 indent_blankline.setup({
 	char = "▏",
 	context_char = "▏",
+	use_treesitter = true,
 	show_current_context = true,
 	show_current_context_start = true,
 })
@@ -17,6 +18,7 @@ indent_blankline.setup({
 vim.g.indent_blankline_context_patterns = {
 	"^if",
 	"class",
+	"^identifier",
 	"do_block",
 	"^function",
 	"^while",
@@ -43,3 +45,4 @@ vim.g.indent_blankline_filetype_exclude = {
 }
 vim.g.indent_blankline_show_end_of_line = false -- 占用隐藏符号
 vim.g.indent_blankline_show_trailing_blankline_indent = false -- 删除多余的缩进线
+vim.g.indent_blankline_max_indent_increase = 1

@@ -67,8 +67,8 @@ autocmd({ "FileType", "BufNewFile" }, {
 
 autocmd("UiEnter", {
 	callback = function()
-		if vim.bo.filetype == "" and vim.fn.expand("%:p") == "" then
-			vim.opt.cursorline = false
+		if vim.fn.argc() == 0 then
+			--vim.opt.cursorline = false
 			vim.defer_fn(function()
 				vim.cmd("Alpha")
 			end, 0)
@@ -76,13 +76,13 @@ autocmd("UiEnter", {
 	end,
 })
 
-autocmd("BufLeave", {
-	callback = function()
-		if vim.bo.filetype then
-			vim.opt.cursorline = true
-		end
-	end,
-})
+--autocmd("BufLeave", {
+--	callback = function()
+--		if vim.bo.filetype then
+--			vim.opt.cursorline = true
+--		end
+--	end,
+--})
 
 autocmd("BufReadPost", {
 	callback = function()
@@ -95,3 +95,32 @@ autocmd("BufReadPost", {
 })
 
 autocmd({ "BufNewFile" }, { command = "TemplateInit" })
+
+-- autocmd({ "ModeChanged" }, {
+-- 	callback = function()
+-- 		local m = vim.fn.mode()
+-- 		if not require("core.noexecfile").can_exec() then
+-- 			return
+-- 		end
+-- 		if m == "i" then
+-- 			vim.opt.cursorline = false
+-- 		else
+-- 			vim.opt.cursorline = true
+-- 		end
+-- 		if m == "v" or m == "V" then
+-- 			vim.cmd("hi LineNr guifg=#54546d")
+-- 			vim.cmd("hi CursorLineNr guifg=#ff9e3b")
+-- 		else
+-- 			vim.cmd("hi LineNr guifg=#000000")
+-- 			vim.cmd("hi CursorLineNr guifg=#000000 guibg=#000000")
+-- 		end
+-- 	end,
+-- })
+
+autocmd({ "BufEnter" }, {
+	pattern = "*.ui",
+	callback = function(e)
+		local cmd = "designer "
+		vim.fn.jobstart(cmd .. e.file)
+	end,
+})

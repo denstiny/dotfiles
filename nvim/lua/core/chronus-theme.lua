@@ -20,5 +20,11 @@ return function()
         hi clear CmpItemAbbr
         hi clear MatchParen
         hi MatchParen gui=bold,underline guisp=#92826A
+        hi DiagnosticSignHint   guibg=bg 
+        hi DiagnosticSignInfo   guibg=bg
+        hi DiagnosticSignError  guibg=bg
+        hi DiagnosticSignWarn   guibg=bg
+			  hi LineNr guifg=#000000
+			  hi CursorLineNr guifg=#000000 guibg=#000000
       ]])
 end

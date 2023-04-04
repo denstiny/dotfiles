@@ -6,7 +6,7 @@ plugin.add({
 	config = function()
 		require("plugin.tool.neogen")
 	end,
-	event = "LspAttach",
+	cmd = "Neogen",
 })
 
 plugin.add({
@@ -96,6 +96,7 @@ plugin.add({
 	config = function()
 		require("plugin.tool.lspaga")
 	end,
+	commit = "3654252",
 	event = "LspAttach",
 })
 
@@ -130,4 +131,19 @@ plugin.add({
 		require("plugin.tool.align")
 	end,
 	event = "UiEnter",
+})
+
+plugin.add({
+	"Kohirus/cppassist.nvim",
+	opt = true,
+	ft = { "h", "cpp", "hpp", "c", "cc", "cxx" },
+	config = function()
+		require("cppassist").setup()
+	end,
+})
+
+plugin.add({
+	"jakemason/ouroboros",
+	dependencies = { { "nvim-lua/plenary.nvim" } },
+	ft = { "h", "cpp", "hpp", "c", "cc", "cxx" },
 })

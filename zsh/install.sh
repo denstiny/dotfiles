@@ -11,5 +11,6 @@ git clone --depth 1 https://github.com/skywind3000/z.lua.git ${ZSH_CUSTOM:-~/.oh
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/arzzen/calc.plugin.zsh.git  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/calc
 git clone https://github.com/kevinywlui/zlong_alert.zsh  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zlong_alert
+git clone --recursive https://github.com/mattmc3/zsh-safe-rm ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-safe-rm
 chsh -s $(which zsh)
 

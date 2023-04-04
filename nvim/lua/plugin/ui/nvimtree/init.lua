@@ -1,8 +1,4 @@
 local nvim_tree = require("nvim-tree")
-local _, lsp_file_operations = pcall(require, "lsp-file-operations")
-if not _ then
-	return
-end
 nvim_tree.setup({
 	sort_by = "case_sensitive",
 	root_dirs = { "build", ".git" },
@@ -15,7 +11,7 @@ nvim_tree.setup({
 		},
 		--side = "right"
 		side = "left",
-		hide_root_folder = true,
+		hide_root_folder = false,
 	},
 	update_focused_file = {
 		enable = true,
@@ -24,6 +20,9 @@ nvim_tree.setup({
 	},
 	renderer = {
 		group_empty = true,
+		root_folder_label = function(path)
+			return "       Root: " .. vim.fn.fnamemodify(path, ":t") .. "/"
+		end,
 		indent_markers = {
 			enable = true,
 		},
@@ -41,4 +40,3 @@ nvim_tree.setup({
 		threshold = vim.log.levels.OFF,
 	},
 })
-lsp_file_operations.setup()

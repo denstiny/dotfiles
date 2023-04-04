@@ -9,7 +9,7 @@ plugin.add({
 	config = function()
 		require("plugin.server.lsp")
 	end,
-	event = { "BufReadPre", "BufWritePost", "BufNewFile" },
+	event = { "UiEnter" },
 })
 
 plugin.add({

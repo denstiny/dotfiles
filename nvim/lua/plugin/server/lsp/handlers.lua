@@ -1,24 +1,23 @@
 local M = {}
 
--- TODO: backfill this to template
 local sign = function(opts)
 	vim.fn.sign_define(opts.name, {
 		texthl = opts.name,
 		text = opts.text,
-		numhl = "",
+		numhl = opts.name,
 	})
 end
 
 vim.lsp.set_log_level("off")
-sign({ name = "DiagnosticSignError", text = "✘" })
-sign({ name = "DiagnosticSignWarn", text = "▲" })
-sign({ name = "DiagnosticSignHint", text = "⚑" })
-sign({ name = "DiagnosticSignInfo", text = "" })
+sign({ name = "DiagnosticSignError", text = "" })
+sign({ name = "DiagnosticSignWarn", text = "" })
+sign({ name = "DiagnosticSignHint", text = "" })
+sign({ name = "DiagnosticSignInfo", text = "" })
 
 M.setup = function()
 	local config = {
 		virtual_text = false,
-		signs = false,
+		signs = true,
 		update_in_insert = true,
 		underline = true,
 		severity_sort = true,

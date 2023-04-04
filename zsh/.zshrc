@@ -1,6 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
-plugins=(git zsh-autosuggestions autopep8 command-not-found calc zlong_alert)
+plugins=(git zsh-autosuggestions autopep8 command-not-found calc zlong_alert zsh-safe-rm)
 setopt AUTO_PUSHD                  
 setopt PUSHD_MINUS                 
 setopt CDABLE_VARS                 

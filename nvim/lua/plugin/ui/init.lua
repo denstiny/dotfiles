@@ -33,7 +33,7 @@ plugin.add({
 	"nvim-tree/nvim-tree.lua",
 	dependencies = {
 		{ "nvim-tree/nvim-web-devicons" },
-		{ "antosha417/nvim-lsp-file-operations" },
+		--{ "antosha417/nvim-lsp-file-operations" },
 	},
 	config = function()
 		require("plugin.ui.nvimtree")
@@ -59,7 +59,7 @@ plugin.add({
 	"goolord/alpha-nvim",
 	desc = "启动界面",
 	config = function()
-		if vim.bo.filetype == "" and vim.fn.expand("%:p") == "" then
+		if vim.fn.argc() == 0 then
 			require("plugin.ui.alpha")
 		end
 	end,
@@ -137,6 +137,21 @@ plugin.add({
 	"lukas-reineke/indent-blankline.nvim",
 	config = function()
 		require("plugin.ui.indent-blankline")
+	end,
+	event = "UiEnter",
+})
+
+plugin.add({
+	"folke/todo-comments.nvim",
+	dependencies = "nvim-lua/plenary.nvim",
+	config = true,
+	event = "UiEnter",
+})
+
+plugin.add({
+	"gen740/SmoothCursor.nvim",
+	config = function()
+		require("plugin.ui.SmoothCursor")
 	end,
 	event = "UiEnter",
 })

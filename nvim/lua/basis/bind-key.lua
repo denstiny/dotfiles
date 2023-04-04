@@ -61,10 +61,29 @@ U.map("s", "<C-j>", '<CMD>lua require("luasnip").jump(1)<CR>')
 U.map("s", "<C-k>", '<CMD>lua require("luasnip").jump(-1)<CR>')
 
 -- 注释
-U.nmap("<Leader>nf", "<Cmd>lua require('neogen').generate()<CR>")
+U.nmap("<Leader>nf", "<Cmd>Neogen<CR>")
 
 -- telescope help_tags
 U.nmap("<a-H>", "<Cmd>Telescope help_tags<cr>")
 
 -- Alpha
 U.nmap("H", '<cmd>lua require("plugin.ui.alpha")<cr><cmd>Alpha<cr>')
+
+-- swith c/c++ source file and header file
+U.nmap("<C-e>", "<cmd>Ouroboros<cr>")
+U.nmap("s<C-e>", "<cmd>vsplit | Ouroboros<cr>")
+U.nmap("v<C-e>", "<cmd>split | Ouroboros<cr>")
+
+--- create c++ fun define
+U.nmap("cr", "<cmd>ImplementInSource<cr>")
+U.vmap("cr", '<Cmd>lua require("cppassist").ImplementInSourceInVisualMode<CR>')
+
+-- Git Link
+U.vmap(
+	"<leader>gb",
+	'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>'
+)
+U.nmap(
+	"<leader>gb",
+	'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>'
+)
