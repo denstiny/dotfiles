@@ -33,8 +33,10 @@ lspconfig["lua_ls"].setup(vim.tbl_deep_extend("force", opts, {
 			workspace = {
 				library = {
 					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-					--["/usr/share/awesome/lib"] = true,
+					["/usr/share/lua/5.3"] = true,
 					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+					--["/usr/share/awesome/lib"] = true,
+					--[lspconfig.util.find_git_ancestor(vim.fn.expand("%:p"))] = true,
 					--[vim.fn.expand("~/.local/share/xmake/core/language/language.lua")] = true,
 				},
 				checkThirdParty = false,
@@ -114,3 +116,14 @@ if _ then
 end
 --- }
 --}
+
+lspconfig["qml_lsp"].setup({
+	on_attach = handlers.on_attach,
+	cmd = { "/usr/bin/qmlls6" },
+	root_dir = function(f)
+		vim.notify(f)
+		return lspconfig.util.find_git_ancestor(f)
+	end,
+	filetypes = { "qmljs" },
+	single_file_support = true,
+})

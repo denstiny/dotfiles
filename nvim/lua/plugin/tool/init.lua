@@ -65,7 +65,7 @@ plugin.add({
 plugin.add({
 	"iamcco/markdown-preview.nvim",
 	build = "cd app && yarn install",
-	event = "BufReadPost *.md",
+	event = "BufRead *.md",
 })
 
 plugin.add({
@@ -146,4 +146,23 @@ plugin.add({
 	"jakemason/ouroboros",
 	dependencies = { { "nvim-lua/plenary.nvim" } },
 	ft = { "h", "cpp", "hpp", "c", "cc", "cxx" },
+})
+
+plugin.add({
+	desc = "自动关闭未编辑的缓冲区",
+	"axkirillov/hbac.nvim",
+	config = function()
+		require("hbac").setup()
+	end,
+	event = "UiEnter",
+})
+
+plugin.add({
+	desc = "编辑服务器文件",
+	"chipsenkbeil/distant.nvim",
+	branch = "v0.2",
+	config = function()
+		require("plugin.tool.distant")
+	end,
+	cond = false,
 })

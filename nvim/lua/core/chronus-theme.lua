@@ -26,5 +26,6 @@ return function()
         hi DiagnosticSignWarn   guibg=bg
 			  hi LineNr guifg=#000000
 			  hi CursorLineNr guifg=#000000 guibg=#000000
+        hi NvimTreeRootFolder  guifg=#8094B4
       ]])
 end

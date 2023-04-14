@@ -18,7 +18,7 @@ client.connect_signal("request::titlebars", function(c)
 		end)
 	)
 
-	awful.titlebar(c, { position = "top", size = "0" }):setup({
+	awful.titlebar(c, { position = "top", size = "40" }):setup({
 		{
 			{
 				awful.titlebar.widget.closebutton(c),

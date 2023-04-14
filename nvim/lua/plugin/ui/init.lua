@@ -155,3 +155,12 @@ plugin.add({
 	end,
 	event = "UiEnter",
 })
+
+plugin.add({
+	"AlexvZyl/nordic.nvim",
+	config = function()
+		require("plugin.ui.theme.nordic")
+	end,
+	cond = false,
+	event = "UiEnter",
+})

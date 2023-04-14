@@ -25,20 +25,34 @@ proxy ()
   export http_proxy=http://127.0.0.1:7890
   export https_proxy=http://127.0.0.1:7890
 }
-uproxy ()
-{
+uproxy () {
   unset http_proxy
   unset https_proxy
 }
 
+function ranger {
+  local IFS=$'\t\n'
+  local tempfile="$(mktemp -t tmp.XXXXXX)"
+  local ranger_cmd=(
+  command
+  ranger
+  --cmd="map Q chain shell echo %d > "$tempfile"; quitall"
+)
+${ranger_cmd[@]} "$@"
+if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
+  cd -- "$(cat "$tempfile")" || return
+fi
+command rm -f -- "$tempfile" 2>/dev/null
+}
 
-
-export TERM=wezterm
+#export TERM=wezterm
+[ "$TERM" = "xterm-256color" ] && export TERM=wezterm
 alias re=ranger
 alias ters=~/Public/Terslation/translation/fanyim.py
 #alias apt=aptpac
 #alias wallpaper_picker=~/.config/hypr/scripts/wallpaper/wallpaper_picker
-
 # >>> xmake >>>
 #[[ -s "$HOME/.xmake/profile" ]] && source "$HOME/.xmake/profile" # load xmake profile
 # <<< xmake <<<
+alias nvim=/home/aero/Public/nvim.appimage
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"

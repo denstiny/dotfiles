@@ -37,7 +37,7 @@ autocmd({ "ColorScheme" }, {
 --}}}
 
 --- {{{ disabled auto fold indentation
-autocmd({ "FileType" }, { command = [[set formatoptions-=cro]] })
+autocmd({ "LspAttach" }, { command = [[set formatoptions-=cro]] })
 ---}}}
 
 --- {{{ treesitter lazy load
