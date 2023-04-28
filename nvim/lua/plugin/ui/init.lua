@@ -120,7 +120,7 @@ plugin.add({
 		require("plugin.ui.theme.kanagawa")
 	end,
 	event = "UiEnter",
-	cond = true,
+	cond = false,
 })
 
 plugin.add({
@@ -129,7 +129,7 @@ plugin.add({
 	config = function()
 		require("plugin.ui.theme.rose-pine")
 	end,
-	cond = false,
+	cond = true,
 	event = "UiEnter",
 })
 
@@ -163,4 +163,12 @@ plugin.add({
 	end,
 	cond = false,
 	event = "UiEnter",
+})
+
+plugin.add({
+	"akinsho/horizon.nvim",
+	config = function()
+		require("plugin.ui.theme.horizon")
+	end,
+	cond = false,
 })

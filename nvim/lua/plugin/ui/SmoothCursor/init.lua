@@ -24,7 +24,7 @@ require("smoothcursor").setup({
 	priority = 10, -- set marker priority
 	timeout = 3000, -- timout for animation
 	threshold = 3, -- animate if threshold lines jump
-	disable_float_win = false, -- disable on float window
+	disable_float_win = true, -- disable on float window
 	enabled_filetypes = nil, -- example: { "lua", "vim" }
-	disabled_filetypes = nil, -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
+	disabled_filetypes = { "lazy", "NvimTree" }, -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
 })

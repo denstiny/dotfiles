@@ -40,12 +40,12 @@ lspkind.init({
 })
 
 local source_mapping = {
-	buffer = "[Buffer]",
-	nvim_lsp = "[LSP]",
-	nvim_lua = "[Lua]",
-	cmp_tabnine = "[TN]",
-	path = "[Path]",
-	luasnip = "[SN]",
+	buffer = "(Buffer)",
+	nvim_lsp = "(LSP)",
+	nvim_lua = "(Lua)",
+	cmp_tabnine = "(TN)",
+	path = "(Path)",
+	luasnip = "(SN)",
 }
 
 -- tabnine
@@ -182,7 +182,8 @@ cmp.setup({
 	window = {
 		completion = {
 			--border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
-			border = { "┌", " ", "┐", "│", "┘", " ", "└", "│" },
+			border = { "╭", " ", "╮", "│", "╯", " ", "╰", "│" },
+			--border = { "┌", " ", "┐", "│", "┘", " ", "└", "│" },
 			winhighlight = "FloatBorder:FloatBorder,CursorLine:CursorLine",
 		},
 		documentation = {

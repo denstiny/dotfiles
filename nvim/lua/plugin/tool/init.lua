@@ -65,7 +65,7 @@ plugin.add({
 plugin.add({
 	"iamcco/markdown-preview.nvim",
 	build = "cd app && yarn install",
-	event = "BufRead *.md",
+	event = "BufRead *.md,*.tex",
 })
 
 plugin.add({

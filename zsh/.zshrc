@@ -54,5 +54,4 @@ alias ters=~/Public/Terslation/translation/fanyim.py
 # >>> xmake >>>
 #[[ -s "$HOME/.xmake/profile" ]] && source "$HOME/.xmake/profile" # load xmake profile
 # <<< xmake <<<
-alias nvim=/home/aero/Public/nvim.appimage
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"

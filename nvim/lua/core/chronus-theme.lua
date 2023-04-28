@@ -27,5 +27,8 @@ return function()
 			  hi LineNr guifg=#000000
 			  hi CursorLineNr guifg=#000000 guibg=#000000
         hi NvimTreeRootFolder  guifg=#8094B4
-      ]])
+        hi IndentBlanklineContextStart guisp=#2E303E gui=underline
+        hi IndentBlanklineContextChar guifg=#2E303E
+        hi IndentBlanklineChar guifg=#2E303E
+        ]])
 end

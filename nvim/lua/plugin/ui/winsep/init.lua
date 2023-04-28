@@ -1,11 +1,11 @@
 local colorful_winsep = require("colorful-winsep")
 colorful_winsep.setup({
 	highlight = {
-		fg = "#E28525",
+		fg = "#264759",
 		--bg = "#BD2407",
 	},
 	interval = 30,
-	no_exec_files = { "packer", "TelescopePrompt", "mason", "CompetiTest", "NvimTree" },
+	no_exec_files = { "packer", "TelescopePrompt", "mason", "CompetiTest" },
 	symbols = { "─", "│", "┌", "┐", "└", "┘" },
 	close_event = function() end,
 	create_event = function()
@@ -17,7 +17,7 @@ colorful_winsep.setup({
 			--if filetype == "NvimTree" then
 			--  colorful_winsep.NvimSeparatorDel()
 			--end
-			colorful_winsep.NvimSeparatorDel()
+			--colorful_winsep.NvimSeparatorDel()
 		end
 	end,
 })

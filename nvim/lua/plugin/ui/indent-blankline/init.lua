@@ -27,6 +27,7 @@ vim.g.indent_blankline_context_patterns = {
 	"try",
 	"except",
 	"switch",
+	"case",
 }
 
 vim.g.indent_blankline_filetype_exclude = {

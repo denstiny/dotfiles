@@ -2,7 +2,7 @@ local scrollbar = require("scrollbar")
 scrollbar.setup({
 	show = true,
 	handle = {
-		color = "#3C3836",
+		color = "#2e303e",
 	},
 	marks = {},
 	handlers = {
