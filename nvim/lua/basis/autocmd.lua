@@ -124,3 +124,10 @@ autocmd({ "BufEnter" }, {
 		vim.fn.jobstart(cmd .. e.file)
 	end,
 })
+
+autocmd({ "BufEnter" }, {
+	pattern = "*.qml",
+	callback = function()
+		vim.bo.filetype = "qmljs"
+	end,
+})

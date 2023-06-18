@@ -105,7 +105,7 @@ globalkeys = gears.table.join(
 	end, { description = "Set the brightness to reduce", group = "brightness" }),
 	-- lock screen
 	awful.key({ modkey }, "u", function()
-		awful.spawn.easy_async_with_shell("bash ~/.config/awesome/shell/lock.sh")
+		awful.spawn.easy_async_with_shell("systemctl suspend")
 	end, { description = "Screen lock screen" }),
 	-- emacs client
 	awful.key({ modkey, "Shift" }, "Return", function()

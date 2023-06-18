@@ -51,7 +51,7 @@ return {
 			intensity = "Bold",
 			italic = true,
 			font = wezterm.font({
-				family = "FiraCode Nerd Font Mono",
+				family = "Maple Mono",
 				weight = "Bold",
 				style = "Italic",
 			}),

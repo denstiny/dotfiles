@@ -17,6 +17,7 @@ plugin.add({
 	build = ":TSUpdate",
 	dependencies = {
 		"HiPhish/nvim-ts-rainbow2",
+		"nvim-treesitter/playground",
 	},
 	config = function()
 		require("plugin.server.treesitter")
@@ -41,6 +42,7 @@ plugin.add({
 	"tzachar/cmp-tabnine",
 	build = "./install.sh",
 	lazy = true,
+	cond = false,
 })
 
 plugin.add({

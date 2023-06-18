@@ -111,7 +111,8 @@ plugin.add({
 	config = function()
 		require("plugin.ui.colord")
 	end,
-	event = { "BufReadPre *.html,*.conf,*.lua,*.css", "BufWritePost", "BufNewFile" },
+	ft = { "html", "lua", "css" },
+	event = { "BufReadPre *.conf" },
 })
 
 plugin.add({
@@ -120,7 +121,7 @@ plugin.add({
 		require("plugin.ui.theme.kanagawa")
 	end,
 	event = "UiEnter",
-	cond = false,
+	cond = true,
 })
 
 plugin.add({
@@ -129,7 +130,7 @@ plugin.add({
 	config = function()
 		require("plugin.ui.theme.rose-pine")
 	end,
-	cond = true,
+	cond = false,
 	event = "UiEnter",
 })
 
@@ -171,4 +172,14 @@ plugin.add({
 		require("plugin.ui.theme.horizon")
 	end,
 	cond = false,
+	event = "UiEnter",
+})
+
+plugin.add({
+	"folke/tokyonight.nvim",
+	config = function()
+		require("plugin.ui.theme.tokyonight")
+	end,
+	cond = false,
+	event = "UiEnter",
 })

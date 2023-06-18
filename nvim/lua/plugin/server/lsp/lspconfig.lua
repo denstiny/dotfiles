@@ -121,7 +121,6 @@ lspconfig["qml_lsp"].setup({
 	on_attach = handlers.on_attach,
 	cmd = { "/usr/bin/qmlls6" },
 	root_dir = function(f)
-		vim.notify(f)
 		return lspconfig.util.find_git_ancestor(f)
 	end,
 	filetypes = { "qmljs" },

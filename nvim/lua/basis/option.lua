@@ -27,7 +27,7 @@ opt.helpheight = 10
 opt.showtabline = 0
 opt.viewdir = os.getenv("HOME") .. "/.vim_view/"
 opt.background = "dark"
-opt.guifont = "ComicCodeLigatures Nerd Font:h1"
+opt.guifont = "ComicCode Nerd Font:h13"
 opt.clipboard:prepend("unnamed")
 opt.swapfile = false
 opt.statusline = " "

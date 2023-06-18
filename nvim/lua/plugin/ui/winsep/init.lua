@@ -1,7 +1,7 @@
 local colorful_winsep = require("colorful-winsep")
 colorful_winsep.setup({
 	highlight = {
-		fg = "#264759",
+		fg = "#6D8086",
 		--bg = "#BD2407",
 	},
 	interval = 30,

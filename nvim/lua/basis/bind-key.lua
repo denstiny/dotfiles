@@ -20,12 +20,15 @@ U.vmap(";y", '"+y')
 U.nmap("<Leader>q", "<Cmd>qall<cr>")
 U.nmap("<A-q>", "<Cmd>wqall!<cr>")
 
--- 扩展窗口大小
+-- 调整窗口大小
 U.nmap("<C-l>", "<Cmd>vertical res +5<cr>")
 U.nmap("<C-h>", "<Cmd>vertical res -5<cr>")
 U.nmap("<C-j>", "<Cmd>res +5<cr>")
 U.nmap("<C-k>", "<Cmd>res -5<cr>")
-
+--U.nmap("<C-l>", '<Cmd>lua require("colorful-winsep.expand").ExpandSize("l")<cr>')
+--U.nmap("<C-h>", '<Cmd>lua require("colorful-winsep.expand").ExpandSize("h")<cr>')
+--U.nmap("<C-j>", '<Cmd>lua require("colorful-winsep.expand").ExpandSize("j")<cr>')
+--U.nmap("<C-k>", '<Cmd>lua require("colorful-winsep.expand").ExpandSize("k")<cr>')
 -- symbols map
 U.nmap("ts", "<Cmd>Lspsaga outline<cr>")
 
