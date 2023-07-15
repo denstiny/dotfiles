@@ -126,3 +126,18 @@ lspconfig["qml_lsp"].setup({
 	filetypes = { "qmljs" },
 	single_file_support = true,
 })
+
+lspconfig.gopls.setup({
+	on_attach = handlers.on_attach,
+	cmd = { "gopls", "serve" },
+	filetypes = { "go", "gomod" },
+	root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
+		},
+	},
+})

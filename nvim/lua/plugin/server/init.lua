@@ -13,6 +13,15 @@ plugin.add({
 })
 
 plugin.add({
+	"ray-x/go.nvim",
+	ft = { "go", "gomod" },
+	build = ':lua require("go.install").update_all_sync()',
+	config = function()
+		require("plugin.server.lsp.go")
+	end,
+})
+
+plugin.add({
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
 	dependencies = {
