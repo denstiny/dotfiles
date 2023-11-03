@@ -26,10 +26,10 @@ treesitter_config.setup({
 	},
 	auto_install = true,
 	rainbow = {
-		enable = false,
+		enable = true,
 	},
 	highlight = {
-		enable = false,
+		enable = true,
 		disable = function(lang, buf)
 			local max_filesize = 1000 * 1024 -- 100 KB
 			local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))

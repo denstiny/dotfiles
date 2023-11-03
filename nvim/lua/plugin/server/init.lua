@@ -9,7 +9,6 @@ plugin.add({
 	config = function()
 		require("plugin.server.lsp")
 	end,
-	event = { "UiEnter" },
 })
 
 plugin.add({

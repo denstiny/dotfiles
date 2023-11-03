@@ -140,6 +140,7 @@ plugin.add({
 	config = function()
 		require("cppassist").setup()
 	end,
+	cond = false,
 })
 
 plugin.add({

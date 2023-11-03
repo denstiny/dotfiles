@@ -2,7 +2,12 @@
   "date": {
     "prefix": "date",
     "body": ["${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}"],
-    "description": "ISO date time stamp"
+    "description": "current time"
+  },
+  "day": {
+    "prefix": "date",
+    "body": ["${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}"],
+    "description": "current day"
   },
   "Lorem Ipsum Sentence": {
     "prefix": "loremSent",
