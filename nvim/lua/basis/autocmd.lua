@@ -58,9 +58,9 @@ autocmd({ "FileType", "BufNewFile" }, {
 			else
 				vim.cmd("TSEnable highlight")
 			end
-			vim.defer_fn(function()
-				vim.cmd("TSEnable rainbow")
-			end, 0)
+			--vim.defer_fn(function()
+			--	vim.cmd("TSEnable rainbow")
+			--end, 0)
 		end
 	end,
 })

@@ -3,7 +3,7 @@
 # define a new task named "file-build"
 [+]
 build_out_path=build/$(VIM_FILENOEXT)
-build_cpp=g++ $(VIM_FILEPATH) -g -w  -o $(+build_out_path)
+build_cpp=clang++ $(VIM_FILEPATH) -g -w  -o $(+build_out_path)
 build_c=gcc $(VIM_FILEPATH) -g -w  -o $(+build_out_path)
 build_cmake=cd build && cmake ../ && cmake --build .
 build_xmake=xmake build && xmake

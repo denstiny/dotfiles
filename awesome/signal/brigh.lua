@@ -35,3 +35,8 @@ awful.spawn.easy_async_with_shell(
 		})
 	end
 )
+
+awesome.connect_signal("signal::xbg_refresh", function()
+    emit_brightness_info()
+end)
+

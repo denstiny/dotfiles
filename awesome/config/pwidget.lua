@@ -11,7 +11,7 @@ local theme = require("theme.theme")
 
 -- battery widget
 local battery_progress = wibox.widget({
-	color = "#1AE51A",
+	color = "#434C5E",
 	background_color = "#00000000",
 	forced_width = dpi(28),
 	border_width = dpi(1),
@@ -25,7 +25,7 @@ local battery_progress = wibox.widget({
 
 local separated = function(var, width)
 	return {
-		font = "SHYF-2020 16",
+		font = "SHYF-2020 14",
 		text = " " .. var,
 		forced_height = 18,
 		forced_width = width,
@@ -65,15 +65,15 @@ awful.popup({
 awesome.connect_signal("signal::battery", function(value)
 	battery_progress.value = value
 	if value < 70 and value > 50 then
-		battery_progress.color = "#BDE51A"
+		battery_progress.border_color = "#BDE51A"
 	elseif value < 50 and value > 30 then
-		battery_progress.color = "#CF884A"
+		battery_progress.border_color = "#CF884A"
 	elseif value < 30 and value > 10 then
-		battery_progress.color = "#9B4642"
+		battery_progress.border_color = "#9B4642"
 	elseif value < 10 then
-		battery_progress.color = "#E51A1A"
+		battery_progress.border_color = "#E51A1A"
 	elseif value > 70 then
-		battery_progress.color = "#638388"
+		battery_progress.border_color = "#638388"
 	end
 end)
 
@@ -120,7 +120,7 @@ awful.popup({
 
 -- screen brightness widget
 local brightness_progress = wibox.widget({
-	color = "#9ccfd8",
+	color = "#434C5E",
 	background_color = "#00000000",
 	forced_width = dpi(28),
 	border_width = dpi(1),
@@ -167,7 +167,7 @@ end)
 
 --  Sound the widget
 local voice_progress = wibox.widget({
-	color = "#c4a7e7",
+	color = "#434C5E",
 	background_color = "#00000000",
 	forced_width = dpi(28),
 	border_width = dpi(1),
@@ -213,6 +213,6 @@ awesome.connect_signal("signal::volume", function(volume_int, muted)
 	if muted then
 		voice_progress.color = "#b3b3b5"
 	else
-		voice_progress.color = "#c4a7e7"
+		voice_progress.color = "#434C5E"
 	end
 end)

@@ -1,15 +1,21 @@
 #!/usr/bin/env bash
+export CAPSSWAPESCAPE=false
 Keyboard ()
 {
   # 判断键盘
-  xinput | grep -i "2.4G Wireless Device" &> /dev/null
+  xinput | grep -i "Telink Wireless Gaming Keyboard" &> /dev/null
   if [ $? == 1 ];
   then 
     xinput --enable AT\ Translated\ Set\ 2\ keyboard
+    setxkbmap -option caps:swapescape
+    export CAPSSWAPESCAPE=true
     echo "启用默认键盘"
   else
     xinput --disable AT\ Translated\ Set\ 2\ keyboard
-    setxkbmap -option caps:swapescape
+    if [[ -n $CAPSSWAPESCAPE ]];then
+        setxkbmap -option swapescape:caps
+        export CAPSSWAPESCAPE=false
+    fi
     echo "关闭默认键盘"
   fi
 }
@@ -37,7 +43,7 @@ Run() {
 }
 
 while [[ Run ]]; do
-  #Keyboard
+  Keyboard
   Mouse
   sleep 1
 done

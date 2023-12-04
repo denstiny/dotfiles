@@ -5,4 +5,4 @@
 # @blog        : https://denstiny.github.io
 
 #!/bin/bash
-sudo pacman -S w3m mediainfo atool highlight ueberzug
+sudo zypper install w3m mediainfo atool highlight ueberzug

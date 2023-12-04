@@ -1,7 +1,7 @@
 local M = {}
 M.lsp_server = {
 	"pyright",
-	"cmake",
+	--"cmake",
 	"bashls",
 	"vimls",
 	"texlab",

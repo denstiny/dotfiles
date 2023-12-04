@@ -24,14 +24,14 @@ plugin.add({
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
 	dependencies = {
-		"HiPhish/nvim-ts-rainbow2",
+		--"HiPhish/nvim-ts-rainbow2",
 		"nvim-treesitter/playground",
 	},
 	config = function()
 		require("plugin.server.treesitter")
 	end,
 	cmd = { "TSEnable", "TSInstall", "TSInstallInfo", "TSModuleInfo" },
-	cond = true,
+    cond = true,
 })
 
 plugin.add({

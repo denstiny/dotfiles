@@ -75,12 +75,12 @@ globalkeys = gears.table.join(
 	-- Brightness
 	awful.key({ modkey }, "XF86AudioLowerVolume", function()
 		awful.spawn.easy_async_with_shell("bash ~/.config/awesome/shell/xback.sh 0", function()
-			awesome.emit_signal("volume_refresh")
+			awesome.emit_signal("signal::xbg_refresh")
 		end)
 	end, { description = "Set the brightness to improve", group = "brightness" }),
 	awful.key({ modkey }, "XF86AudioRaiseVolume", function()
 		awful.spawn.easy_async_with_shell("bash ~/.config/awesome/shell/xback.sh 1", function()
-			awesome.emit_signal("volume_refresh")
+			awesome.emit_signal("signal::xbg_refresh")
 		end)
 	end, { description = "Set the brightness to reduce", group = "brightness" }),
 	awful.key({}, "XF86MonBrightnessDown", function()
@@ -239,8 +239,11 @@ for i = 1, 9 do
 		awful.key({ modkey, "Shift" }, _tag[i], function()
 			if client.focus then
 				local tag = client.focus.screen.tags[i]
+			    local screen = awful.screen.focused()
+			    local screen_tag = screen.tags[i]
 				if tag then
 					client.focus:move_to_tag(tag)
+                    screen_tag:view_only()
 				end
 			end
 		end, { description = "move focused client to tag " .. i, group = "tag" }),
