@@ -17,15 +17,15 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim'
 fi
-export GOPATH="/home/aero/go"
+export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on
 export GOPROXY=https://goproxy.cn,direct
 
 proxy ()
 {
-  export http_proxy=http://127.0.0.1:8889
-  export https_proxy=http://127.0.0.1:8889
+  export http_proxy=http://127.0.0.1:7890
+  export https_proxy=http://127.0.0.1:7890
 }
 uproxy () {
   unset http_proxy
