@@ -50,7 +50,7 @@ plugin.add({
 	"tzachar/cmp-tabnine",
 	build = "./install.sh",
 	lazy = true,
-	cond = false,
+	--cond = false,
 })
 
 plugin.add({

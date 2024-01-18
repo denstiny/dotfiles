@@ -17,6 +17,7 @@ xrandr --output eDP-1 --mode 1920x1200
 # Compositor
 #picom --config ~/.config/awesome/config/picom.conf &
 #run cfw
+run clash
 run fcitx5
 run flameshot
 run obs

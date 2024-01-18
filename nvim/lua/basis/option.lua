@@ -9,7 +9,7 @@ opt.fillchars = { eob = " " }
 opt.ignorecase = true
 opt.smartcase = true
 opt.number = true
-opt.numberwidth = 2
+opt.numberwidth = 1
 opt.ruler = false
 opt.shortmess:append("sI")
 opt.viewoptions = "folds,cursor,curdir,options"

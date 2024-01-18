@@ -11,4 +11,4 @@ mkdir -p ~/.local/share/fonts
 cp ./*.otf ~/.local/share/fonts/
 cp ./*.ttf ~/.local/share/fonts/
 # 设置字体
-cp font.conf /etc/fonts/conf.d/fonts.conf
+#cp font.conf /etc/fonts/conf.d/fonts.conf

@@ -29,36 +29,36 @@ require("ibl").setup { scope = { highlight = highlight } }
 
 hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
 vim.g.indent_blankline_context_patterns = {
-	"^if",
-	"class",
-	"^identifier",
-	"do_block",
-	"^function",
-	"^while",
-	"^for",
-	"^table",
-	"try",
-	"except",
-	"switch",
-	"case",
+    "^if",
+    "class",
+    "^identifier",
+    "do_block",
+    "^function",
+    "^while",
+    "^for",
+    "^table",
+    "try",
+    "except",
+    "switch",
+    "case",
     "local"
 }
 
 vim.g.indent_blankline_filetype_exclude = {
-	"help",
-	"startify",
-	"TERMINAL",
-	"terminal",
-	"packer",
-	"lsp-installer",
-	"",
-	"startuptime",
-	"toggleterm",
-	"translator",
-	"markdown",
-	"norg",
+    "help",
+    "startify",
+    "TERMINAL",
+    "terminal",
+    "packer",
+    "lsp-installer",
+    "",
+    "startuptime",
+    "toggleterm",
+    "translator",
+    "markdown",
+    "norg",
 }
 
-vim.g.indent_blankline_show_end_of_line = false -- 占用隐藏符号
+vim.g.indent_blankline_show_end_of_line = false               -- 占用隐藏符号
 vim.g.indent_blankline_show_trailing_blankline_indent = false -- 删除多余的缩进线
 vim.g.indent_blankline_max_indent_increase = 1
