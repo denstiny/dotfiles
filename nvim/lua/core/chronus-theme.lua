@@ -1,5 +1,5 @@
 return function()
-	vim.cmd([[
+    vim.cmd([[
         hi Normal guibg=#000000
         hi StatusLine guibg=bg
         hi EndOfBuffer guifg=bg
