@@ -125,7 +125,7 @@ cmp.setup({
 		{ name = "crates" },
 		-- { name = "neorg", priority = 10 },
 		-- {name = "nvim_lsp_signature_help"},
-		{ name = "luasnip", priority = 8 },
+		{ name = "luasnip", priority = 8, options = { use_show_condition = false } },
 		{ name = "nvim_lua" },
 		{ name = "buffer", priority = 7 },
 		{ name = "path", priority = 4 },
@@ -194,6 +194,7 @@ cmp.setup({
 		},
 	},
 })
+
 cmp.setup.filetype("gitcommit", {
 	sources = cmp.config.sources({
 		{ name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.

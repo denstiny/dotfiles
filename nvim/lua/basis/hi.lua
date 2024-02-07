@@ -1,4 +1,5 @@
-vim.cmd([[
+return function()
+    vim.cmd([[
 hi @constructor gui=bold
 hi Normal guibg=None
 hi StatusLine guibg=bg
@@ -17,3 +18,4 @@ hi DiagnosticSignError gui=undercurl cterm=undercurl guisp=#ff5370
 hi DiagnosticSignWarn  gui=undercurl cterm=undercurl guisp=#f78c6c
 hi LspSagaLightBulb    gui=bold
 ]])
+end

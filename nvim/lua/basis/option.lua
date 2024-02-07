@@ -33,3 +33,7 @@ opt.swapfile = false
 opt.statusline = " "
 opt.guicursor = "i:ver20,n-v-sm:block,c-ci-ve:ver20,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor"
 opt.cmdheight = 0
+--opt.foldenable = true -- enable fold for nvim-ufo
+--opt.foldlevel = 99 -- set high foldlevel for nvim-ufo
+--opt.foldlevelstart = 99 -- start with all code unfolded
+--opt.foldcolumn = vim.fn.has("nvim-0.9") == 1 and "1" or nil -- show foldcolumn in nvim 0.9

@@ -13,38 +13,44 @@
 --let g:formatters_rust = ["rustfmt"]
 --let g:formatters_lua = ["luaformat"]
 --]])
+local conform = require("conform")
 
-require("conform").setup({
-    lua = { "stylua" },
-    c = { "astyle" },
-    cpp = { "astyle" },
-    format_on_save = {
-        timeout_ms = 500,
-        lsp_fallback = true,
-    }
+conform.setup({
+	formatters_by_ft = {
+		lua = { "stylua" },
+		c = { "astyle" },
+		cpp = { "astyle" },
+	},
+
+	format_on_save = {
+		-- I recommend these options. See :help conform.format for details.
+		lsp_fallback = true,
+		timeout_ms = 500,
+	},
+
+	formatters = {
+		astyle = {
+			args = {
+				"--indent=spaces=4",
+				"--max-code-length=80",
+				"-xW",
+				"-A2",
+				"-xp",
+				"-o",
+				"-C",
+				"-xt",
+				"-L",
+				"-M",
+				"-w",
+				"-Y",
+				"-M",
+				"-xd",
+				"-k1",
+				"-p",
+				"-E",
+				"-O",
+				"-S",
+			},
+		},
+	},
 })
-require("conform").formatters.astyle = {
-    inherit = false,
-    command = "astyle",
-    prepend_args = {
-        "--indent=spaces=4",
-        "--max-code-length=80",
-        "-xW",
-        "-A2",
-        "-xp",
-        "-o",
-        "-C",
-        "-xt",
-        "-L",
-        "-M",
-        "-w",
-        "-Y",
-        "-M",
-        "-xd",
-        "-k1",
-        "-p",
-        "-E",
-        "-O",
-        "-S"
-    },
-}

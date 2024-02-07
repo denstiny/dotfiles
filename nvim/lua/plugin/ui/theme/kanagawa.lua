@@ -1,2 +1,2 @@
 vim.cmd("colorscheme kanagawa")
-require("core.chronus-theme")()
+--require("core.chronus-theme")()
