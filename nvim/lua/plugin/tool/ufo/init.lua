@@ -1,3 +1,4 @@
+local hl = require("core.hl")
 local handler = function(virtText, lnum, endLnum, width, truncate)
 	local newVirtText = {}
 	local suffix = (" 󰁂 %d "):format(endLnum - lnum)
@@ -25,18 +26,138 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
 	table.insert(newVirtText, { suffix, "MoreMsg" })
 	return newVirtText
 end
+vim.g.Boo = ""
+vim.g.Forma = ""
+vim.o.foldcolumn = "1" -- '0' is not bad
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+--vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep:│,foldclose:]]
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+--vim.o.statuscolumn = "%=%l%s%C "
 
--- global handler
--- `handler` is the 2nd parameter of `setFoldVirtTextHandler`,
--- check out `./lua/ufo.lua` and search `setFoldVirtTextHandler` for detail.
+-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+
+-- Option 1: coc.nvim as LSP client
+--
+
+-- Option 2: nvim lsp as LSP client
+-- Tell the server the capability of foldingRange,
+-- Neovim hasn't added foldingRange to default capabilities, users must add it manually
+local builtin = require("statuscol.builtin")
+--require("statuscol").setup({
+--	--relculright = true,
+--	--segments = {
+--	--	{ text = { builtin.foldfunc }, click = "v:lua.ScFa" },
+--	--	{ text = { "%s" }, click = "v:lua.ScSa" },
+--	--	{ text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+--	--},
+--})
+local builtin = require("statuscol.builtin")
+cfg = {
+	setopt = true,
+	relculright = false,
+	segments = {
+		{ text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+		-- text = { builtin.foldfunc, " " }, click = "v:lua.ScFa", hl = "Comment" },
+		{
+			text = {
+				function(args)
+					local n = builtin.foldfunc(args)
+					if vim.api.nvim_win_get_option(args.win, "cursorline") then
+						local line_number = vim.api.nvim_win_get_cursor(args.win)[1]
+						local fg, _ = hl.get_highlight_group_colors("FoldColumn")
+						local _, bg = hl.get_highlight_group_colors("CursorLineNr")
+						vim.cmd("hi FoldColumnNr guibg=" .. bg .. " " .. "guifg=" .. fg)
+						if args.lnum == line_number then
+							n = n:gsub("#(.-)#", "#" .. "FoldColumnNr" .. "#")
+						end
+					end
+					return n
+				end,
+				" ",
+			},
+			click = "v:lua.ScFa",
+		},
+		{
+			text = {
+				function(args, formatarg)
+					local ss = formatarg.sign
+					local wss = ss.wins[args.win].signs
+					-- 拆包signs 获取字符和高亮组
+					local sign_group = wss[next(wss)]
+					local text = ""
+					local texthl = ""
+					if sign_group then
+						for _, sign_details in ipairs(sign_group) do
+							text = sign_details.text
+							texthl = sign_details.texthl
+						end
+					end
+					local line_number = vim.api.nvim_win_get_cursor(args.win)[1]
+					if
+						line_number == args.lnum
+						and string.len(texthl) ~= 0
+						and vim.api.nvim_win_get_option(args.win, "cursorline")
+					then
+						local fg, _ = hl.get_highlight_group_colors(texthl)
+						local _, bg = hl.get_highlight_group_colors("CursorLine")
+						vim.cmd("hi TempTextNr guifg=" .. fg .. " " .. "guibg=" .. bg)
+						texthl = "TempTextNr"
+					end
+					if next(wss) == args.lnum then
+						return "%#" .. texthl .. "#" .. text .. "%*"
+					else
+						return "  "
+					end
+				end,
+			},
+			click = "v:lua.ScSa",
+			sign = { name = { ".*" } },
+		},
+	},
+}
+
+require("statuscol").setup(cfg)
+require("ufo").setup()
+--
+
+-- Option 3: treesitter as a main provider instead
+-- (Note: the `nvim-treesitter` plugin is *not* needed.)
+-- ufo uses the same query files for folding (queries/<lang>/folds.scm)
+-- performance and stability are better than `foldmethod=nvim_treesitter#foldexpr()`
+local ftMap = {
+	python = "",
+}
 require("ufo").setup({
+	provider_selector = function(bufnr, filetype)
+		return ftMap[filetype]
+	end,
+	open_fold_hl_timeout = 150,
+	close_fold_kinds_for_ft = {
+		default = { "imports", "comment" },
+		json = { "array" },
+		c = { "comment", "region" },
+	},
+	preview = {
+		win_config = {
+			border = { "", "─", "", "", "", "─", "", "" },
+			winhighlight = "Normal:Folded",
+			winblend = 0,
+		},
+		mappings = {
+			scrollU = "<C-u>",
+			scrollD = "<C-d>",
+			jumpTop = "[",
+			jumpBot = "]",
+		},
+	},
 	provider_selector = function(bufnr, filetype, buftype)
-		return { "treesitter", "indent" }
+		-- if you prefer treesitter provider rather than lsp,
+		-- return ftMap[filetype] or {'treesitter', 'indent'}
+		return ftMap[filetype]
+
+		-- refer to ./doc/example.lua for detail
 	end,
 	fold_virt_text_handler = handler,
 })
-
--- buffer scope handler
--- will override global handler if it is existed
--- local bufnr = vim.api.nvim_get_current_buf()
--- require('ufo').setFoldVirtTextHandler(bufnr, handler)

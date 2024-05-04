@@ -128,11 +128,11 @@ cmp.setup({
 		{ name = "luasnip", priority = 8, options = { use_show_condition = false } },
 		{ name = "nvim_lua" },
 		{ name = "buffer", priority = 7 },
-		{ name = "path", priority = 4 },
-		{ name = "calc" },
-		{ name = "cmp_tabnine", priority = 8 },
-		{ name = "digraphs" },
-		{ name = "spell" },
+		{ name = "path", priority = 7 },
+		{ name = "calc", priority = 6 },
+		{ name = "cmp_tabnine", priority = 6 },
+		--{ name = "digraphs", priority = 5 },
+		{ name = "spell", priority = 5 },
 	},
 	sorting = {
 		comparators = {

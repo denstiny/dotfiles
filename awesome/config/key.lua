@@ -239,11 +239,11 @@ for i = 1, 9 do
 		awful.key({ modkey, "Shift" }, _tag[i], function()
 			if client.focus then
 				local tag = client.focus.screen.tags[i]
-			    local screen = awful.screen.focused()
-			    local screen_tag = screen.tags[i]
+				local screen = awful.screen.focused()
+				local screen_tag = screen.tags[i]
 				if tag then
 					client.focus:move_to_tag(tag)
-                    screen_tag:view_only()
+					screen_tag:view_only()
 				end
 			end
 		end, { description = "move focused client to tag " .. i, group = "tag" }),

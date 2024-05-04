@@ -159,7 +159,7 @@ awful.rules.rules = {
 	{
 		-- music
 		rule_any = {
-			instance = { "lx-music-desktop", "listen1" },
+			instance = { "lx-music-desktop", "listen1", "Devtools" },
 		},
 		properties = {
 			floating = true,

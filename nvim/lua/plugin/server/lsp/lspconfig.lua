@@ -141,3 +141,10 @@ lspconfig.gopls.setup({
 		},
 	},
 })
+
+lspconfig.pyright.setup({
+	on_attach = handlers.on_attach,
+	before_init = function(_, config)
+		config.settings.python.analysis.stubPath = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy", "python-type-stubs")
+	end,
+})

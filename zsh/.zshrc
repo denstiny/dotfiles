@@ -18,7 +18,7 @@ else
   export EDITOR='nvim'
 fi
 export GOPATH="$HOME/go"
-export PATH=$PATH:$GOPATH/bin
+export PATnaH=$PATH:$GOPATH/bin
 export GO111MODULE=on
 export GOPROXY=https://goproxy.cn,direct
 
@@ -48,13 +48,17 @@ command rm -f -- "$tempfile" 2>/dev/null
 }
 
 #export TERM=wezterm
-[ "$TERM" = "xterm-256color" ] && export TERM=wezterm
+#[ "$TERM" = "xterm-256color" ] && export TERM=wezterm
+#[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 alias re=ranger
-alias ters=~/Public/Terslation/translation/fanyim.py
+alias ters=~/Public/Terslation/termal.sh
 alias n="clear && neofetch --off"
 #alias apt=aptpac
 #alias wallpaper_picker=~/.config/hypr/scripts/wallpaper/wallpaper_picker
 # >>> xmake >>>
 #[[ -s "$HOME/.xmake/profile" ]] && source "$HOME/.xmake/profile" # load xmake profile
 # <<< xmake <<<
-[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+export ELASTIC_PASSWORD="*BRk9Pk13tg1x+P2chi="
+export QT_LOGGING_TO_CONSOLE=1
+export LANG=en_US.UTF-8
+export LC_ALL="en_US.UTF-8"

@@ -64,17 +64,18 @@ awful.popup({
 -- update battery widget data
 awesome.connect_signal("signal::battery", function(value)
 	battery_progress.value = value
-	if value < 70 and value > 50 then
-		battery_progress.border_color = "#BDE51A"
-	elseif value < 50 and value > 30 then
-		battery_progress.border_color = "#CF884A"
-	elseif value < 30 and value > 10 then
-		battery_progress.border_color = "#9B4642"
-	elseif value < 10 then
-		battery_progress.border_color = "#E51A1A"
-	elseif value > 70 then
-		battery_progress.border_color = "#638388"
-	end
+	battery_progress.border_color = "#638388"
+	--if value < 70 and value > 50 then
+	--	battery_progress.border_color = "#BDE51A"
+	--elseif value < 50 and value > 30 then
+	--	battery_progress.border_color = "#CF884A"
+	--elseif value < 30 and value > 10 then
+	--	battery_progress.border_color = "#9B4642"
+	--elseif value < 10 then
+	--	battery_progress.border_color = "#E51A1A"
+	--elseif value > 70 then
+	--	battery_progress.border_color = "#638388"
+	--end
 end)
 
 awesome.connect_signal("signal::charger", function(charger)

@@ -10,17 +10,17 @@ function run {
 
 # Resolution
 xrandr --output eDP-1 --mode 1920x1200
-#xrandr --output eDP --mode 1920x1200 --left-of HDMI-A-0 --auto
-#xrandr --output eDP1 --auto --primary
+#xrandr --output eDP-1 --mode 1920x1200 --left-of HDMI-1 --auto
+#xrandr --output eDP-1 --auto --primary
 #xrandr --output HDMI1 --right-of eDP1 --auto
 #xrandr --output HDMI1 --rotate  normal
 # Compositor
 #picom --config ~/.config/awesome/config/picom.conf &
 #run cfw
-run clash
+#run clash
 run fcitx5
 run flameshot
-run obs
+run obs --disable-shutdown-check
 run qv2ray
 # open start emacs server
 #run emacs --daemon

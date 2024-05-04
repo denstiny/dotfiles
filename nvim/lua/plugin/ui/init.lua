@@ -48,6 +48,7 @@ plugin.add({
 })
 
 plugin.add({
+	branch = "alpha",
 	"nvim-zh/colorful-winsep.nvim",
 	config = function()
 		require("plugin.ui.winsep")
@@ -96,14 +97,14 @@ plugin.add({
 	cmd = "Gitsigns",
 })
 
-plugin.add({
-	"petertriho/nvim-scrollbar",
-	desc = "滚动条",
-	config = function()
-		require("plugin.ui.scroll")
-	end,
-	event = { "BufReadPre", "BufNewFile" },
-})
+--plugin.add({
+--	"petertriho/nvim-scrollbar",
+--	desc = "滚动条",
+--	config = function()
+--		require("plugin.ui.scroll")
+--	end,
+--	event = { "BufReadPre", "BufNewFile" },
+--})
 
 plugin.add({
 	"brenoprata10/nvim-highlight-colors",
@@ -192,4 +193,42 @@ plugin.add({
 		require("plugin.ui.color-patch")
 	end,
 	event = "UiEnter",
+})
+
+plugin.add({
+	"dstein64/nvim-scrollview",
+	desc = "滚动条",
+	config = function()
+		require("plugin.ui.scroll")
+	end,
+	event = { "BufReadPre", "BufNewFile" },
+})
+
+plugin.add({
+	"lukas-reineke/headlines.nvim",
+	config = false, -- or `opts = {}`
+})
+
+plugin.add({
+	"j-hui/fidget.nvim",
+	opts = {
+		-- options
+	},
+	event = "LspAttach",
+})
+
+plugin.add({
+	"declancm/cinnamon.nvim",
+	config = function()
+		require("plugin.ui.cinnamon")
+	end,
+	event = "UiEnter",
+})
+
+plugin.add({
+	"lewis6991/satellite.nvim",
+	config = function()
+		require("plugin.ui.scroll")
+	end,
+	cond = false,
 })

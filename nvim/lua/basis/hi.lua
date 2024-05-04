@@ -1,10 +1,10 @@
 return function()
-    vim.cmd([[
+	vim.cmd([[
 hi @constructor gui=bold
 hi Normal guibg=None
 hi StatusLine guibg=bg
 hi EndOfBuffer guifg=bg
-hi LineNr      guibg=bg
+"hi LineNr      guibg=bg
 hi NormalFloat guibg=bg
 hi NormalNC    guibg=bg
 hi SignColumn  guibg=bg
@@ -17,5 +17,10 @@ hi DiagnosticSignInfo  gui=underline cterm=underline guisp=#82aaff
 hi DiagnosticSignError gui=undercurl cterm=undercurl guisp=#ff5370
 hi DiagnosticSignWarn  gui=undercurl cterm=undercurl guisp=#f78c6c
 hi LspSagaLightBulb    gui=bold
+hi ScrollView          guibg=#2e303e
+hi UfoFoldedBg         guibg=none
+hi FoldColumn guibg=none     
+"hi CursorLineFold guibg=#2a2a37
+hi CursorLine guibg=#2a2a37
 ]])
 end

@@ -1,7 +1,7 @@
 local M = {}
 M.lsp_server = {
 	"pyright",
-	--"cmake",
+	"cmake",
 	"bashls",
 	"vimls",
 	"texlab",
@@ -10,7 +10,7 @@ M.lsp_server = {
 	"clangd",
 	"lua_ls",
 	--"lua-language-server",
-  --"golangci-lint-langserver",
+	--"golangci-lint-langserver",
 	--"jdtls",
 	"gopls",
 	--"csharp_ls",

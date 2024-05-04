@@ -169,6 +169,7 @@ plugin.add({
 })
 
 plugin.add({
+	desc = "异步格式化",
 	"stevearc/conform.nvim",
 	config = function()
 		require("plugin.tool.format")
@@ -176,6 +177,24 @@ plugin.add({
 })
 
 plugin.add({
+	desc = "注释边框",
 	"LudoPinelli/comment-box.nvim",
 	config = function() end,
+})
+
+plugin.add({
+	desc = "异步同步文件到服务器",
+	"coffebar/transfer.nvim",
+	cmd = { "TransferInit", "DiffRemote", "TransferUpload", "TransferDownload", "TransferDirDiff", "TransferRepeat" },
+	opts = {},
+})
+
+plugin.add({
+	desc = "代码折叠",
+	"kevinhwang91/nvim-ufo",
+	dependencies = { "kevinhwang91/promise-async", "luukvbaal/statuscol.nvim" },
+	event = "UiEnter",
+	config = function()
+		require("plugin.tool.ufo")
+	end,
 })

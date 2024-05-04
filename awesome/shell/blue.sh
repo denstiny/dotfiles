@@ -3,7 +3,7 @@ export CAPSSWAPESCAPE=false
 Keyboard ()
 {
   # 判断键盘
-  xinput | grep -i "Telink Wireless Gaming Keyboard" &> /dev/null
+  xinput | grep -i "Telink" &> /dev/null
   if [ $? == 1 ];
   then 
     xinput --enable AT\ Translated\ Set\ 2\ keyboard

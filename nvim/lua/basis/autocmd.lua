@@ -131,3 +131,23 @@ autocmd({ "BufEnter" }, {
 		vim.bo.filetype = "qmljs"
 	end,
 })
+
+autocmd({ "BufWinLeave", "BufWrite", "BufLeave", "QuitPre" }, {
+	callback = function()
+		vim.cmd([[
+        set viewdir=~/.config/nvim/view
+        if !isdirectory($HOME.'/.config/nvim/view')
+          call mkdir($HOME.'/.config/nvim/view', 'p')
+        endif
+        ]])
+		if vim.bo.filetype ~= "" and vim.bo.buftype ~= "nofile" then
+			vim.cmd("silent! mkview")
+		end
+	end,
+})
+
+autocmd({ "BufWinEnter", "UiEnter" }, {
+	callback = function()
+		vim.cmd("silent! loadview")
+	end,
+})

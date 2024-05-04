@@ -24,7 +24,8 @@ do
 		echo "退出"$lock
 		exit;
 	fi
-  feh --randomize --bg-fill ~/Imager/ &> /dev/null
+    #feh --randomize --bg-fill ~/Imager/ &> /dev/null
+    feh --randomize --bg-fill ~/.config/awesome/theme/wallpaper/ &> /dev/null
 	sleep 1000
 done
 wait

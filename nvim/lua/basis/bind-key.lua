@@ -4,9 +4,9 @@ vim.g.mapleader = ";"
 U.nmap("tr", "<Cmd>NvimTreeFindFileToggle<cr>")
 
 function _G.set_terminal_keymaps()
-    local opts = { noremap = true }
-    vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
-    vim.api.nvim_buf_set_keymap(0, "t", "<C-\\>", "<Cmd>ToggleTerm<cr>", opts)
+	local opts = { noremap = true }
+	vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
+	vim.api.nvim_buf_set_keymap(0, "t", "<C-\\>", "<Cmd>ToggleTerm<cr>", opts)
 end
 
 U.nmap("<C-\\>", "<Cmd>ToggleTerm<cr>")
@@ -33,12 +33,12 @@ U.nmap("<C-k>", "<Cmd>res -5<cr>")
 U.nmap("ts", "<Cmd>Lspsaga outline<cr>")
 
 -- Dap Config
-U.nmap("<F5>", "<Cmd>DapContinue<cr>")         -- 启动调试
-U.nmap("<F4>", "<Cmd>DapRestart<cr>")          -- 启动调试
-U.nmap("<F7>", "<Cmd>DapClose<cr>")            -- 关闭调试
+U.nmap("<F5>", "<Cmd>DapContinue<cr>") -- 启动调试
+U.nmap("<F4>", "<Cmd>DapRestart<cr>") -- 启动调试
+U.nmap("<F7>", "<Cmd>DapClose<cr>") -- 关闭调试
 U.nmap("<F9>", "<Cmd>DapToggleBreakpoint<cr>") -- 设置断点
-U.nmap("<F10>", "<Cmd>DapStepOver<cr>")        -- 步入
-U.nmap("<F11>", "<Cmd>DapStepInto<cr>")        -- 单步调试
+U.nmap("<F10>", "<Cmd>DapStepOver<cr>") -- 步入
+U.nmap("<F11>", "<Cmd>DapStepInto<cr>") -- 单步调试
 U.nmap("<F2>", "<Cmd>DapToggleRepl<cr>")
 
 -- undo tree
@@ -48,6 +48,7 @@ U.nmap("L", "<Cmd>UndotreeToggle<cr>")
 U.nmap("<Leader>r", "<Cmd>AsyncTask file-run<cr>")
 U.nmap("<Leader>d", "<Cmd>AsyncTask file-build<cr>")
 U.nmap("<Leader>t", "<cmd>AsyncTask file-test<cr>")
+U.nmap("<Leader>p", "<cmd>AsyncTask project-run<cr>")
 
 U.nmap("gf", "<Cmd>e <cfile><Cr>")
 
@@ -83,10 +84,12 @@ U.vmap("cr", '<Cmd>lua require("cppassist").ImplementInSourceInVisualMode<CR>')
 
 -- Git Link
 U.vmap(
-    "<leader>gb",
-    '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>'
+	"<leader>gb",
+	'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>'
 )
 U.nmap(
-    "<leader>gb",
-    '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>'
+	"<leader>gb",
+	'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>'
 )
+
+U.nmap("<Tab>", "za")
