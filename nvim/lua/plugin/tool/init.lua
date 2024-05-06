@@ -114,6 +114,7 @@ plugin.add({
 		require("plugin.tool.telescope")
 	end,
 	cmd = "Telescope",
+	event = { "LspAttach" },
 })
 
 plugin.add({
@@ -174,12 +175,14 @@ plugin.add({
 	config = function()
 		require("plugin.tool.format")
 	end,
+	lazy = true,
 })
 
 plugin.add({
 	desc = "注释边框",
 	"LudoPinelli/comment-box.nvim",
 	config = function() end,
+	event = "FileType",
 })
 
 plugin.add({
@@ -192,9 +195,48 @@ plugin.add({
 plugin.add({
 	desc = "代码折叠",
 	"kevinhwang91/nvim-ufo",
-	dependencies = { "kevinhwang91/promise-async", "luukvbaal/statuscol.nvim" },
+	dependencies = {
+		"kevinhwang91/promise-async",
+		"luukvbaal/statuscol.nvim",
+	},
 	event = "UiEnter",
 	config = function()
 		require("plugin.tool.ufo")
 	end,
+})
+
+plugin.add({
+	desc = "文档文件lsp支持",
+	"jmbuhr/otter.nvim",
+	config = function()
+		require("plugin.tool.otter")
+	end,
+	cond = false,
+})
+
+--plugin.add({
+--    "chentoast/marks.nvim",
+--    config = function ()
+--        require("plugin.tool.marks")
+--    end,
+--    event = "UiEnter"
+--})
+
+plugin.add({
+	"olimorris/persisted.nvim",
+	config = function()
+		require("plugin.tool.session")
+	end,
+	event = "UiEnter",
+})
+
+plugin.add({
+	"yaocccc/nvim-foldsign",
+	event = "CursorHold",
+	config = function()
+		require("nvim-foldsign").setup({
+			offset = -2,
+		})
+	end,
+	cond = false,
 })

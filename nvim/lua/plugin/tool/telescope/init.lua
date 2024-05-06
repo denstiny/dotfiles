@@ -46,3 +46,5 @@ telescope.setup({
 		parameter = { style = "italic" },
 	},
 })
+
+require("telescope").load_extension("persisted")

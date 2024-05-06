@@ -20,6 +20,7 @@ conform.setup({
 		lua = { "stylua" },
 		c = { "astyle" },
 		cpp = { "astyle" },
+		python = { "yapf" },
 	},
 
 	format_on_save = {
@@ -29,6 +30,11 @@ conform.setup({
 	},
 
 	formatters = {
+		yapf = {
+			args = {
+				"--style=pep8",
+			},
+		},
 		astyle = {
 			args = {
 				"--indent=spaces=4",

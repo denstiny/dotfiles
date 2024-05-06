@@ -83,13 +83,16 @@ U.nmap("cr", "<cmd>ImplementInSource<cr>")
 U.vmap("cr", '<Cmd>lua require("cppassist").ImplementInSourceInVisualMode<CR>')
 
 -- Git Link
-U.vmap(
-	"<leader>gb",
-	'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>'
-)
-U.nmap(
-	"<leader>gb",
-	'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>'
-)
+U.vmap("<leader>gy", '<cmd>lua require"gitlinker".get_buf_range_url("v", {})<cr>')
+U.nmap("<leader>gy", '<cmd>lua require"gitlinker".get_buf_range_url("n", {})<cr>')
 
 U.nmap("<Tab>", "za")
+U.nmap("da", "<Cmd>Telescope diagnostics<cr>")
+--U.nmap("<C-s>", "<Cmd>SessionSave<cr><Cmd>wall<cr><Cmd>echo 'Save '<cr>")
+local function save_session()
+	vim.cmd("SessionSave")
+	vim.cmd("wall")
+	local project = string.match(vim.fn.getcwd(), ".-([^\\/]*)$")
+	vim.notify("Save current project progress " .. project)
+end
+U.nmap("<C-s>", save_session)

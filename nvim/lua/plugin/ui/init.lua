@@ -16,6 +16,7 @@ plugin.add({
 		{ "dmitmel/cmp-digraphs" },
 		{ "f3fora/cmp-spell" },
 		{ "hrsh7th/cmp-nvim-lsp" },
+		{ "lukas-reineke/cmp-under-comparator" },
 	},
 	--event = "InsertEnter",
 	event = "LspAttach",
@@ -95,16 +96,18 @@ plugin.add({
 		require("plugin.tool.git")
 	end,
 	cmd = "Gitsigns",
+	event = "UiEnter",
 })
 
---plugin.add({
---	"petertriho/nvim-scrollbar",
---	desc = "滚动条",
---	config = function()
---		require("plugin.ui.scroll")
---	end,
---	event = { "BufReadPre", "BufNewFile" },
---})
+plugin.add({
+	"petertriho/nvim-scrollbar",
+	desc = "滚动条",
+	config = function()
+		require("plugin.ui.scroll.scrollbar")
+	end,
+	event = { "BufReadPre", "BufNewFile" },
+	--cond = false,
+})
 
 plugin.add({
 	"brenoprata10/nvim-highlight-colors",
@@ -199,14 +202,16 @@ plugin.add({
 	"dstein64/nvim-scrollview",
 	desc = "滚动条",
 	config = function()
-		require("plugin.ui.scroll")
+		require("plugin.ui.scroll.scrollview")
 	end,
 	event = { "BufReadPre", "BufNewFile" },
+	cond = false,
 })
 
 plugin.add({
 	"lukas-reineke/headlines.nvim",
 	config = false, -- or `opts = {}`
+	ft = { "*.md", "*.norg" },
 })
 
 plugin.add({
@@ -228,7 +233,19 @@ plugin.add({
 plugin.add({
 	"lewis6991/satellite.nvim",
 	config = function()
-		require("plugin.ui.scroll")
+		require("plugin.ui.scroll.satellite")
 	end,
 	cond = false,
+})
+
+plugin.add({
+	"folke/noice.nvim",
+	dependencies = {
+		"MunifTanjim/nui.nvim",
+		"rcarriga/nvim-notify",
+	},
+	config = function()
+		require("plugin.ui.noice")
+	end,
+	event = "UiEnter",
 })

@@ -136,6 +136,7 @@ cmp.setup({
 	},
 	sorting = {
 		comparators = {
+			require("cmp-under-comparator").under,
 			cmp.config.compare.score,
 			cmp.config.compare.exact,
 			cmp.config.compare.locality,

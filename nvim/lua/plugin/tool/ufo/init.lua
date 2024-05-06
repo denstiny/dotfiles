@@ -26,8 +26,6 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
 	table.insert(newVirtText, { suffix, "MoreMsg" })
 	return newVirtText
 end
-vim.g.Boo = ""
-vim.g.Forma = ""
 vim.o.foldcolumn = "1" -- '0' is not bad
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
@@ -117,7 +115,22 @@ cfg = {
 		},
 	},
 }
-
+cfg = {
+	setopt = true,
+	relculright = false,
+	ft_ignore = { "neo-tree", "NvimTree", "alpha", "undotree", "diff" },
+	segments = {
+		--{ text = { " ", builtin.foldfunc, " "}, click = "v:lua.ScFa" },
+		{ text = { "%s", "" }, click = "v:lua.ScSa" },
+		{ text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+		{
+			--text = { " ", builtin.foldfunc, " " }, -- also impact by the default setting for fillchars && foldcolumn
+			text = { "", builtin.foldfunc, " " }, -- also impact by the default setting for fillchars && foldcolumn
+			condition = { builtin.not_empty, true, builtin.not_empty },
+			click = "v:lua.ScFa",
+		},
+	},
+}
 require("statuscol").setup(cfg)
 require("ufo").setup()
 --
@@ -130,9 +143,9 @@ local ftMap = {
 	python = "",
 }
 require("ufo").setup({
-	provider_selector = function(bufnr, filetype)
-		return ftMap[filetype]
-	end,
+	--provider_selector = function(bufnr, filetype)
+	--	return ftMap[filetype]
+	--end,
 	open_fold_hl_timeout = 150,
 	close_fold_kinds_for_ft = {
 		default = { "imports", "comment" },

@@ -22,10 +22,12 @@ autocmd({ "WinEnter" }, {
 -- }}}
 
 --{{ 自动格式化
---autocmd({ "BufWrite" }, {
---	desc = "使用 formatter.nvim 格式化代码",
---	command = "Autoformat",
---})
+autocmd({ "BufWritePre" }, {
+	pattern = "*",
+	callback = function(args)
+		require("conform").format({ bufnr = args.buf })
+	end,
+}) --
 --}}}
 
 --{{
@@ -84,15 +86,15 @@ autocmd("UiEnter", {
 --	end,
 --})
 
-autocmd("BufReadPost", {
-	callback = function()
-		local mark = vim.api.nvim_buf_get_mark(0, '"')
-		local lcount = vim.api.nvim_buf_line_count(0)
-		if mark[1] > 0 and mark[1] <= lcount then
-			pcall(vim.api.nvim_win_set_cursor, 0, mark)
-		end
-	end,
-})
+--autocmd("BufReadPost", {
+--	callback = function()
+--		local mark = vim.api.nvim_buf_get_mark(0, '"')
+--		local lcount = vim.api.nvim_buf_line_count(0)
+--		if mark[1] > 0 and mark[1] <= lcount then
+--			pcall(vim.api.nvim_win_set_cursor, 0, mark)
+--		end
+--	end,
+--})
 
 autocmd({ "BufNewFile" }, { command = "TemplateInit" })
 
@@ -132,22 +134,18 @@ autocmd({ "BufEnter" }, {
 	end,
 })
 
-autocmd({ "BufWinLeave", "BufWrite", "BufLeave", "QuitPre" }, {
+autocmd({ "BufWinLeave" }, {
 	callback = function()
-		vim.cmd([[
-        set viewdir=~/.config/nvim/view
-        if !isdirectory($HOME.'/.config/nvim/view')
-          call mkdir($HOME.'/.config/nvim/view', 'p')
-        endif
-        ]])
 		if vim.bo.filetype ~= "" and vim.bo.buftype ~= "nofile" then
 			vim.cmd("silent! mkview")
 		end
 	end,
 })
 
-autocmd({ "BufWinEnter", "UiEnter" }, {
+autocmd({ "BufWinEnter" }, {
 	callback = function()
-		vim.cmd("silent! loadview")
+		if vim.bo.filetype ~= "" and vim.bo.buftype ~= "nofile" then
+			vim.cmd("silent! loadview")
+		end
 	end,
 })

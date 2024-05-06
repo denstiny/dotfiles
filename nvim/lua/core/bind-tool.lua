@@ -4,11 +4,18 @@ local fn = vim.fn
 -- Key mapping
 function U.map(mode, key, action, opts)
 	opts = vim.tbl_extend("keep", opts or {}, { noremap = true, silent = true, expr = false })
-	vim.api.nvim_set_keymap(mode, key, action, opts)
+	--vim.api.nvim_set_keymap(mode, key, action, opts)
+	vim.keymap.set(mode, key, action, opts)
 end
 
 function U.plugmap(mode, key, action, opts)
-	opts = vim.tbl_extend("keep", opts or {}, { noremap = not vim.startswith(action, "<Plug>") })
+	local nore
+	if type(action) == "function" then
+		nore = false
+	else
+		nore = not vim.startswith(action, "<Plug>")
+	end
+	opts = vim.tbl_extend("keep", opts or {}, { noremap = nore })
 	U.map(mode, key, action, opts)
 end
 

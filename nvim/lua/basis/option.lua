@@ -12,7 +12,7 @@ opt.number = true
 opt.numberwidth = 1
 opt.ruler = false
 opt.shortmess:append("sI")
-opt.viewoptions = "folds,cursor,curdir,options"
+opt.viewoptions = "folds,cursor"
 opt.signcolumn = "yes"
 opt.splitbelow = true
 opt.splitright = true
