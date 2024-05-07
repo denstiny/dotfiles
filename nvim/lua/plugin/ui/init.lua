@@ -55,6 +55,7 @@ plugin.add({
 		require("plugin.ui.winsep")
 	end,
 	event = { "WinNew" },
+	--cond = false,
 })
 
 plugin.add({
@@ -160,6 +161,7 @@ plugin.add({
 		require("plugin.ui.SmoothCursor")
 	end,
 	event = "UiEnter",
+	cond = false,
 })
 
 plugin.add({
@@ -248,4 +250,10 @@ plugin.add({
 		require("plugin.ui.noice")
 	end,
 	event = "UiEnter",
+})
+
+plugin.add({
+	"denstiny/orig.nvim",
+	opts = {},
+	cond = false,
 })

@@ -96,3 +96,9 @@ local function save_session()
 	vim.notify("Save current project progress " .. project)
 end
 U.nmap("<C-s>", save_session)
+
+U.nmap("<Leader>git", function()
+	local Terminal = require("toggleterm.terminal").Terminal
+	local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
+	lazygit:toggle()
+end)

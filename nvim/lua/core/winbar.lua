@@ -11,5 +11,5 @@ M.getFileName = function()
 end
 
 _G.status = M
-vim.o.winbar = "%{%v:lua.status.getFileName()%}"
+vim.o.winbar = "     %{%v:lua.status.getFileName()%}"
 return M

@@ -11,7 +11,7 @@ lspkind.init({
 	preset = "codicons",
 	symbol_map = {
 		Text = "",
-		Method = "",
+		Method = "",
 		Function = "",
 		Constructor = "",
 		Field = "",

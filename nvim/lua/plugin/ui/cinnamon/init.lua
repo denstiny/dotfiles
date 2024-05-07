@@ -8,7 +8,7 @@ require("cinnamon").setup({ -- KEYMAPS:
 	always_scroll = false, -- Scroll the cursor even when the window hasn't scrolled.
 	centered = true, -- Keep cursor centered in window when using window scrolling.
 	disabled = false, -- Disables the plugin.
-	default_delay = 7, -- The default delay (in ms) between each line when scrolling.
+	default_delay = 3, -- The default delay (in ms) between each line when scrolling.
 	hide_cursor = false, -- Hide the cursor while scrolling. Requires enabling termguicolors!
 	horizontal_scroll = true, -- Enable smooth horizontal scrolling when view shifts left or right.
 	max_length = -1, -- Maximum length (in ms) of a command. The line delay will be
@@ -30,6 +30,9 @@ vim.keymap.set({ "n", "x" }, "l", "<Cmd>lua Scroll('l', 0, 1)<CR>")
 vim.keymap.set({ "n", "x" }, "<Left>", "<Cmd>lua Scroll('h', 0, 1)<CR>")
 vim.keymap.set({ "n", "x" }, "<Right>", "<Cmd>lua Scroll('l', 0, 1)<CR>")
 vim.keymap.set("n", "zz", "<Cmd>lua Scroll('zz', 0, 1)<CR>")
+
+vim.keymap.set({ "n", "x" }, "b", "<Cmd>lua Scroll('b', 0, 1)<CR>")
+vim.keymap.set({ "n", "x" }, "e", "<Cmd>lua Scroll('e', 0, 1)<CR>")
 -- Start/end of file and line number movements:
 vim.keymap.set({ "n", "x" }, "gg", "<Cmd>lua Scroll('gg')<CR>")
 vim.keymap.set({ "n", "x" }, "G", "<Cmd>lua Scroll('G', 0, 1)<CR>")

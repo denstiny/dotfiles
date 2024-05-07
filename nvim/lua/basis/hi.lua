@@ -3,6 +3,7 @@ return function()
 hi @constructor gui=bold
 hi Normal guibg=None
 hi StatusLine guibg=bg
+hi StatusLineNC guibg=bg
 hi EndOfBuffer guifg=bg
 "hi LineNr      guibg=bg
 hi NormalFloat guibg=bg
