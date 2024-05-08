@@ -33,17 +33,17 @@ Mouse() {
   fi
 }
 
-Run() {
-  ls -a ~/ | grep shell$1 &> /dev/null
-  if [[ $? == 1 ]]; then
-    return 1
-  else
-    return 0
-  fi
-}
-
-while [[ Run ]]; do
-  Keyboard
-  Mouse
-  sleep 1
-done
+#Run() {
+#  ls -a ~/ | grep shell$1 &> /dev/null
+#  if [[ $? == 1 ]]; then
+#    return 1
+#  else
+#    return 0
+#  fi
+#}
+#
+#while [[ Run ]]; do
+#  Keyboard
+#  Mouse
+#  sleep 1
+#done

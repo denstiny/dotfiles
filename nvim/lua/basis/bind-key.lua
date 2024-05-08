@@ -99,6 +99,17 @@ U.nmap("<C-s>", save_session)
 
 U.nmap("<Leader>git", function()
 	local Terminal = require("toggleterm.terminal").Terminal
-	local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
+	local lazygit = Terminal:new({
+		cmd = "lazygit",
+		hidden = true,
+		direction = "float",
+		float_opts = {
+			height = 100,
+		},
+		on_open = function(arg)
+			vim.cmd("startinsert!")
+			--vim.api.nvim_buf_del_keymap(arg.buf, "i", "<esc>")
+		end,
+	})
 	lazygit:toggle()
 end)
