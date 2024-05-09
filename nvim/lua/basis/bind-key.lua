@@ -113,3 +113,6 @@ U.nmap("<Leader>git", function()
 	})
 	lazygit:toggle()
 end)
+
+U.nmap("]]", "zj")
+U.nmap("[[", "zk")

@@ -193,7 +193,11 @@ plugin.add({
 
 plugin.add({
 	"denstiny/color-patch.nvim",
-	dependencies = "rebelot/kanagawa.nvim",
+	dependencies = {
+		"rose-pine/neovim",
+		"rebelot/kanagawa.nvim",
+		--"AlexvZyl/nordic.nvim",
+	},
 	config = function()
 		require("plugin.ui.color-patch")
 	end,
