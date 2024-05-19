@@ -104,6 +104,7 @@ awful.popup({
 				step_width = 2,
 				step_spacing = 0,
 				color = "#4F5E68",
+				timeout = 0.03,
 			}),
 
 			margins = 1,

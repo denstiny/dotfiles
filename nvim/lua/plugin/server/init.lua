@@ -1,49 +1,5 @@
 local plugin = require("core.packers")
 
---plugin.add({
---	"neovim/nvim-lspconfig",
---	dependencies = {
---		{ "williamboman/mason.nvim", cmd = { "Mason" } },
---		{ "williamboman/mason-lspconfig.nvim" },
---		{ "microsoft/python-type-stubs" },
---	},
---	config = function()
---		require("plugin.server.lsp")
---	end,
---	cond = false,
---})
-
---plugin.add({
---	"junnplus/lsp-setup.nvim",
---	dependencies = {
---		"neovim/nvim-lspconfig",
---		"williamboman/mason.nvim", -- optional
---		"williamboman/mason-lspconfig.nvim", -- optional
---		--"simrat39/rust-tools.nvim",
---	},
---	config = function()
---		require("plugin.server.lsp-setup")
---	end,
---	event = "FileType",
---})
-
---plugin.add({
---	"mrcjkb/rustaceanvim",
---	ft = { "rust" },
---	version = "^4",
---	config = function()
---		require("plugin.server.lsp-setup.lsp.rust")
---	end,
---})
-
---plugin.add({
---	"ray-x/go.nvim",
---	ft = "go",
---	config = function()
---		require("plugin.server.lsp-setup.lsp.go")
---	end,
---})
-
 plugin.add({
 	"VonHeikemen/lsp-zero.nvim",
 	branch = "v3.x",
@@ -70,14 +26,6 @@ plugin.add({
 	},
 	event = "LspAttach",
 })
---plugin.add({
---	"ray-x/go.nvim",
---	ft = { "go", "gomod" },
---	build = ':lua require("go.install").update_all_sync()',
---	config = function()
---		require("plugin.server.lsp.go")
---	end,
---})
 
 plugin.add({
 	"nvim-treesitter/nvim-treesitter",
@@ -109,27 +57,4 @@ plugin.add({
 	"tzachar/cmp-tabnine",
 	build = "./install.sh",
 	lazy = true,
-	--cond = false,
 })
-
--- plugin.add({
--- 	"rcarriga/nvim-dap-ui",
--- 	dependencies = {
--- 		{ "mfussenegger/nvim-dap" },
--- 		{ "jayp0521/mason-nvim-dap.nvim" },
--- 		{ "p00f/clangd_extensions.nvim" },
--- 		{ "simrat39/rust-tools.nvim" },
--- 	},
--- 	config = function()
--- 		require("plugin.server.dap")
--- 	end,
--- 	cmd = {
--- 		"DapContinue",
--- 		"DapRestart",
--- 		"DapClose",
--- 		"DapToggleBreakpoint",
--- 		"DapStepOver",
--- 		"DapStepInto",
--- 		"DapToggleRepl",
--- 	},
--- })

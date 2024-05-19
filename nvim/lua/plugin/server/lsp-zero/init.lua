@@ -4,6 +4,7 @@ local handlers = require("plugin.server.lsp-zero.handlers")
 lsp_zero.on_attach(function(client, bufnr)
 	vim.lsp.inlay_hint.enable(true)
 	handlers.lsp_keymaps(bufnr)
+	require("plugin.ui.lsp_signature").attach(bufnr)
 end)
 
 vim.g.rustaceanvim = {

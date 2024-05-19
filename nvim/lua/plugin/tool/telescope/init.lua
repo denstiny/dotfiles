@@ -4,6 +4,8 @@ telescope.setup({
 		layout_config = {
 			vertical = { width = 0.5 },
 		},
+		prompt_prefix = "󰼛 ",
+		selection_caret = "󱞩 ",
 		-- Default configuration for telescope goes here:
 		-- config_key = value,
 		mappings = {
