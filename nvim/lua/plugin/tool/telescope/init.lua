@@ -48,3 +48,4 @@ telescope.setup({
 })
 
 require("telescope").load_extension("persisted")
+vim.api.nvim_create_user_command("Help", "Telescope help_tags", { bang = true })

@@ -10,7 +10,8 @@ rm ~/.shell.lok*
 # fi
 
 #feh --randomize --bg-fill ~/.dotfile/wallpaper/ &> /dev/null
-feh --randomize --bg-fill ~/.config/awesome/theme/wallpaper/ &> /dev/null
+#feh --randomize --bg-fill ~/.config/awesome/theme/wallpaper/ &> /dev/null
+feh --randomize --bg-fill ~/.config/awesome/theme/wallpaper/mei.jpg &> /dev/null
 lock=$$
 touch ~/.shell.lok$lock 
 echo "创建进程锁文件"
@@ -25,7 +26,7 @@ do
 		exit;
 	fi
     #feh --randomize --bg-fill ~/Imager/ &> /dev/null
-    feh --randomize --bg-fill ~/.config/awesome/theme/wallpaper/ &> /dev/null
+    feh --randomize --bg-fill ~/.config/awesome/theme/wallpaper/mei.jpg &> /dev/null
 	sleep 1000
 done
 wait

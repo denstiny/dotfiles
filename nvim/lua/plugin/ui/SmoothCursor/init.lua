@@ -8,20 +8,27 @@ require("smoothcursor").setup({
 		enable = true, -- enable fancy mode
 		head = { cursor = "ᐉ", texthl = "SmoothCursor", linehl = nil },
 		body = {
-			{ cursor = "", texthl = "SmoothCursorRed" },
-			{ cursor = "", texthl = "SmoothCursorOrange" },
-			{ cursor = "●", texthl = "SmoothCursorYellow" },
-			{ cursor = "●", texthl = "SmoothCursorGreen" },
-			{ cursor = "•", texthl = "SmoothCursorAqua" },
-			{ cursor = ".", texthl = "SmoothCursorBlue" },
-			{ cursor = ".", texthl = "SmoothCursorPurple" },
+			--{ cursor = "", texthl = "SmoothCursorRed" },
+			--{ cursor = "", texthl = "SmoothCursorOrange" },
+			--{ cursor = "●", texthl = "SmoothCursorYellow" },
+			--{ cursor = "●", texthl = "SmoothCursorGreen" },
+			--{ cursor = "•", texthl = "SmoothCursorAqua" },
+			--{ cursor = ".", texthl = "SmoothCursorBlue" },
+			--{ cursor = ".", texthl = "SmoothCursorPurple" },
+			{ cursor = "", texthl = "LineNr" },
+			{ cursor = "", texthl = "LineNr" },
+			{ cursor = "●", texthl = "LineNr" },
+			{ cursor = "●", texthl = "LineNr" },
+			{ cursor = "•", texthl = "LineNr" },
+			{ cursor = ".", texthl = "LineNr" },
+			{ cursor = ".", texthl = "LineNr" },
 		},
 		tail = { cursor = nil, texthl = "SmoothCursor" },
 	},
 	flyin_effect = nil, -- "bottom" or "top"
 	speed = 25, -- max is 100 to stick to your current position
 	intervals = 35, -- tick interval
-	priority = 10, -- set marker priority
+	priority = 30, -- set marker priority
 	timeout = 3000, -- timout for animation
 	threshold = 3, -- animate if threshold lines jump
 	disable_float_win = true, -- disable on float window

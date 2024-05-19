@@ -6,7 +6,7 @@ require("satellite").setup({
 	width = 2,
 	handlers = {
 		cursor = {
-			enable = false,
+			enable = true,
 			-- Supports any number of symbols
 			symbols = { "⎺", "⎻", "⎼", "⎽" },
 			-- symbols = { '⎻', '⎼' }
@@ -30,7 +30,7 @@ require("satellite").setup({
 			-- - SatelliteDiagnosticHint (default links to DiagnosticHint)
 		},
 		gitsigns = {
-			enable = true,
+			enable = false,
 			signs = { -- can only be a single character (multibyte is okay)
 				add = "│",
 				change = "│",

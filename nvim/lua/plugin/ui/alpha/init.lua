@@ -36,7 +36,7 @@ local greeting = getGreeting(userName)
 local greetHeading = {
 	type = "text",
 	val = greeting,
-	opts = { position = "center", hl = "String" },
+	opts = { position = "center", hl = "CmpPmenu" },
 }
 
 local function get_extension(fn)
@@ -195,7 +195,7 @@ local buttons = {
 		},
 		{ type = "padding", val = 1 },
 		dashboard.button(
-			"p",
+			"P",
 			" " .. " Find project",
 			":lua require('telescope').extensions.projects.projects()<CR>"
 		),
@@ -204,6 +204,7 @@ local buttons = {
 		dashboard.button("e", "  Edit None Buffer", ":enew<CR>"),
 		dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
 		dashboard.button("u", "  Update plugins", ":Lazy sync<CR>"),
+		dashboard.button("S", "  Session", ":Session<CR>"),
 		dashboard.button("q", "  Quit", ":q<CR>"),
 	},
 	position = "center",

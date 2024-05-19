@@ -20,7 +20,6 @@ opt.termguicolors = true
 opt.timeoutlen = 400
 opt.updatetime = 250
 opt.cursorline = false
-opt.laststatus = 3
 opt.mouse = "ni"
 opt.pumheight = 5
 opt.helpheight = 10
@@ -31,11 +30,21 @@ opt.guifont = "ComicCode Nerd Font:h13"
 opt.clipboard:prepend("unnamed")
 opt.swapfile = false
 opt.statusline = " "
+opt.laststatus = 3
 opt.guicursor = "i:ver20,n-v-sm:block,c-ci-ve:ver20,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor"
-opt.cmdheight = 1
-opt.wrap = false
+opt.cmdheight = 0
+opt.wrap = true
+opt.linebreak = true
 --opt.shortmess = "nocI"
 --opt.foldenable = true -- enable fold for nvim-ufo
 --opt.foldlevel = 99 -- set high foldlevel for nvim-ufo
 --opt.foldlevelstart = 99 -- start with all code unfolded
 --opt.foldcolumn = vim.fn.has("nvim-0.9") == 1 and "1" or nil -- show foldcolumn in nvim 0.9
+opt.shiftwidth = 2
+opt.tabstop = 2
+opt.breakat:append({ "，", "、", "。", "？" })
+
+if vim.g.neovide then
+	vim.o.linespace = 30
+	vim.g.neovide_floating_shaddow = false
+end

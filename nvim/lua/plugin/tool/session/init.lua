@@ -1,9 +1,9 @@
 require("persisted").setup({
 	save_dir = vim.fn.expand(vim.fn.stdpath("data") .. "/sessions/"), -- directory where session files are saved
-	silent = false, -- silent nvim message when sourcing session file
-	use_git_branch = false, -- create session files based on the branch of a git enabled repository
+	silent = true, -- silent nvim message when sourcing session file
+	use_git_branch = true, -- create session files based on the branch of a git enabled repository
 	default_branch = "main", -- the branch to load if a session file is not found for the current branch
-	autosave = false, -- automatically save session files when exiting Neovim
+	autosave = true, -- automatically save session files when exiting Neovim
 	should_autosave = nil, -- function to determine if a session should be autosaved
 	autoload = false, -- automatically load the session for the cwd on Neovim startup
 	on_autoload_no_session = nil, -- function to run when `autoload = true` but there is no session to load
@@ -24,9 +24,9 @@ require("persisted").setup({
 			selected = " ",
 		},
 	},
-	before_save = function()
-		vim.cmd("NvimTreeClose")
-	end,
+	--before_save = function()
+	--	vim.cmd("NvimTreeClose")
+	--end,
 })
 
 vim.api.nvim_create_autocmd({ "User" }, {
@@ -36,12 +36,15 @@ vim.api.nvim_create_autocmd({ "User" }, {
 		for _, buf in ipairs(bufs) do
 			local filename = vim.api.nvim_buf_get_name(buf) -- 获取 buffer 的文件名
 			filename = vim.fn.fnamemodify(filename, ":t") -- 从完整路径中提取文件名
+			local filetype = vim.api.nvim_buf_get_option(buf, "filetype")
 			if filename == "NvimTree_1" then
 				local status_ok, api = pcall(require, "nvim-tree.api")
 				if not status_ok then
 					return
 				end
-				api.tree.toggle({ focus = false, find_file = true })
+				if filetype ~= "NvimTree" then
+					api.tree.toggle({ focus = false, find_file = true })
+				end
 			end
 		end
 	end,
@@ -52,3 +55,4 @@ vim.api.nvim_create_autocmd({ "User" }, {
 --		vim.cmd("SessionSave")
 --	end,
 --})
+vim.api.nvim_create_user_command("Session", "Telescope persisted", { bang = true })

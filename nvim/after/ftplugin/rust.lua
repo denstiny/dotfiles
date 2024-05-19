@@ -1,0 +1,11 @@
+local opts = { noremap = true, silent = true }
+local bufnr = vim.api.nvim_get_current_buf()
+vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
+vim.api.nvim_buf_set_keymap(bufnr, "n", "vgd", "<cmd>Lspsaga peek_definition<CR>", opts)
+vim.api.nvim_buf_set_keymap(bufnr, "n", "gh", "<cmd>Lspsaga hover_doc<CR>", opts)
+vim.api.nvim_buf_set_keymap(bufnr, "n", "mr", "<cmd>Lspsaga rename<CR>", opts)
+vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>Lspsaga lsp_finder<cr>", opts)
+vim.api.nvim_buf_set_keymap(bufnr, "n", "<A-cr>", "<cmd>Lspsaga code_action<CR>", opts)
+vim.api.nvim_buf_set_keymap(bufnr, "n", "gp", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+vim.api.nvim_buf_set_keymap(bufnr, "n", "gn", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
+vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)

@@ -1,7 +1,8 @@
 {
-  "--{}":{
-      "prefix": "--{}",
-      "body" : ["--{{ $1","$2","--}}"],
-      "description": "annotation"
+  "print": {
+    "prefix": "print",
+    "body": [
+      "print(string.format(\"${1:str}\",${2:...}))"
+    ]
   }
 }

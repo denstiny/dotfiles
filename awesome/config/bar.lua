@@ -12,8 +12,6 @@ local dpi = require("beautiful.xresources").apply_dpi
 local hotkeys_popup = require("awful.hotkeys_popup")
 local bling = require("bling")
 
-beautiful.init(gfs.get_configuration_dir() .. "theme/theme.lua")
-
 -- Bling Setting
 
 bling.widget.task_preview.enable({
@@ -164,7 +162,7 @@ awful.screen.connect_for_each_screen(function(s)
 			spacing_widget = {
 				{
 					forced_width = 2,
-					color = "#3f4859",
+					color = theme.popup_border_color,
 					shape = gears.shape.rounded_bar,
 					widget = wibox.widget.separator,
 				},
@@ -224,9 +222,10 @@ awful.screen.connect_for_each_screen(function(s)
 		height = 35,
 		width = 900,
 		stretch = false,
-		bg = "#1A1B26", -- bar bg color
+		bg = theme.popup_border_color, -- bar bg color
+		fg = theme.popup_fg,
 		border_width = 0,
-		border_color = "#3f4859",
+		border_color = theme.popup_border_color,
 	})
 
 	s.wibar.y = 20

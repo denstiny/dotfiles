@@ -11,6 +11,13 @@ local function on_backlist(filetype)
 	return false
 end
 
+autocmd({ "BufWinEnter" }, {
+	group = "userconfig",
+	desc = "return cursor to where it was last time closing the file",
+	pattern = "*",
+	command = 'silent! normal! g`"zv',
+})
+
 autocmd({ "WinEnter" }, {
 	callback = function(opt)
 		local filetype = vim.api.nvim_buf_get_option(opt.buf, "filetype")
@@ -43,29 +50,29 @@ autocmd({ "LspAttach" }, { command = [[set formatoptions-=cro]] })
 ---}}}
 
 --- {{{ treesitter lazy load
-autocmd({ "FileType", "BufNewFile" }, {
-	callback = function(opt)
-		if opt.event == "BufNewFile" then
-			vim.cmd("TSEnable highlight")
-			vim.cmd("TSEnable rainbow")
-			return
-		end
-		local max_filesize = 50 * 1024 -- 50 KB
-		local status, stat = pcall(vim.loop.fs_stat, opt.file)
-		if status and stat then
-			if stat.size > max_filesize then
-				vim.defer_fn(function()
-					vim.cmd("TSEnable highlight")
-				end, 0)
-			else
-				vim.cmd("TSEnable highlight")
-			end
-			--vim.defer_fn(function()
-			--	vim.cmd("TSEnable rainbow")
-			--end, 0)
-		end
-	end,
-})
+--autocmd({ "FileType", "BufNewFile" }, {
+--	callback = function(opt)
+--		if opt.event == "BufNewFile" then
+--			vim.cmd("TSEnable highlight")
+--			vim.cmd("TSEnable rainbow")
+--			return
+--		end
+--		local max_filesize = 50 * 1024 -- 50 KB
+--		local status, stat = pcall(vim.loop.fs_stat, opt.file)
+--		if status and stat then
+--			if stat.size > max_filesize then
+--				vim.defer_fn(function()
+--					vim.cmd("TSEnable highlight")
+--				end, 0)
+--			else
+--				vim.cmd("TSEnable highlight")
+--			end
+--			--vim.defer_fn(function()
+--			--	vim.cmd("TSEnable rainbow")
+--			--end, 0)
+--		end
+--	end,
+--})
 
 autocmd("UiEnter", {
 	callback = function()
@@ -134,18 +141,18 @@ autocmd({ "BufEnter" }, {
 	end,
 })
 
-autocmd({ "BufWinLeave" }, {
-	callback = function()
-		if vim.bo.filetype ~= "" and vim.bo.buftype ~= "nofile" then
-			vim.cmd("silent! mkview")
-		end
-	end,
-})
-
-autocmd({ "BufWinEnter" }, {
-	callback = function()
-		if vim.bo.filetype ~= "" and vim.bo.buftype ~= "nofile" then
-			vim.cmd("silent! loadview")
-		end
-	end,
-})
+-- autocmd({ "BufWinLeave" }, {
+-- 	callback = function()
+-- 		if vim.bo.filetype ~= "" and vim.bo.buftype ~= "nofile" then
+-- 			vim.cmd("silent! mkview")
+-- 		end
+-- 	end,
+-- })
+--
+-- autocmd({ "BufWinEnter" }, {
+-- 	callback = function()
+-- 		if vim.bo.filetype ~= "" and vim.bo.buftype ~= "nofile" then
+-- 			vim.cmd("silent! loadview")
+-- 		end
+-- 	end,
+-- })

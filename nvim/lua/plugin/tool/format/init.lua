@@ -27,6 +27,7 @@ conform.setup({
 		-- I recommend these options. See :help conform.format for details.
 		lsp_fallback = true,
 		timeout_ms = 500,
+		quiet = true,
 	},
 
 	formatters = {
@@ -37,7 +38,7 @@ conform.setup({
 		},
 		astyle = {
 			args = {
-				"--indent=spaces=4",
+				"--indent=spaces=2",
 				"--max-code-length=80",
 				"-xW",
 				"-A2",

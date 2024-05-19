@@ -16,7 +16,7 @@ configuration{
     sidebar-mode: true;
 }
 
-@theme "catppuccin"
+@theme "latte"
 
 element-text, element-icon , mode-switcher {
     background-color: inherit;

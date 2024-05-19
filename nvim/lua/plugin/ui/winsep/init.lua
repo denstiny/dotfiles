@@ -1,7 +1,8 @@
 local colorful_winsep = require("colorful-winsep")
 colorful_winsep.setup({
 	hi = {
-		fg = "#E6C384",
+		--fg = "#353535",
+		fg = "#9A95C1",
 	},
 	symbols = { "─", "│", "┌", "┐", "└", "┘" },
 	--smooth = false,

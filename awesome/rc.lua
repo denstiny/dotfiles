@@ -9,8 +9,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local bling = require("bling")
-
-beautiful.init(gfs.get_configuration_dir() .. "theme/theme.lua")
 require("awful.autofocus")
 require("awful.hotkeys_popup.keys")
 --require("config.titlebar")
@@ -18,9 +16,18 @@ require("config.key")
 require("config.bar")
 require("config.menu")
 require("signal")
+local dpi = require("beautiful.xresources").apply_dpi
 
 bling.module.flash_focus.enable()
-
+--naughty.config.defaults = {
+--	notification_max_height = 200,
+--	notification_max_width = 200,
+--	timeout = 5,
+--	text = "",
+--	screen = nil,
+--	ontop = true,
+--	position = "top_right",
+--}
 if awesome.startup_errors then
 	naughty.notify({
 		preset = naughty.config.presets.critical,
@@ -29,8 +36,7 @@ if awesome.startup_errors then
 	})
 end
 
-local theme_path = string.format("%s/.config/awesome/theme/theme.lua", os.getenv("HOME"), "default")
-beautiful.init(theme_path)
+beautiful.init(gfs.get_configuration_dir() .. "theme/theme.lua")
 
 awful.spawn.with_shell("bash ~/.config/awesome/shell/autostart.sh")
 -- keyd have issue in here
@@ -228,3 +234,18 @@ client.connect_signal("property::floating", function(c)
 	--  c.border_width = 0
 	--end
 end)
+
+--------------------------
+-- NAUGHTY CONFIGURATION
+--------------------------
+naughty.config.defaults.ontop = true
+naughty.config.defaults.icon_size = 300
+naughty.config.defaults.timeout = 10
+naughty.config.defaults.hover_timeout = 300
+naughty.config.defaults.title = "system"
+naughty.config.defaults.margin = 4
+naughty.config.defaults.border_width = 0
+naughty.config.defaults.position = "top_right"
+naughty.config.defaults.shape = function(cr, w, h)
+	gears.shape.rounded_rect(cr, w, h, dpi(6))
+end

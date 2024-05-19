@@ -15,6 +15,7 @@ plugin.add({
 		require("plugin.tool.autopairs")
 	end,
 	event = "InsertEnter",
+	cond = true,
 })
 
 --plugin.add({
@@ -53,14 +54,14 @@ plugin.add({
 	cmd = "TemplateInit",
 })
 
-plugin.add({
-	"ggandor/leap.nvim",
-	desc = "快速移动",
-	config = function()
-		require("plugin.tool.leap")
-	end,
-	event = { "UiEnter" },
-})
+--plugin.add({
+--	"ggandor/leap.nvim",
+--	desc = "快速移动",
+--	config = function()
+--		require("plugin.tool.leap")
+--	end,
+--	event = { "UiEnter" },
+--})
 
 plugin.add({
 	"iamcco/markdown-preview.nvim",
@@ -96,7 +97,7 @@ plugin.add({
 	config = function()
 		require("plugin.tool.lspaga")
 	end,
-	commit = "3654252",
+	--commit = "3654252",
 	event = "LspAttach",
 })
 
@@ -197,7 +198,6 @@ plugin.add({
 	"kevinhwang91/nvim-ufo",
 	dependencies = {
 		"kevinhwang91/promise-async",
-		"luukvbaal/statuscol.nvim",
 	},
 	event = "UiEnter",
 	config = function()
@@ -239,4 +239,62 @@ plugin.add({
 		})
 	end,
 	cond = false,
+})
+
+plugin.add({
+	"ahmedkhalf/project.nvim",
+	config = function()
+		require("project_nvim").setup({})
+	end,
+	event = "UiEnter",
+})
+
+plugin.add({
+	"gnikdroy/projections.nvim",
+	config = function()
+		require("plugin.tool.projects")
+	end,
+	branch = "pre_release",
+	cond = false,
+})
+
+plugin.add({
+	"abecodes/tabout.nvim",
+	config = function()
+		require("plugin.tool.tabout")
+	end,
+	event = "InsertEnter",
+})
+
+plugin.add({
+	"ziontee113/syntax-tree-surfer",
+	config = function()
+		require("plugin.tool.surfer")
+	end,
+	keys = {
+		{ "vU", mode = "n" },
+		{ "vD", mode = "n" },
+		{ "vd", mode = "n" },
+		{ "vd", mode = "n" },
+		{ "vu", mode = "n" },
+		{ "vx", mode = "n" },
+		{ "vn", mode = "n" },
+		{ "J", mode = "x" },
+		{ "K", mode = "x" },
+		{ "H", mode = "x" },
+		{ "L", mode = "x" },
+		{ "<A-j>", mode = "x" },
+		{ "<A-K>", mode = "x" },
+	},
+})
+
+plugin.add({
+	"folke/flash.nvim",
+	event = "VeryLazy",
+	opts = {},
+  -- stylua: ignore
+  keys = {
+    { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+    { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+  },
 })

@@ -6,21 +6,23 @@ local naughty = require("naughty")
 local awful = require("awful")
 local gears = require("gears")
 local gfs = require("gears.filesystem")
-local cpu = require("signal.pcpu")
+local cpu = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 local theme = require("theme.theme")
 
 -- battery widget
 local battery_progress = wibox.widget({
-	color = "#434C5E",
-	background_color = "#00000000",
-	forced_width = dpi(28),
+	color = theme.popup_fg,
+	background_color = theme.popup_bg,
+	forced_width = dpi(31),
 	border_width = dpi(1),
-	border_color = "#615D76",
-	paddings = dpi(3),
+	paddings = dpi(5),
 	value = 70,
 	max_value = 100,
-	margins = dpi(3),
+	clip = false,
+	margins = dpi(1),
 	widget = wibox.widget.progressbar,
+	bar_shape = gears.shape.rounded_rect,
+	shape = gears.shape.rounded_rect,
 })
 
 local separated = function(var, width)
@@ -40,7 +42,7 @@ awful.popup({
 			separated("电量", 60),
 			{
 				value = 2,
-				forced_height = 13,
+				forced_height = 23,
 				forced_width = 100,
 				shape = gears.shape.rounded_bar,
 				widget = battery_progress,
@@ -52,11 +54,13 @@ awful.popup({
 		margins = 0,
 		widget = wibox.container.margin,
 	},
-	border_color = "#1A1B26",
+	border_color = theme.popup_border_color,
+	fg = theme.popup_text_color,
 	border_width = 5,
 	placement = function(c)
 		awful.placement.bottom_right(c, { margins = dpi(7) })
 	end,
+	margins = 0,
 	shape = gears.shape.rounded_rect,
 	visible = true,
 })
@@ -64,7 +68,7 @@ awful.popup({
 -- update battery widget data
 awesome.connect_signal("signal::battery", function(value)
 	battery_progress.value = value
-	battery_progress.border_color = "#638388"
+	battery_progress.border_color = theme.popup_border_color
 	--if value < 70 and value > 50 then
 	--	battery_progress.border_color = "#BDE51A"
 	--elseif value < 50 and value > 30 then
@@ -80,9 +84,9 @@ end)
 
 awesome.connect_signal("signal::charger", function(charger)
 	if charger then
-		battery_progress.border_color = "#908CAA"
+		battery_progress.border_color = theme.popup_border_color
 	else
-		battery_progress.border_color = "#615D76"
+		battery_progress.border_color = theme.popup_border_color
 	end
 end)
 
@@ -99,7 +103,7 @@ awful.popup({
 				width = 155,
 				step_width = 2,
 				step_spacing = 0,
-				color = "#434c5e",
+				color = "#4F5E68",
 			}),
 
 			margins = 1,
@@ -110,7 +114,6 @@ awful.popup({
 		margins = 1,
 		widget = wibox.container.margin,
 	},
-	--border_color = '#1A1B26',
 	border_width = 0,
 	placement = function(c)
 		awful.placement.top_left(c, { margins = { left = dpi(20), top = dpi(20) } })
@@ -121,16 +124,18 @@ awful.popup({
 
 -- screen brightness widget
 local brightness_progress = wibox.widget({
-	color = "#434C5E",
-	background_color = "#00000000",
-	forced_width = dpi(28),
+	color = theme.popup_fg,
+	background_color = theme.popup_bg,
+	forced_width = dpi(31),
 	border_width = dpi(1),
-	border_color = "#615D76",
-	paddings = dpi(3),
+	paddings = dpi(5),
 	value = 70,
-	margins = dpi(3),
+	clip = false,
+	margins = dpi(1),
 	max_value = 100,
 	widget = wibox.widget.progressbar,
+	bar_shape = gears.shape.rounded_rect,
+	shape = gears.shape.rounded_rect,
 })
 
 -- show screen brightness widget
@@ -140,7 +145,7 @@ awful.popup({
 			separated("亮度", 50),
 			{
 				value = 2,
-				forced_height = 13,
+				forced_height = 23,
 				forced_width = 100,
 				shape = gears.shape.rounded_bar,
 				widget = brightness_progress,
@@ -152,7 +157,8 @@ awful.popup({
 		margins = 0,
 		widget = wibox.container.margin,
 	},
-	border_color = "#1A1B26",
+	border_color = theme.popup_border_color,
+	fg = theme.popup_text_color,
 	border_width = 5,
 	placement = function(c)
 		awful.placement.bottom_right(c, { margins = { right = dpi(250), bottom = dpi(7) } })
@@ -168,15 +174,17 @@ end)
 
 --  Sound the widget
 local voice_progress = wibox.widget({
-	color = "#434C5E",
-	background_color = "#00000000",
-	forced_width = dpi(28),
+	color = theme.popup_fg,
+	background_color = theme.popup_bg,
+	forced_width = dpi(31),
 	border_width = dpi(1),
-	border_color = "#615D76",
-	paddings = dpi(3),
+	clip = false,
+	paddings = dpi(5),
+	bar_shape = gears.shape.rounded_rect,
+	shape = gears.shape.rounded_rect,
 	value = 70,
 	max_value = 100,
-	margins = dpi(3),
+	margins = dpi(1),
 	widget = wibox.widget.progressbar,
 })
 
@@ -186,10 +194,9 @@ awful.popup({
 		{
 			separated("音量", 50),
 			{
-				value = 70,
-				forced_height = 10,
+				value = 71,
+				forced_height = 23,
 				forced_width = 100,
-				shape = gears.shape.rounded_bar,
 				widget = voice_progress,
 			},
 			margins = 1,
@@ -199,7 +206,8 @@ awful.popup({
 		margins = 0,
 		widget = wibox.container.margin,
 	},
-	border_color = "#1A1B26",
+	border_color = theme.popup_border_color,
+	fg = theme.popup_text_color,
 	border_width = 5,
 	placement = function(c)
 		awful.placement.bottom_right(c, { margins = { right = dpi(500), bottom = dpi(7) } })
@@ -212,8 +220,8 @@ awful.popup({
 awesome.connect_signal("signal::volume", function(volume_int, muted)
 	voice_progress.value = volume_int
 	if muted then
-		voice_progress.color = "#b3b3b5"
+		voice_progress.color = theme.popup_bg
 	else
-		voice_progress.color = "#434C5E"
+		voice_progress.color = theme.popup_fg
 	end
 end)

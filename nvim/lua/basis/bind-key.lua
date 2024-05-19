@@ -47,7 +47,7 @@ U.nmap("L", "<Cmd>UndotreeToggle<cr>")
 --  Async Task
 U.nmap("<Leader>r", "<Cmd>AsyncTask file-run<cr>")
 U.nmap("<Leader>d", "<Cmd>AsyncTask file-build<cr>")
-U.nmap("<Leader>t", "<cmd>AsyncTask file-test<cr>")
+U.nmap("<Leader>t", "<cmd>AsyncTask project-test<cr>")
 U.nmap("<Leader>p", "<cmd>AsyncTask project-run<cr>")
 
 U.nmap("gf", "<Cmd>e <cfile><Cr>")
@@ -116,3 +116,5 @@ end)
 
 U.nmap("]]", "zj")
 U.nmap("[[", "zk")
+-- Session
+U.nmap("S", "<Cmd>Session<cr>")

@@ -10,18 +10,54 @@ local plugin = require("core.packers")
 --	config = function()
 --		require("plugin.server.lsp")
 --	end,
+--	cond = false,
+--})
+
+--plugin.add({
+--	"junnplus/lsp-setup.nvim",
+--	dependencies = {
+--		"neovim/nvim-lspconfig",
+--		"williamboman/mason.nvim", -- optional
+--		"williamboman/mason-lspconfig.nvim", -- optional
+--		--"simrat39/rust-tools.nvim",
+--	},
+--	config = function()
+--		require("plugin.server.lsp-setup")
+--	end,
+--	event = "FileType",
+--})
+
+--plugin.add({
+--	"mrcjkb/rustaceanvim",
+--	ft = { "rust" },
+--	version = "^4",
+--	config = function()
+--		require("plugin.server.lsp-setup.lsp.rust")
+--	end,
+--})
+
+--plugin.add({
+--	"ray-x/go.nvim",
+--	ft = "go",
+--	config = function()
+--		require("plugin.server.lsp-setup.lsp.go")
+--	end,
 --})
 
 plugin.add({
-	"junnplus/lsp-setup.nvim",
+	"VonHeikemen/lsp-zero.nvim",
+	branch = "v3.x",
 	dependencies = {
-		"neovim/nvim-lspconfig",
-		"williamboman/mason.nvim", -- optional
-		"williamboman/mason-lspconfig.nvim", -- optional
-		"simrat39/rust-tools.nvim",
+		{ "neovim/nvim-lspconfig" },
+		{ "hrsh7th/cmp-nvim-lsp" },
+		{ "hrsh7th/nvim-cmp" },
+		{ "L3MON4D3/LuaSnip" },
+		{ "williamboman/mason.nvim" },
+		{ "williamboman/mason-lspconfig.nvim" },
+		{ "mrcjkb/rustaceanvim" },
 	},
 	config = function()
-		require("plugin.server.lsp-setup")
+		require("plugin.server.lsp-zero")
 	end,
 	event = "FileType",
 })

@@ -1,6 +1,6 @@
 return function()
 	vim.cmd([[
-        hi Normal guibg=#000000
+        "hi Normal guibg=#000000
         hi StatusLine guibg=bg
         hi EndOfBuffer guifg=bg
         "hi LineNr      guibg=bg guifg=bg

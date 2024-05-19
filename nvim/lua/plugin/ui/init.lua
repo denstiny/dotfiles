@@ -107,7 +107,7 @@ plugin.add({
 		require("plugin.ui.scroll.scrollbar")
 	end,
 	event = { "BufReadPre", "BufNewFile" },
-	--cond = false,
+	cond = false,
 })
 
 plugin.add({
@@ -161,7 +161,6 @@ plugin.add({
 		require("plugin.ui.SmoothCursor")
 	end,
 	event = "UiEnter",
-	cond = false,
 })
 
 plugin.add({
@@ -202,6 +201,53 @@ plugin.add({
 		require("plugin.ui.color-patch")
 	end,
 	event = "UiEnter",
+	cond = false,
+})
+
+plugin.add({
+	"mcchrish/zenbones.nvim",
+	dependencies = {
+		"rktjmp/lush.nvim",
+	},
+	config = function()
+		vim.opt.termguicolors = true
+		vim.opt.background = "light"
+		vim.cmd("colorscheme zenbones")
+		require("core.chronus-theme")()
+		vim.cmd("hi NoiceCmdlinePopupBorder guifg=#786D68")
+		vim.cmd("hi NoiceCmdlinePopupTitle guifg=#786d68")
+		vim.cmd("hi NoiceCmdlineIcon guifg=#44525b")
+		vim.cmd("hi WinBar guibg=bg")
+		vim.cmd("hi WinBarNC guibg=bg")
+		vim.cmd("hi SmoothCursor guifg=#2C363C")
+		vim.cmd("hi CocSearch guibg=bg guifg=#2C363C gui=bold")
+	end,
+	cond = true,
+	--event = "UiEnter",
+	priority = 1000,
+})
+
+plugin.add({
+	"Verf/deepwhite.nvim",
+	config = function()
+		vim.opt.termguicolors = true
+		vim.opt.background = "light"
+		vim.cmd("colorscheme deepwhite")
+		--require("core.chronus-theme")()
+		vim.cmd("hi NoiceCmdlinePopupBorder guifg=#786D68")
+		vim.cmd("hi NoiceCmdlinePopupTitle guifg=#786d68")
+		vim.cmd("hi NoiceCmdlineIcon guifg=#44525b")
+		vim.cmd("hi ErrorMsg guifg=#a60000 guibg=bg")
+		vim.cmd("hi WarningMsg guifg=#f27900 guibg=bg")
+		vim.cmd("hi WinSeparator guifg=#888888")
+		vim.cmd("hi link LspInlayHint ColorColumn  ")
+		vim.cmd("hi WinBar guibg=bg")
+		vim.cmd("hi WinBarNC guibg=bg")
+		--vim.cmd("hi FoldColumn guifg=#999791")
+	end,
+	lazy = false,
+	priority = 1000,
+	cond = false,
 })
 
 plugin.add({
@@ -233,6 +279,7 @@ plugin.add({
 	config = function()
 		require("plugin.ui.cinnamon")
 	end,
+	cond = false,
 	event = "UiEnter",
 })
 
@@ -241,7 +288,7 @@ plugin.add({
 	config = function()
 		require("plugin.ui.scroll.satellite")
 	end,
-	cond = false,
+	event = "UiEnter",
 })
 
 plugin.add({
@@ -260,4 +307,37 @@ plugin.add({
 	"denstiny/orig.nvim",
 	opts = {},
 	cond = false,
+})
+
+plugin.add({
+	"chentoast/marks.nvim",
+	config = function()
+		require("plugin.ui.marks")
+	end,
+	event = "UiEnter",
+	cond = false,
+})
+
+plugin.add({
+	"denstiny/styledoc.nvim",
+	dependencies = {
+		"nvim-treesitter/nvim-treesitter",
+		"vhyrro/luarocks.nvim",
+		"3rd/image.nvim",
+	},
+	config = function()
+		require("plugin.ui.styledoc")
+	end,
+	ft = "markdown",
+})
+
+plugin.add({
+	"ray-x/lsp_signature.nvim",
+	lazy = true,
+})
+
+plugin.add({
+	"luukvbaal/statuscol.nvim",
+	branch = "0.10",
+	lazy = true,
 })

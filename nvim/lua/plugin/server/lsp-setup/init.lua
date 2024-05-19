@@ -42,24 +42,9 @@ require("lsp-setup").setup({
 		["texlab"] = {},
 		["jsonls"] = {},
 		["clangd"] = req("lsp.clangd"),
-		["gopls"] = {},
-		["rust_analyzer"] = function()
-			require("rust-tools").setup({
-				server = {
-					settings = {
-						["rust-analyzer"] = {
-							cargo = {
-								loadOutDirsFromCheck = true,
-							},
-							procMacro = {
-								enable = true,
-							},
-						},
-					},
-				},
-			})
-			-- no need to return anything
-		end,
+		["gopls"] = req("lsp.gopls"),
+		["golangci_lint_ls"] = {},
+		--["rust_analyzer"] = {},
 		["volar"] = {},
 	},
 })
