@@ -50,29 +50,29 @@ autocmd({ "LspAttach" }, { command = [[set formatoptions-=cro]] })
 ---}}}
 
 --- {{{ treesitter lazy load
---autocmd({ "FileType", "BufNewFile" }, {
---	callback = function(opt)
---		if opt.event == "BufNewFile" then
---			vim.cmd("TSEnable highlight")
---			vim.cmd("TSEnable rainbow")
---			return
---		end
---		local max_filesize = 50 * 1024 -- 50 KB
---		local status, stat = pcall(vim.loop.fs_stat, opt.file)
---		if status and stat then
---			if stat.size > max_filesize then
---				vim.defer_fn(function()
---					vim.cmd("TSEnable highlight")
---				end, 0)
---			else
---				vim.cmd("TSEnable highlight")
---			end
---			--vim.defer_fn(function()
---			--	vim.cmd("TSEnable rainbow")
---			--end, 0)
---		end
---	end,
---})
+autocmd({ "FileType" }, {
+	callback = function(opt)
+		if opt.event == "BufNewFile" then
+			vim.cmd("TSEnable highlight")
+			vim.cmd("TSEnable rainbow")
+			return
+		end
+		local max_filesize = 50 * 1024 -- 50 KB
+		local status, stat = pcall(vim.loop.fs_stat, opt.file)
+		if status and stat then
+			if stat.size > max_filesize then
+				vim.defer_fn(function()
+					vim.cmd("TSEnable highlight")
+				end, 0)
+			else
+				vim.cmd("TSEnable highlight")
+			end
+			--vim.defer_fn(function()
+			--	vim.cmd("TSEnable rainbow")
+			--end, 0)
+		end
+	end,
+})
 
 autocmd("UiEnter", {
 	callback = function()

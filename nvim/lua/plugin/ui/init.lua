@@ -146,6 +146,15 @@ plugin.add({
 		require("plugin.ui.indent-blankline")
 	end,
 	event = "UiEnter",
+	cond = true,
+})
+
+plugin.add({
+	"nvimdev/indentmini.nvim",
+	config = function()
+		require("indentmini").setup() -- use default config
+	end,
+	cond = false,
 })
 
 plugin.add({
@@ -223,6 +232,7 @@ plugin.add({
 		vim.cmd("hi CocSearch guibg=bg guifg=#2C363C gui=bold")
 	end,
 	cond = false,
+	lazy = false,
 	--event = "UiEnter",
 	priority = 1000,
 })
@@ -240,14 +250,12 @@ plugin.add({
 		vim.cmd("hi ErrorMsg guifg=#a60000 guibg=bg")
 		vim.cmd("hi WarningMsg guifg=#f27900 guibg=bg")
 		vim.cmd("hi WinSeparator guifg=#888888")
-		vim.cmd("hi link LspInlayHint ColorColumn")
 		vim.cmd("hi WinBar guibg=bg")
 		vim.cmd("hi WinBarNC guibg=bg")
 		vim.cmd("hi SmoothCursor guifg=#2C363C")
 
 		--vim.cmd("hi FoldColumn guifg=#999791")
 	end,
-	lazy = false,
 	priority = 1000,
 	cond = true,
 })
@@ -318,19 +326,6 @@ plugin.add({
 	end,
 	event = "UiEnter",
 	cond = false,
-})
-
-plugin.add({
-	"denstiny/styledoc.nvim",
-	dependencies = {
-		"nvim-treesitter/nvim-treesitter",
-		"vhyrro/luarocks.nvim",
-		"3rd/image.nvim",
-	},
-	config = function()
-		require("plugin.ui.styledoc")
-	end,
-	ft = "markdown",
 })
 
 plugin.add({

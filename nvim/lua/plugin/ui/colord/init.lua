@@ -1,6 +1,7 @@
 local highlight_color = require("nvim-highlight-colors")
 highlight_color.setup({
-	render = "background", -- or 'foreground' or 'first_column'
+	render = "virtual", -- or 'foreground' or 'first_column'
+	virtual_symbol = "■",
 	enable_named_colors = true,
-	enable_tailwind = false,
+	enable_tailwind = true,
 })

@@ -38,7 +38,7 @@ plugin.add({
 		require("plugin.server.treesitter")
 	end,
 	cmd = { "TSEnable", "TSInstall", "TSInstallInfo", "TSModuleInfo" },
-	cond = true,
+	--cond = true,
 })
 
 plugin.add({

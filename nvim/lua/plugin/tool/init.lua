@@ -111,6 +111,10 @@ plugin.add({
 
 plugin.add({
 	"nvim-telescope/telescope.nvim",
+	dependencies = {
+		"nvim-telescope/telescope-frecency.nvim",
+		"debugloop/telescope-undo.nvim",
+	},
 	config = function()
 		require("plugin.tool.telescope")
 	end,
@@ -291,10 +295,49 @@ plugin.add({
 plugin.add({
 	"folke/flash.nvim",
 	event = "VeryLazy",
-	opts = {},
+	opts = {
+		modes = {
+			char = {
+				keys = {},
+			},
+		},
+	},
   -- stylua: ignore
   keys = {
     { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
     { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
   },
+})
+
+plugin.add({
+	"rcarriga/nvim-dap-ui",
+	dependencies = {
+		"mfussenegger/nvim-dap",
+		"nvim-neotest/nvim-nio",
+		"theHamsta/nvim-dap-virtual-text",
+	},
+	config = function()
+		require("plugin.tool.dap")
+	end,
+	cmd = { "DapContinue", "DapToggleBreakpoint", "DapLoadLaunchJSON" },
+})
+
+plugin.add({
+	"potamides/pantran.nvim",
+	config = function()
+		require("pantran").setup({
+			default_engine = "deepl",
+			engines = {
+				yandex = {
+					default_source = "auto",
+					default_target = "zh",
+				},
+				deepl = {
+					default_source = "auto",
+					default_target = "zh",
+				},
+			},
+		})
+	end,
+	cmd = { "Pantran" },
 })

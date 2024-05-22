@@ -1,30 +1,19 @@
 local telescope = require("telescope")
+local actions = require("telescope.actions")
 telescope.setup({
 	defaults = {
 		layout_config = {
-			vertical = { width = 0.5 },
+			vertical = { width = 0.8 },
 		},
 		prompt_prefix = "󰼛 ",
 		selection_caret = "󱞩 ",
-		-- Default configuration for telescope goes here:
-		-- config_key = value,
 		mappings = {
 			i = {
-				-- map actions.which_key to <C-h> (default: <C-/>)
-				-- actions.which_key shows the mappings for your picker,
-				-- e.g. git_{create, delete, ...}_branch for the git_branches picker
-				--["<esc>"] = "<esc><esc>"
+				["<c-d>"] = actions.delete_buffer + actions.move_to_top,
 			},
 		},
 	},
 	pickers = {
-		-- Default configuration for builtin pickers goes here:
-		-- picker_name = {
-		--   picker_config_key = value,
-		--   ...
-		-- }
-		-- Now the picker_config_key will be applied every time you call this
-		-- builtin picker
 		find_files = {},
 		current_buffer_fuzzy_find = {},
 		grep_string = {},
@@ -32,13 +21,7 @@ telescope.setup({
 			theme = "dropdown",
 		},
 	},
-	extensions = {
-		-- Your extension configuration goes here:
-		-- extension_name = {
-		--   extension_config_key = value,
-		-- }
-		-- please take a look at the readme of the extension you want to configure
-	},
+	extensions = {},
 	colorscheme = "rose_pine",
 	styles = {
 		["function"] = { style = "italic" },
@@ -48,6 +31,7 @@ telescope.setup({
 		parameter = { style = "italic" },
 	},
 })
-
 require("telescope").load_extension("persisted")
+require("telescope").load_extension("frecency")
+require("telescope").load_extension("undo")
 vim.api.nvim_create_user_command("Help", "Telescope help_tags", { bang = true })

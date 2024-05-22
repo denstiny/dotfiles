@@ -33,5 +33,13 @@ require("smoothcursor").setup({
 	threshold = 3, -- animate if threshold lines jump
 	disable_float_win = true, -- disable on float window
 	enabled_filetypes = nil, -- example: { "lua", "vim" }
-	disabled_filetypes = { "lazy", "NvimTree" }, -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
+	disabled_filetypes = {
+		"lazy",
+		"NvimTree",
+		"dapui_scopes",
+		"dapui_watches",
+		"dapui_stacks",
+		"dapui_breakpoints",
+		"dapui_scopes",
+	}, -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
 })

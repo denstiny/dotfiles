@@ -23,7 +23,7 @@ nvim_tree.setup({
 		},
 	},
 	update_focused_file = {
-		enable = false,
+		enable = true,
 		update_root = true,
 		ignore_list = {},
 	},

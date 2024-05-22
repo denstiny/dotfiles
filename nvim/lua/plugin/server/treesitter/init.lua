@@ -5,7 +5,7 @@ require("nvim-treesitter.install").prefer_git = true
 treesitter_config.setup({
 	ensure_installed = {
 		"rust",
-		--"norg",
+		"norg",
 		--"norg_meta",
 		--"norg_table",
 		--"proto",
@@ -31,7 +31,7 @@ treesitter_config.setup({
 		enable = true,
 	},
 	highlight = {
-		enable = true,
+		enable = false,
 		disable = function(lang, buf)
 			--local max_filesize = 1000 * 1024 -- 100 KB
 			--local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))

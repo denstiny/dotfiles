@@ -23,5 +23,6 @@ hi UfoFoldedBg         guibg=none
 hi FoldColumn guibg=none     
 "hi CursorLineFold guibg=#2a2a37
 hi CursorLine guibg=#2a2a37
+hi link LspInlayHint CursorLine
 ]])
 end

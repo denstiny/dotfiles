@@ -1,4 +1,5 @@
 local colorful_winsep = require("colorful-winsep")
+
 colorful_winsep.setup({
 	hi = {
 		--fg = "#353535",
@@ -13,4 +14,5 @@ colorful_winsep.setup({
 		up = { width = 0, x = -1, y = 0 },
 		bottom = { width = 0, x = 1, y = 0 },
 	},
+	light_pollution = function(lines) end,
 })
