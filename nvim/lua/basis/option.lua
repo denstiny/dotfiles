@@ -13,6 +13,7 @@ opt.numberwidth = 1
 opt.ruler = false
 opt.shortmess:append("sI")
 opt.viewoptions = "folds,cursor"
+opt.sessionoptions = "curdir,winsize,blank,terminal"
 opt.signcolumn = "yes"
 opt.splitbelow = true
 opt.splitright = true

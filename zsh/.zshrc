@@ -78,3 +78,5 @@ export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O 
 
 function fnvim { nvim $(fzf) }
 function fcd { cd $(find -type d | fzf) }
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

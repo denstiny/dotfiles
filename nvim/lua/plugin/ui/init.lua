@@ -7,8 +7,8 @@ plugin.add({
 	end,
 	dependencies = {
 		{ "hrsh7th/cmp-nvim-lua" },
+		{ "hrsh7th/cmp-cmdline" },
 		{ "onsails/lspkind-nvim" },
-		{ "hrsh7th/cmp-nvim-lsp-signature-help" },
 		{ "hrsh7th/cmp-buffer", option = { keyword_pattern = [[\k\+]] } },
 		{ "hrsh7th/cmp-path" },
 		{ "saadparwaiz1/cmp_luasnip" },
@@ -54,7 +54,7 @@ plugin.add({
 	config = function()
 		require("plugin.ui.winsep")
 	end,
-	event = { "WinNew" },
+	event = { "UiEnter" },
 	--cond = false,
 })
 

@@ -56,9 +56,7 @@ U.nmap("gf", "<Cmd>e <cfile><Cr>")
 U.nmap("F", "<Cmd>Telescope current_buffer_fuzzy_find<cr>")
 U.nmap("?", "<Cmd>Telescope grep_string<cr>")
 U.nmap("B", "<Cmd>Telescope buffers<cr>")
-U.nmap("<C-m>", "<Cmd>Telescope vim_bookmarks current_file<cr>")
-U.nmap("<C-M>", "<Cmd>Telescope vim_bookmarks all<cr>")
-U.nmap("<C-f>", "<Cmd>Telescope frecency<cr>")
+U.nmap("<C-f>", "<Cmd>Telescope find_files<cr>")
 
 -- luasnip
 U.map("i", "<C-j>", '<CMD>lua require("luasnip").jump(1)<CR>')

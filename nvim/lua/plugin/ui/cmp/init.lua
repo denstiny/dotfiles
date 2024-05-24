@@ -122,9 +122,7 @@ cmp.setup({
 	preselect = cmp.PreselectMode.None,
 	sources = {
 		{ name = "nvim_lsp", priority = 8 },
-		{ name = "crates" },
 		-- { name = "neorg", priority = 10 },
-		-- {name = "nvim_lsp_signature_help"},
 		{ name = "luasnip", priority = 8, options = { use_show_condition = false } },
 		{ name = "nvim_lua" },
 		{ name = "buffer", priority = 7 },
@@ -201,3 +199,26 @@ cmp.setup.filetype("gitcommit", {
 		{ name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
 	}, { { name = "buffer" } }),
 })
+
+-- `:` cmdline setup.
+-- cmp.setup.cmdline(":", {
+-- 	mapping = cmp.mapping.preset.cmdline(),
+-- 	sources = cmp.config.sources({
+-- 		{ name = "path" },
+-- 	}, {
+-- 		{
+-- 			name = "cmdline",
+-- 			option = {
+-- 				ignore_cmds = { "Man", "!" },
+-- 			},
+-- 		},
+-- 	}),
+-- })
+--
+-- -- `/` cmdline setup.
+-- cmp.setup.cmdline("/", {
+-- 	mapping = cmp.mapping.preset.cmdline(),
+-- 	sources = {
+-- 		{ name = "buffer" },
+-- 	},
+-- })

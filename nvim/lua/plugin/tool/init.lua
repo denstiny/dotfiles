@@ -111,10 +111,7 @@ plugin.add({
 
 plugin.add({
 	"nvim-telescope/telescope.nvim",
-	dependencies = {
-		"nvim-telescope/telescope-frecency.nvim",
-		"debugloop/telescope-undo.nvim",
-	},
+	dependencies = {},
 	config = function()
 		require("plugin.tool.telescope")
 	end,
@@ -188,6 +185,16 @@ plugin.add({
 	"LudoPinelli/comment-box.nvim",
 	config = function() end,
 	event = "FileType",
+	cond = false,
+})
+
+plugin.add({
+	"folke/ts-comments.nvim",
+	config = function()
+		require("plugin.tool.comments")
+	end,
+	enabled = vim.fn.has("nvim-0.10.0") == 1,
+	event = "VeryLazy",
 })
 
 plugin.add({
@@ -268,6 +275,17 @@ plugin.add({
 		require("plugin.tool.tabout")
 	end,
 	event = "InsertEnter",
+	cond = false,
+})
+
+plugin.add({
+	"vidocqh/auto-indent.nvim",
+	opts = {
+		indentexpr = function(lnum)
+			return require("nvim-treesitter.indent").get_indent(lnum)
+		end,
+	},
+	event = "InsertEnter",
 })
 
 plugin.add({
@@ -326,7 +344,7 @@ plugin.add({
 	"potamides/pantran.nvim",
 	config = function()
 		require("pantran").setup({
-			default_engine = "deepl",
+			default_engine = "yandex",
 			engines = {
 				yandex = {
 					default_source = "auto",
@@ -340,4 +358,9 @@ plugin.add({
 		})
 	end,
 	cmd = { "Pantran" },
+})
+
+plugin.add({
+	"denstiny/karasync.nvim",
+	lazy = true,
 })
