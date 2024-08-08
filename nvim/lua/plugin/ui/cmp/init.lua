@@ -35,7 +35,9 @@ lspkind.init({
 		Event = "",
 		Operator = "",
 		TypeParameter = "",
-		cmp_tabnine = "",
+		--cmp_tabnine = "",
+		calc = " 󰃬",
+		Codeium = "",
 	},
 })
 
@@ -43,27 +45,27 @@ local source_mapping = {
 	buffer = "(Buffer)",
 	nvim_lsp = "(LSP)",
 	nvim_lua = "(Lua)",
-	cmp_tabnine = "(TN)",
+	--cmp_tabnine = "(TN)",
 	path = "(Path)",
 	luasnip = "(SN)",
 }
 
 -- tabnine
-local tabnine = require("cmp_tabnine.config")
-
-tabnine:setup({
-	max_lines = 1000,
-	max_num_results = 20,
-	sort = true,
-	run_on_every_keystroke = true,
-	snippet_placeholder = "..",
-	ignored_file_types = {
-		-- default is not to ignore
-		-- uncomment to ignore in lua:
-		-- lua = true
-	},
-	show_prediction_strength = false,
-})
+-- local tabnine = require("cmp_tabnine.config")
+--
+-- tabnine:setup({
+-- 	max_lines = 1000,
+-- 	max_num_results = 20,
+-- 	sort = true,
+-- 	run_on_every_keystroke = true,
+-- 	snippet_placeholder = "..",
+-- 	ignored_file_types = {
+-- 		-- default is not to ignore
+-- 		-- uncomment to ignore in lua:
+-- 		-- lua = true
+-- 	},
+-- 	show_prediction_strength = false,
+-- })
 
 cmp.setup({
 	mapping = {
@@ -122,13 +124,14 @@ cmp.setup({
 	preselect = cmp.PreselectMode.None,
 	sources = {
 		{ name = "nvim_lsp", priority = 8 },
+		{ name = "lazydev" },
 		-- { name = "neorg", priority = 10 },
 		{ name = "luasnip", priority = 8, options = { use_show_condition = false } },
 		{ name = "nvim_lua" },
 		{ name = "buffer", priority = 7 },
 		{ name = "path", priority = 7 },
 		{ name = "calc", priority = 6 },
-		{ name = "cmp_tabnine", priority = 6 },
+		--{ name = "cmp_tabnine", priority = 6 },
 		--{ name = "digraphs", priority = 5 },
 		{ name = "spell", priority = 5 },
 	},
@@ -167,6 +170,11 @@ cmp.setup({
 					vim_item.kind = vim_item.kind .. " " .. "[ML]"
 				end
 			end
+
+			if entry.source.name == "calc" then
+				vim_item.kind = " 󰃬"
+			end
+
 			local maxwidth = 40
 			vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
 			return vim_item

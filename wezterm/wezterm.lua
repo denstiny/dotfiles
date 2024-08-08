@@ -1,5 +1,4 @@
 local wezterm = require("wezterm")
-
 wezterm.on("window-config-reloaded", function(window, pane)
 	wezterm.log_info("the config was reloaded for this window!")
 end)

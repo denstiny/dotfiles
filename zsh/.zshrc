@@ -1,6 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
+zstyle ':omz:plugins:nvm' lazy yes
 ZSH_THEME="robbyrussell"
-plugins=(git zsh-autosuggestions autopep8 command-not-found calc zlong_alert zsh-safe-rm)
+plugins=(nvm git zsh-autosuggestions autopep8 command-not-found calc zlong_alert zsh-safe-rm)
 setopt AUTO_PUSHD
 setopt PUSHD_MINUS
 setopt CDABLE_VARS
@@ -27,6 +28,7 @@ export PATH=$PATH:/usr/local/go/bin
 export GO111MODULE=on
 export GOPROXY=https://goproxy.cn,direct
 source $HOME/.cargo/env
+
 proxy ()
 {
   export http_proxy=http://127.0.0.1:7890
@@ -55,9 +57,10 @@ command rm -f -- "$tempfile" 2>/dev/null
 #export TERM=wezterm
 #[ "$TERM" = "xterm-256color" ] && export TERM=wezterm
 #[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
-alias re=ranger
+alias re=joshuto
+alias vim=nvim
 alias ters=~/Public/Terslation/termal.sh
-alias n="clear && neofetch --off"
+alias n="clear && fm6000 -f ~/.config/catart/catart.txt"
 alias tnew="tmux new -s"
 alias tdeach="tmux detach"
 alias tls="tmux ls"
@@ -65,6 +68,9 @@ alias tkill="tmux kill-session -t"
 alias tattach="tmux attach -t"
 alias tswitch="tmux switch -t"
 alias trename="tmux rename-session -t"
+alias tna="tmux a"
+alias parui="paru -Slq | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -S"
+alias parur="paru -Qq | fzf --multi --preview 'paru -Qi {1}' | xargs -ro paru -Rns"
 #alias apt=aptpac
 #alias wallpaper_picker=~/.config/hypr/scripts/wallpaper/wallpaper_picker
 # >>> xmake >>>
@@ -75,8 +81,11 @@ export QT_LOGGING_TO_CONSOLE=1
 export LANG=en_US.UTF-8
 export LC_ALL="en_US.UTF-8"
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
+export VCPKG_ROOT="/home/denstiny/.cache/vcpkg/vcpkg"
+export PATH=$VCPKG_ROOT:$PATH
 
 function fnvim { nvim $(fzf) }
 function fcd { cd $(find -type d | fzf) }
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+#eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+#source /usr/share/nvm/init-nvm.sh

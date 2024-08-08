@@ -5,6 +5,7 @@ colorful_winsep.setup({
 		--fg = "#353535",
 		fg = "#9A95C1",
 	},
+	events = { "WinEnter", "WinResized" },
 	symbols = { "─", "│", "┌", "┐", "└", "┘" },
 	--smooth = false,
 	exponential_smoothing = true,

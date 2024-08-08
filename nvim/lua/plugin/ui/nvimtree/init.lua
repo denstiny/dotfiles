@@ -4,15 +4,8 @@ nvim_tree.setup({
 	root_dirs = { "build", ".git" },
 	view = {
 		adaptive_size = false,
-		--preserve_window_proportions = true,
-		mappings = {
-			list = {
-				{ key = "u", action = "dir_up" },
-			},
-		},
-		--side = "right"
 		side = "right",
-		hide_root_folder = false,
+		--hide_root_folder = false,
 	},
 	actions = {
 		open_file = {

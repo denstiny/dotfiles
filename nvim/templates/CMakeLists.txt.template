@@ -7,5 +7,10 @@
 cmake_minimum_required(VERSION 3.6)
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 project({{CURSOR}} CXX)
+if(CCACHE_PROGRAM)
+  set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
+  set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
+endif()
 
 add_executable(main main.cpp)
+

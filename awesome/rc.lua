@@ -18,7 +18,8 @@ require("config.menu")
 require("signal")
 local dpi = require("beautiful.xresources").apply_dpi
 
-bling.module.flash_focus.enable()
+-- bling.module.flash_focus.enable()
+bling.module.window_swallowing.start() -- activates window swallowing
 --naughty.config.defaults = {
 --	notification_max_height = 200,
 --	notification_max_width = 200,
@@ -197,15 +198,15 @@ end)
 --     c:emit_signal("request::activate", "mouse_enter", {raise = true})
 -- end)
 
-client.connect_signal("focus", function(c)
-	c.border_color = beautiful.border_focus
-	c.opacity = 0.8
-end)
-
-client.connect_signal("unfocus", function(c)
-	c.border_color = beautiful.border_normal
-	c.opacity = 0.6
-end)
+-- client.connect_signal("focus", function(c)
+-- 	c.border_color = beautiful.border_focus
+-- 	c.opacity = 0.8
+-- end)
+--
+-- client.connect_signal("unfocus", function(c)
+-- 	c.border_color = beautiful.border_normal
+-- 	c.opacity = 0.6
+-- end)
 
 -- }}}
 require("config.pwidget")

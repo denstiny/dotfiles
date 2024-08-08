@@ -15,7 +15,7 @@ xrandr --output eDP-1 --mode 1920x1200
 #xrandr --output HDMI1 --right-of eDP1 --auto
 #xrandr --output HDMI1 --rotate  normal
 # Compositor
-#picom --config ~/.config/awesome/config/picom.conf &
+# picom --config ~/.config/awesome/config/picom.conf &
 #run cfw
 #run clash
 run fcitx5

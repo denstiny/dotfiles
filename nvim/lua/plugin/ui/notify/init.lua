@@ -1,8 +1,7 @@
 vim.opt.termguicolors = true
 
-vim.notify = require("notify")
-local stages = require("notify.stages.slide")("top_down")
-vim.notify.setup({
+--local stages = require("notify.stages.slide")("top_down")
+require("notify").setup({
 	background_colour = "NotifyBackground",
 	fps = 60,
 	icons = {
@@ -15,7 +14,8 @@ vim.notify.setup({
 	level = 2,
 	minimum_width = 50,
 	render = "minimal",
-	stages = "slide",
+	--stages = "slide",
+	stages = "static",
 	time_formats = {
 		notification = "%T",
 		notification_history = "%FT%T",
@@ -23,3 +23,5 @@ vim.notify.setup({
 	timeout = 1500,
 	top_down = false,
 })
+
+vim.notify = notify

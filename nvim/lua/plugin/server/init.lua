@@ -11,6 +11,11 @@ plugin.add({
 		{ "williamboman/mason.nvim" },
 		{ "williamboman/mason-lspconfig.nvim" },
 		{ "mrcjkb/rustaceanvim" },
+		{ "aznhe21/actions-preview.nvim" },
+		{ "SmiteshP/nvim-navbuddy" },
+		{ "SmiteshP/nvim-navic" },
+		{ "MunifTanjim/nui.nvim" },
+		--{ "ray-x/navigator.lua" },
 	},
 	config = function()
 		require("plugin.server.lsp-zero")
@@ -23,6 +28,7 @@ plugin.add({
 	dependencies = "neovim/nvim-lspconfig",
 	opts = {
 		notifications = true,
+		excluded_lsp_clients = { "lua_ls", "rust-analyzer" },
 	},
 	event = "LspAttach",
 })
@@ -53,8 +59,28 @@ plugin.add({
 	lazy = true,
 })
 
+--plugin.add({
+--	"tzachar/cmp-tabnine",
+--	build = "./install.sh",
+--	lazy = true,
+--})
+
 plugin.add({
-	"tzachar/cmp-tabnine",
-	build = "./install.sh",
-	lazy = true,
+	"folke/lazydev.nvim",
+	ft = "lua",
+	dependencies = {
+		"Bilal2453/luvit-meta",
+	},
+	opts = {
+		library = {
+			-- See the configuration section for more details
+			-- Load luvit types when the `vim.uv` word is found
+			{ path = "luvit-meta/library", words = { "vim%.uv" } },
+		},
+	},
+})
+
+plugin.add({
+	"p00f/clangd_extensions.nvim",
+	ft = { "cpp", "c" },
 })

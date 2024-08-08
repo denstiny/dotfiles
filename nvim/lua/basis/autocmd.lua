@@ -46,7 +46,10 @@ autocmd({ "ColorScheme" }, {
 --}}}
 
 --- {{{ disabled auto fold indentation
-autocmd({ "LspAttach" }, { command = [[set formatoptions-=cro]] })
+--autocmd({ "LspAttach" }, { command = [[set formatoptions-=cro]] })
+vim.cmd([[
+  autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+]])
 ---}}}
 
 --- {{{ treesitter lazy load

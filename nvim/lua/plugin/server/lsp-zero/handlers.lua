@@ -47,16 +47,53 @@ M.setup = function()
 end
 
 function M.lsp_keymaps(bufnr)
-	local opts = { noremap = true, silent = true }
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "vgd", "<cmd>Lspsaga peek_definition<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gh", "<cmd>Lspsaga hover_doc<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "mr", "<cmd>Lspsaga rename<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>Lspsaga finder<cr>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<A-cr>", "<cmd>Lspsaga code_action<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gp", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gn", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+	local U = require("core.bind-tool")
+	local opts = { noremap = true }
+	U.nmap("gd", function()
+		vim.cmd("lua vim.lsp.buf.definition()")
+	end, opts)
+	U.nmap("gD", function()
+		vim.cmd("lua vim.lsp.buf.declaration()")
+	end, opts)
+	U.nmap("gi", function()
+		vim.cmd("lua vim.lsp.buf.implementation()")
+	end, opts)
+	U.nmap("go", function()
+		vim.cmd("lua  vim.lsp.buf.type_definition()")
+	end, opts)
+	U.nmap("gr", function()
+		vim.cmd("Telescope lsp_references")
+	end, opts)
+	U.nmap("mr", function()
+		vim.cmd("lua vim.lsp.buf.rename()")
+	end, opts)
+	U.nmap("gs", function()
+		vim.cmd("lua vim.lsp.buf.signature_help()")
+	end)
+	U.nmap("<A-cr>", function()
+		require("actions-preview").code_actions()
+	end, opts)
+	U.nmap("gp", function()
+		vim.cmd("lua vim.diagnostic.goto_prev()")
+	end, opts)
+	U.nmap("gn", function()
+		vim.cmd("lua vim.diagnostic.goto_next()")
+	end, opts)
+	U.nmap("gl", function()
+		vim.cmd("lua vim.diagnostic.open_float()")
+	end, opts)
+	U.nmap("dy", function()
+		vim.cmd("Navbuddy")
+	end)
+	--vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
+	--vim.api.nvim_buf_set_keymap(bufnr, "n", "vgd", "<cmd>Lspsaga peek_definition<CR>", opts)
+	--vim.api.nvim_buf_set_keymap(bufnr, "n", "gh", "<cmd>Lspsaga hover_doc<CR>", opts)
+	--vim.api.nvim_buf_set_keymap(bufnr, "n", "mr", "<cmd>Lspsaga rename<CR>", opts)
+	--vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>Lspsaga finder<cr>", opts)
+	--vim.api.nvim_buf_set_keymap(bufnr, "n", "<A-cr>", "<cmd>Lspsaga code_action<CR>", opts)
+	--vim.api.nvim_buf_set_keymap(bufnr, "n", "gp", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+	--vim.api.nvim_buf_set_keymap(bufnr, "n", "gn", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
+	--vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
 end
 
 function M.lsp_highlight_document(client)
@@ -82,6 +119,7 @@ end
 
 function M.make_client_capabilities()
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	capabilities.offsetEncoding = "utf-8"
 	capabilities.textDocument.foldingRange = {
 		dynamicRegistration = false,
 		lineFoldingOnly = true,
@@ -103,8 +141,8 @@ function M.make_client_capabilities()
 			},
 		},
 	}
-	local cmp_nvim_lsp = require("cmp_nvim_lsp")
-	capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+	--local cmp_nvim_lsp = require("cmp_nvim_lsp")
+	--capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 	return capabilities
 end
 

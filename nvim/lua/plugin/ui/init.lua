@@ -13,13 +13,13 @@ plugin.add({
 		{ "hrsh7th/cmp-path" },
 		{ "saadparwaiz1/cmp_luasnip" },
 		{ "hrsh7th/cmp-calc" },
-		{ "dmitmel/cmp-digraphs" },
+		--{ "dmitmel/cmp-digraphs" },
 		{ "f3fora/cmp-spell" },
 		{ "hrsh7th/cmp-nvim-lsp" },
 		{ "lukas-reineke/cmp-under-comparator" },
 	},
 	--event = "InsertEnter",
-	event = "LspAttach",
+	--event = "LspAttach",
 })
 
 plugin.add({
@@ -28,6 +28,7 @@ plugin.add({
 		require("plugin.ui.notify")
 	end,
 	event = "UiEnter",
+	cond = true,
 })
 
 plugin.add({
@@ -54,8 +55,7 @@ plugin.add({
 	config = function()
 		require("plugin.ui.winsep")
 	end,
-	event = { "UiEnter" },
-	--cond = false,
+	event = { "WinLeave" },
 })
 
 plugin.add({
@@ -79,6 +79,15 @@ plugin.add({
 		require("plugin.ui.hlslens")
 	end,
 	event = { "SearchWrapped", "CursorMoved" },
+	cond = false,
+})
+
+plugin.add({
+	"nvimdev/hlsearch.nvim",
+	event = { "SearchWrapped", "CursorMoved" },
+	config = function()
+		require("hlsearch").setup()
+	end,
 })
 
 plugin.add({
@@ -147,6 +156,26 @@ plugin.add({
 	end,
 	event = "UiEnter",
 	cond = true,
+})
+
+plugin.add({
+	"shellRaining/hlchunk.nvim",
+	event = { "BufReadPre", "BufNewFile" },
+	branch = "dev",
+	config = function()
+		require("hlchunk").setup({
+			chunk = {
+				enable = true,
+			},
+			indent = {
+				enable = false,
+			},
+			blank = {
+				enable = true,
+			},
+		})
+	end,
+	cond = false,
 })
 
 plugin.add({
@@ -232,7 +261,7 @@ plugin.add({
 		vim.cmd("hi CocSearch guibg=bg guifg=#2C363C gui=bold")
 	end,
 	cond = false,
-	lazy = false,
+	--lazy = false,
 	--event = "UiEnter",
 	priority = 1000,
 })
@@ -278,10 +307,11 @@ plugin.add({
 
 plugin.add({
 	"j-hui/fidget.nvim",
-	opts = {
-		-- options
-	},
-	event = "LspAttach",
+	config = function()
+		require("fidget").setup({})
+		--vim.notify = require("fidget").notify
+	end,
+	event = "UiEnter",
 })
 
 plugin.add({

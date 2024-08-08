@@ -15,7 +15,6 @@ plugin.add({
 		require("plugin.tool.autopairs")
 	end,
 	event = "InsertEnter",
-	cond = true,
 })
 
 --plugin.add({
@@ -86,7 +85,7 @@ plugin.add({
 		require("plugin.tool.surround")
 	end,
 	keys = {
-		{ "S", mode = "v" },
+		{ "as", mode = "v" },
 		{ "cs", mode = "n" },
 		{ "ds", mode = "n" },
 	},
@@ -99,14 +98,25 @@ plugin.add({
 	end,
 	--commit = "3654252",
 	event = "LspAttach",
+	cond = false,
 })
 
 plugin.add({
 	"akinsho/toggleterm.nvim",
+	dependencies = {
+		"willothy/flatten.nvim",
+	},
 	config = function()
 		require("plugin.tool.terminal")
 	end,
 	cmd = "ToggleTerm",
+})
+
+plugin.add({
+	"willothy/flatten.nvim",
+	config = function()
+		require("plugin.ui.flatten")
+	end,
 })
 
 plugin.add({
@@ -159,6 +169,7 @@ plugin.add({
 		require("hbac").setup()
 	end,
 	event = "UiEnter",
+	cond = false,
 })
 
 plugin.add({
@@ -362,5 +373,20 @@ plugin.add({
 
 plugin.add({
 	"denstiny/karasync.nvim",
-	lazy = true,
+	config = function()
+		require("karasync").setup()
+	end,
+	event = "UiEnter",
+})
+
+plugin.add({
+	desc = "真辣鸡",
+	"chrisgrieser/nvim-origami",
+	event = "BufReadPost", -- later or on keypress would prevent saving folds
+	opts = {
+		keepFoldsAcrossSessions = true,
+		pauseFoldsOnSearch = false,
+		setupFoldKeymaps = false,
+	}, -- needed even when using default config
+	cond = false,
 })
