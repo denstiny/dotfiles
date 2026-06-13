@@ -15,13 +15,13 @@ local function get_params(range, bufnr)
 	return make_params(range.start, range._end, bufnr)
 end
 
-M.on_attach = function(client, bufnr, force)
+M.on_attach = function(client, bufnr, _)
 	local range = {
 		start = { 0, 0 },
 		_end = { 28, 0 },
 	}
 	local params = get_params(range, bufnr)
-	client.request("textDocument/inlayHint", params, function(err, result, ctx)
+	client.request("textDocument/inlayHint", params, function(_, result, _)
 		vim.notify(vim.inspect(result))
 	end)
 end

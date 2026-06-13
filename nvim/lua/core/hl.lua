@@ -13,11 +13,11 @@ function M.to_hex(color_value)
 end
 
 function M.get_highlight_group_colors(name)
-	local hl = vim.api.nvim_get_hl_by_name(name, true)
+	local hl = vim.api.nvim_get_hl(0, { name = name, link = false })
 
 	-- 提取前景色和背景色
-	local fg = M.to_hex(hl.foreground)
-	local bg = M.to_hex(hl.background)
+	local fg = M.to_hex(hl.fg)
+	local bg = M.to_hex(hl.bg)
 
 	return fg, bg
 end
