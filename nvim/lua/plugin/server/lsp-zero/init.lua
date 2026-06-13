@@ -1,5 +1,7 @@
 local lsp_zero = require("lsp-zero")
+
 require("lspconfig").intelephense.setup({})
+
 local handlers = require("plugin.server.lsp-zero.handlers")
 
 lsp_zero.on_attach(function(client, bufnr)
@@ -23,6 +25,7 @@ vim.g.rustaceanvim = {
 		},
 	},
 }
+
 require("mason").setup({
 	PATH = "prepend",
 	ui = {

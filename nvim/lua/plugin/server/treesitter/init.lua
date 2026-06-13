@@ -1,20 +1,17 @@
---- { treesitter configs
+--- treesitter configs
 local treesitter_config = require("nvim-treesitter.configs")
--- use ssh
+
+--- use ssh
 require("nvim-treesitter.install").prefer_git = true
 treesitter_config.setup({
 	ensure_installed = {
 		"rust",
 		"norg",
-		--"norg_meta",
-		--"norg_table",
-		--"proto",
 		"lua",
 		"vim",
 		"c",
 		"cpp",
 		"go",
-		--"org",
 		"python",
 		"java",
 		"html",
