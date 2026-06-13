@@ -1,6 +1,5 @@
 local autocmd = require("core.autocmd").autocmd
 
---- {{{ close last tool win
 local backlist = { "qf", "NvimTree" }
 local function on_backlist(filetype)
 	for _, v in pairs(backlist) do
@@ -20,39 +19,28 @@ autocmd({ "BufWinEnter" }, {
 
 autocmd({ "WinEnter" }, {
 	callback = function(opt)
-		local filetype = vim.api.nvim_buf_get_option(opt.buf, "filetype")
+		local filetype = vim.api.nvim_get_option_value("filetype", { buf = opt.buf })
 		if vim.fn.winnr("$") == 1 and on_backlist(filetype) then
 			vim.cmd.quit()
 		end
 	end,
 })
--- }}}
 
---{{ 自动格式化
+--- 自动格式化
 autocmd({ "BufWritePre" }, {
 	pattern = "*",
 	callback = function(args)
 		require("conform").format({ bufnr = args.buf })
 	end,
-}) --
---}}}
-
---{{
-autocmd({ "ColorScheme" }, {
-	callback = function(opt)
-		--require("core.chronus-theme")()
-	end,
 })
---}}}
 
---- {{{ disabled auto fold indentation
---autocmd({ "LspAttach" }, { command = [[set formatoptions-=cro]] })
+--- disabled auto fold indentation
+--- autocmd({ "LspAttach" }, { command = [[set formatoptions-=cro]] })
 vim.cmd([[
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 ]])
----}}}
 
---- {{{ treesitter lazy load
+--- treesitter lazy load
 autocmd({ "FileType" }, {
 	callback = function(opt)
 		if opt.event == "BufNewFile" then
@@ -70,9 +58,6 @@ autocmd({ "FileType" }, {
 			else
 				vim.cmd("TSEnable highlight")
 			end
-			--vim.defer_fn(function()
-			--	vim.cmd("TSEnable rainbow")
-			--end, 0)
 		end
 	end,
 })
@@ -80,7 +65,6 @@ autocmd({ "FileType" }, {
 autocmd("UiEnter", {
 	callback = function()
 		if vim.fn.argc() == 0 then
-			--vim.opt.cursorline = false
 			vim.defer_fn(function()
 				vim.cmd("Alpha")
 			end, 0)
@@ -88,46 +72,7 @@ autocmd("UiEnter", {
 	end,
 })
 
---autocmd("BufLeave", {
---	callback = function()
---		if vim.bo.filetype then
---			vim.opt.cursorline = true
---		end
---	end,
---})
-
---autocmd("BufReadPost", {
---	callback = function()
---		local mark = vim.api.nvim_buf_get_mark(0, '"')
---		local lcount = vim.api.nvim_buf_line_count(0)
---		if mark[1] > 0 and mark[1] <= lcount then
---			pcall(vim.api.nvim_win_set_cursor, 0, mark)
---		end
---	end,
---})
-
 autocmd({ "BufNewFile" }, { command = "TemplateInit" })
-
--- autocmd({ "ModeChanged" }, {
--- 	callback = function()
--- 		local m = vim.fn.mode()
--- 		if not require("core.noexecfile").can_exec() then
--- 			return
--- 		end
--- 		if m == "i" then
--- 			vim.opt.cursorline = false
--- 		else
--- 			vim.opt.cursorline = true
--- 		end
--- 		if m == "v" or m == "V" then
--- 			vim.cmd("hi LineNr guifg=#54546d")
--- 			vim.cmd("hi CursorLineNr guifg=#ff9e3b")
--- 		else
--- 			vim.cmd("hi LineNr guifg=#000000")
--- 			vim.cmd("hi CursorLineNr guifg=#000000 guibg=#000000")
--- 		end
--- 	end,
--- })
 
 autocmd({ "BufEnter" }, {
 	pattern = "*.ui",
@@ -143,19 +88,3 @@ autocmd({ "BufEnter" }, {
 		vim.bo.filetype = "qmljs"
 	end,
 })
-
--- autocmd({ "BufWinLeave" }, {
--- 	callback = function()
--- 		if vim.bo.filetype ~= "" and vim.bo.buftype ~= "nofile" then
--- 			vim.cmd("silent! mkview")
--- 		end
--- 	end,
--- })
---
--- autocmd({ "BufWinEnter" }, {
--- 	callback = function()
--- 		if vim.bo.filetype ~= "" and vim.bo.buftype ~= "nofile" then
--- 			vim.cmd("silent! loadview")
--- 		end
--- 	end,
--- })
