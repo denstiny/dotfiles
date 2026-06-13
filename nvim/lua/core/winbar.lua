@@ -28,11 +28,11 @@ local noexex = {
 	"dapui_scopes",
 }
 vim.api.nvim_create_autocmd({ "WinResized", "VimResized", "BufWinEnter" }, {
-	callback = function(arg)
+	callback = function(_)
 		local windows = vim.api.nvim_list_wins()
 		for _, win in pairs(windows) do
 			if vim.api.nvim_win_get_config(win)["relative"] == "" then
-				local buftype = vim.api.nvim_buf_get_option(vim.fn.winbufnr(win), "filetype")
+				local buftype = vim.api.nvim_get_option_value("filetype", { buf = vim.api.nvim_win_get_buf(win) })
 				--if buftype == "notify" or buftype == "noice" then
 				--	return
 				--end
@@ -40,10 +40,12 @@ vim.api.nvim_create_autocmd({ "WinResized", "VimResized", "BufWinEnter" }, {
 					local space = M.spacebar(win)
 					local filename = M.getFileName()
 					if filename ~= "" then
-						vim.api.nvim_win_set_option(
-							win,
+						vim.api.nvim_set_option_value(
 							"winbar",
-							space .. "( " .. "%{%v:lua.status.getFileName()%}" .. " )" .. space
+							space .. "( " .. "%{%v:lua.status.getFileName()%}" .. " )" .. space,
+							{
+								win = win,
+							}
 						)
 					end
 				end

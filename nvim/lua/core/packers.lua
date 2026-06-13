@@ -11,7 +11,7 @@ end
 
 M.test = function(opt)
 	M.packers = opt
-	require("core.merage")
+	require("core.merge")
 end
 
 return M
