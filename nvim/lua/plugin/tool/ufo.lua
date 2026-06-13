@@ -62,7 +62,7 @@ cfg = {
 			text = {
 				function(args)
 					local n = builtin.foldfunc(args)
-					if vim.api.nvim_win_get_option(args.win, "cursorline") then
+					if vim.api.nvim_get_option_value("cursorline", { win = args.win }) then
 						local line_number = vim.api.nvim_win_get_cursor(args.win)[1]
 						local fg, _ = hl.get_highlight_group_colors("FoldColumn")
 						local _, bg = hl.get_highlight_group_colors("CursorLineNr")
@@ -96,7 +96,7 @@ cfg = {
 					if
 						line_number == args.lnum
 						and string.len(texthl) ~= 0
-						and vim.api.nvim_win_get_option(args.win, "cursorline")
+						and vim.api.nvim_get_option_value("cursorline", { win = args.win })
 					then
 						local fg, _ = hl.get_highlight_group_colors(texthl)
 						local _, bg = hl.get_highlight_group_colors("CursorLine")
@@ -115,7 +115,7 @@ cfg = {
 		},
 	},
 }
-cfg = {
+local cfg = {
 	setopt = true,
 	relculright = false,
 	ft_ignore = { "neo-tree", "NvimTree", "alpha", "undotree", "diff", "toggleterm", "sagaoutlin" },

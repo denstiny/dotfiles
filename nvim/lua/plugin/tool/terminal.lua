@@ -1,8 +1,10 @@
 local toggleterm = require("toggleterm")
-tree_lock = false
-tree_focus = false
+--- @type boolean | nil
+local tree_lock = false
 
-function open_tree()
+local tree_focus = false
+
+local function open_tree()
 	local status_ok, api = pcall(require, "nvim-tree.api")
 	if not status_ok then
 		return
@@ -10,12 +12,11 @@ function open_tree()
 	api.tree.toggle({ focus = tree_focus, find_file = true })
 end
 
-function swatch_tree()
+local function swatch_tree()
 	local bufs = vim.api.nvim_list_bufs()
 	for _, buf in ipairs(bufs) do
 		local filename = vim.api.nvim_buf_get_name(buf) -- 获取 buffer 的文件名
 		filename = vim.fn.fnamemodify(filename, ":t") -- 从完整路径中提取文件名
-		local filetype = vim.api.nvim_buf_get_option(buf, "filetype")
 		if filename == "NvimTree_1" then
 			local status_ok, api = pcall(require, "nvim-tree.api")
 			if not status_ok then
@@ -33,17 +34,17 @@ function swatch_tree()
 	return false
 end
 
-function get_highlight_group_bg_color(group_name)
-	local group_info = vim.api.nvim_get_hl_by_name(group_name, true)
-	if group_info.background then
-		local bg_color = string.format("#%06x", group_info.background)
+local function get_highlight_group_bg_color(group_name)
+	local group_info = vim.api.nvim_get_hl(0, { name = group_name })
+	if group_info.bg then
+		local bg_color = string.format("#%06x", group_info.bg)
 		return bg_color
 	else
 		return nil
 	end
 end
-local group_bg_color = get_highlight_group_bg_color("Normal")
-function hi_bg(group, hex_color)
+
+local function hi_bg(group, hex_color)
 	if group then
 		vim.cmd(string.format("hi %s guibg=%s", group, hex_color))
 	end
@@ -51,7 +52,7 @@ end
 
 local hex_bg = get_highlight_group_bg_color("Normal")
 hex_bg = "#E6E4DF"
-open_hex_bg = "#FAF2EB"
+local open_hex_bg = "#FAF2EB"
 
 toggleterm.setup({
 	open_mapping = nil,

@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd({ "User" }, {
 		for _, buf in ipairs(bufs) do
 			local filename = vim.api.nvim_buf_get_name(buf) -- 获取 buffer 的文件名
 			filename = vim.fn.fnamemodify(filename, ":t") -- 从完整路径中提取文件名
-			local filetype = vim.api.nvim_buf_get_option(buf, "filetype")
+			local filetype = vim.api.nvim_get_option_value("filetype", { buf = buf })
 			if filename == "NvimTree_1" then
 				local status_ok, api = pcall(require, "nvim-tree.api")
 				if not status_ok then

@@ -16,7 +16,7 @@ vim.g.asynctasks_term_reuse = 1
 local M = {
 	test = function()
 		local file_name = vim.fn.expand("%:t:r")
-		vim.api.nvim_exec("AsyncTask test-" .. file_name, nil)
+		vim.api.nvim_exec2("AsyncTask test-" .. file_name, {})
 	end,
 }
 return M

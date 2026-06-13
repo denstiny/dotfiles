@@ -45,7 +45,7 @@ function my_make_entry.gen_from_buffer_like_leaderf(opts)
 	return function(entry)
 		local bufname = entry.info.name ~= "" and entry.info.name or "[No Name]"
 		local hidden = entry.info.hidden == 1 and "h" or "a"
-		local readonly = vim.api.nvim_buf_get_option(entry.bufnr, "readonly") and "=" or " "
+		local readonly = vim.api.nvim_get_option_value("readonly", { buf = entry.bufnr }) and "=" or " "
 		local changed = entry.info.changed == 1 and "+" or " "
 		local indicator = entry.flag .. hidden .. readonly .. changed
 
