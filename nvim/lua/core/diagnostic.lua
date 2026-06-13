@@ -10,28 +10,18 @@ hi DWarn  guibg=#322425 guifg=#FA9535
 hi DBWarn  guibg=#322425
 ]])
 
-function get_hl_group_bg_color(hl_group)
-	local hl_info = vim.api.nvim_get_hl_by_name(hl_group, true)
-	if hl_info and hl_info.background then
-		local bg_color = string.format("#%06x", hl_info.background)
-		return bg_color
-	else
-		return nil
-	end
-end
-
-function hl_line(bufnr, line, hl, vtext)
+local function hl_line(bufnr, line, hl, vtext)
 	local text = string.rep(" ", fn.winwidth(fn.bufwinnr(bufnr)))
 	local opts = {
 		virt_text = { { "   " .. vtext .. text, hl.vig } },
 		hl_eol = true,
 		virt_text_pos = "overlay",
 	}
-	api.nvim_buf_add_highlight(bufnr, ns_id, hl.gui, line, 0, -1)
-	pcall(api.nvim_buf_set_extmark, bufnr, ns_id, line, fn.len(fn.getline(line + 1)), opts)
+	vim.hl.range(bufnr, ns_id, hl.gui, { line, 0 }, { line, -1 }, {})
+	pcall(api.nvim_buf_set_extmark, bufnr, ns_id, line, #fn.getline(line + 1), opts)
 end
 
-function show_diag(bufnr, level, message, lnum)
+local function show_diag(bufnr, level, message, lnum)
 	local hl = {
 		[1] = {
 			gui = "DBError",
@@ -57,7 +47,7 @@ function show_diag(bufnr, level, message, lnum)
 	hl_line(bufnr, lnum, hl[level], message)
 end
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, result, ctx, _)
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, result, _, _)
 	if not result.diagnostics then
 		return
 	end
