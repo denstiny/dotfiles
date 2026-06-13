@@ -5,7 +5,6 @@ nvim_tree.setup({
 	view = {
 		adaptive_size = false,
 		side = "right",
-		--hide_root_folder = false,
 	},
 	actions = {
 		open_file = {

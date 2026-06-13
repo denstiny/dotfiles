@@ -13,13 +13,10 @@ plugin.add({
 		{ "hrsh7th/cmp-path" },
 		{ "saadparwaiz1/cmp_luasnip" },
 		{ "hrsh7th/cmp-calc" },
-		--{ "dmitmel/cmp-digraphs" },
 		{ "f3fora/cmp-spell" },
 		{ "hrsh7th/cmp-nvim-lsp" },
 		{ "lukas-reineke/cmp-under-comparator" },
 	},
-	--event = "InsertEnter",
-	--event = "LspAttach",
 })
 
 plugin.add({
@@ -35,7 +32,6 @@ plugin.add({
 	"nvim-tree/nvim-tree.lua",
 	dependencies = {
 		{ "nvim-tree/nvim-web-devicons" },
-		--{ "antosha417/nvim-lsp-file-operations" },
 	},
 	config = function()
 		require("plugin.ui.nvimtree")
@@ -70,7 +66,6 @@ plugin.add({
 		{ "nvim-lua/plenary.nvim" },
 	},
 	cmd = "Alpha",
-	--lazy = false,
 })
 
 plugin.add({
@@ -128,15 +123,6 @@ plugin.add({
 	ft = { "html", "lua", "css" },
 	event = { "BufReadPre *.conf" },
 })
-
---plugin.add({
---    "rebelot/kanagawa.nvim",
---    config = function()
---        require("plugin.ui.theme.kanagawa")
---    end,
---    event = "UiEnter",
---    cond = false,
---})
 
 plugin.add({
 	"rose-pine/neovim",
@@ -233,7 +219,6 @@ plugin.add({
 	dependencies = {
 		"rose-pine/neovim",
 		"rebelot/kanagawa.nvim",
-		--"AlexvZyl/nordic.nvim",
 	},
 	config = function()
 		require("plugin.ui.color-patch")
@@ -261,8 +246,6 @@ plugin.add({
 		vim.cmd("hi CocSearch guibg=bg guifg=#2C363C gui=bold")
 	end,
 	cond = false,
-	--lazy = false,
-	--event = "UiEnter",
 	priority = 1000,
 })
 
@@ -272,7 +255,6 @@ plugin.add({
 		vim.opt.termguicolors = true
 		vim.opt.background = "light"
 		vim.cmd("colorscheme deepwhite")
-		--require("core.chronus-theme")()
 		vim.cmd("hi NoiceCmdlinePopupBorder guifg=#786D68")
 		vim.cmd("hi NoiceCmdlinePopupTitle guifg=#786d68")
 		vim.cmd("hi NoiceCmdlineIcon guifg=#44525b")
@@ -282,8 +264,6 @@ plugin.add({
 		vim.cmd("hi WinBar guibg=bg")
 		vim.cmd("hi WinBarNC guibg=bg")
 		vim.cmd("hi SmoothCursor guifg=#2C363C")
-
-		--vim.cmd("hi FoldColumn guifg=#999791")
 	end,
 	priority = 1000,
 	cond = true,
@@ -301,7 +281,7 @@ plugin.add({
 
 plugin.add({
 	"lukas-reineke/headlines.nvim",
-	config = false, -- or `opts = {}`
+	config = false,
 	ft = { "*.md", "*.norg" },
 })
 
@@ -309,7 +289,6 @@ plugin.add({
 	"j-hui/fidget.nvim",
 	config = function()
 		require("fidget").setup({})
-		--vim.notify = require("fidget").notify
 	end,
 	event = "UiEnter",
 })

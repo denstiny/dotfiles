@@ -34,4 +34,3 @@ require("marks").setup({
 	},
 	mappings = {},
 })
---vim.cmd("hi MarkSignNumHL guibg=bg guifg=#e6c384")

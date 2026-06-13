@@ -147,4 +147,3 @@ require("scrollbar").setup({
 		ale = false, -- Requires ALE
 	},
 })
-local group = vim.api.nvim_create_augroup("_scrollbar", { clear = true })

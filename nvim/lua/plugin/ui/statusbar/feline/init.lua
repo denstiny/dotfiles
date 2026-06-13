@@ -145,12 +145,6 @@ component.lsp = {
 		if #clients ~= 0 then
 			if progress then
 				local spinners = {
-					--"◜ ",
-					--"◠ ",
-					--"◝ ",
-					--"◞ ",
-					--"◡ ",
-					--"◟ ",
 					"▐⠂       ▌",
 					"▐⠈       ▌",
 					"▐ ⠂      ▌",
@@ -266,17 +260,13 @@ component.scroll_bar = {
 	hl = function()
 		local position = math.floor(vim.api.nvim_win_get_cursor(0)[1] / vim.api.nvim_buf_line_count(0) * 100)
 		local fg
-		local style
 
 		if position <= 5 then
 			fg = "aqua"
-			style = "bold"
 		elseif position >= 95 then
 			fg = "red"
-			style = "bold"
 		else
 			fg = "purple"
-			style = nil
 		end
 		return {
 			fg = fg,
@@ -285,34 +275,6 @@ component.scroll_bar = {
 		}
 	end,
 	left_sep = "block",
-	right_sep = "block",
-}
-
-local toy = {
-	provider = function()
-		local cpu = require("core.utils").cpu
-		if string.len(cpu) < 4 then
-			cpu = " " .. cpu
-		end
-		return "   " .. cpu
-	end,
-	hl = function()
-		local color = "yellow"
-		local cpu = tonumber(require("core.utils").cpu)
-		if cpu > 10 and cpu < 15 then
-			color = "yellow"
-		elseif cpu > 15 then
-			color = "red"
-		else
-			color = "green"
-		end
-		return {
-			fg = color,
-			bg = "bg",
-			style = "bold",
-		}
-	end,
-	left_sep = "",
 	right_sep = "block",
 }
 
@@ -331,7 +293,6 @@ local right = {
 	component.diagnostic_warnings,
 	component.diagnostic_info,
 	component.diagnostic_hints,
-	--toy,
 	component.scroll_bar,
 }
 

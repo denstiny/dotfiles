@@ -1,11 +1,6 @@
 require("horizon").setup({
 	plugins = {
-		cmp = true,
 		indent_blankline = true,
-		cmp = true,
-		indent_blankline = true,
-		nvim_tree = true,
-		telescope = true,
 		which_key = true,
 		barbar = true,
 		cmp = true,
