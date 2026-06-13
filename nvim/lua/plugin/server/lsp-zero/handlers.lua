@@ -36,70 +36,63 @@ M.setup = function()
 	}
 
 	vim.diagnostic.config(config)
-
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "rounded",
-		width = 80,
-	})
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		border = "rounded",
-	})
 end
 
-function M.lsp_keymaps(bufnr)
+function M.lsp_keymaps(_)
 	local U = require("core.bind-tool")
 	local opts = { noremap = true }
+
 	U.nmap("gd", function()
-		vim.cmd("lua vim.lsp.buf.definition()")
+		vim.lsp.buf.definition()
 	end, opts)
 	U.nmap("gD", function()
-		vim.cmd("lua vim.lsp.buf.declaration()")
+		vim.lsp.buf.declaration()
 	end, opts)
 	U.nmap("gi", function()
-		vim.cmd("lua vim.lsp.buf.implementation()")
+		vim.lsp.buf.implementation()
 	end, opts)
 	U.nmap("go", function()
-		vim.cmd("lua  vim.lsp.buf.type_definition()")
+		vim.lsp.buf.type_definition()
 	end, opts)
 	U.nmap("gr", function()
 		vim.cmd("Telescope lsp_references")
 	end, opts)
 	U.nmap("mr", function()
-		vim.cmd("lua vim.lsp.buf.rename()")
+		vim.lsp.buf.rename()
 	end, opts)
 	U.nmap("gs", function()
-		vim.cmd("lua vim.lsp.buf.signature_help()")
+		vim.lsp.buf.signature_help({
+			border = "rounded",
+		})
 	end)
 	U.nmap("<A-cr>", function()
 		require("actions-preview").code_actions()
 	end, opts)
 	U.nmap("gp", function()
-		vim.cmd("lua vim.diagnostic.goto_prev()")
+		vim.diagnostic.jump({ count = -1 })
 	end, opts)
 	U.nmap("gn", function()
-		vim.cmd("lua vim.diagnostic.goto_next()")
+		vim.diagnostic.jump({ count = 1 })
 	end, opts)
 	U.nmap("gl", function()
-		vim.cmd("lua vim.diagnostic.open_float()")
+		vim.diagnostic.open_float()
 	end, opts)
 	U.nmap("dy", function()
 		vim.cmd("Navbuddy")
 	end)
-	--vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
-	--vim.api.nvim_buf_set_keymap(bufnr, "n", "vgd", "<cmd>Lspsaga peek_definition<CR>", opts)
-	--vim.api.nvim_buf_set_keymap(bufnr, "n", "gh", "<cmd>Lspsaga hover_doc<CR>", opts)
-	--vim.api.nvim_buf_set_keymap(bufnr, "n", "mr", "<cmd>Lspsaga rename<CR>", opts)
-	--vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>Lspsaga finder<cr>", opts)
-	--vim.api.nvim_buf_set_keymap(bufnr, "n", "<A-cr>", "<cmd>Lspsaga code_action<CR>", opts)
-	--vim.api.nvim_buf_set_keymap(bufnr, "n", "gp", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-	--vim.api.nvim_buf_set_keymap(bufnr, "n", "gn", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
-	--vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+
+	U.nmap("K", function()
+		vim.lsp.buf.hover({
+			border = "rounded",
+			width = 80,
+		})
+	end)
 end
 
 function M.lsp_highlight_document(client)
 	-- Set autocommands conditional on server_capabilities
 	if client.server_capabilities.document_highlight then
-		vim.api.nvim_exec(
+		vim.api.nvim_exec2(
 			[[
     augroup lsp_document_highlight
     autocmd! * <buffer>
@@ -107,7 +100,7 @@ function M.lsp_highlight_document(client)
     autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
     augroup END
     ]],
-			false
+			{}
 		)
 	end
 end
