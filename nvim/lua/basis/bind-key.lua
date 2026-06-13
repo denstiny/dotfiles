@@ -12,7 +12,7 @@ end
 U.nmap("<C-\\>", "<Cmd>ToggleTerm<cr>")
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
--- colpy text
+-- copy text
 U.nmap(";y", '"+y')
 U.vmap(";y", '"+y')
 
@@ -25,10 +25,7 @@ U.nmap("<C-l>", "<Cmd>vertical res +5<cr>")
 U.nmap("<C-h>", "<Cmd>vertical res -5<cr>")
 U.nmap("<C-j>", "<Cmd>res +5<cr>")
 U.nmap("<C-k>", "<Cmd>res -5<cr>")
---U.nmap("<C-l>", '<Cmd>lua require("colorful-winsep.expand").ExpandSize("l")<cr>')
---U.nmap("<C-h>", '<Cmd>lua require("colorful-winsep.expand").ExpandSize("h")<cr>')
---U.nmap("<C-j>", '<Cmd>lua require("colorful-winsep.expand").ExpandSize("j")<cr>')
---U.nmap("<C-k>", '<Cmd>lua require("colorful-winsep.expand").ExpandSize("k")<cr>')
+
 -- symbols map
 U.nmap("ts", "<Cmd>Lspsaga outline<cr>")
 
@@ -88,13 +85,14 @@ U.nmap("<leader>gy", '<cmd>lua require"gitlinker".get_buf_range_url("n", {})<cr>
 
 U.nmap("<Tab>", "za")
 U.nmap("da", "<Cmd>Telescope diagnostics<cr>")
---U.nmap("<C-s>", "<Cmd>SessionSave<cr><Cmd>wall<cr><Cmd>echo 'Save '<cr>")
+
 local function save_session()
 	vim.cmd("SessionSave")
 	vim.cmd("wall")
 	local project = string.match(vim.fn.getcwd(), ".-([^\\/]*)$")
 	vim.notify("Save current project progress " .. project)
 end
+
 U.nmap("<C-s>", save_session)
 
 U.nmap("<Leader>git", function()
@@ -106,7 +104,7 @@ U.nmap("<Leader>git", function()
 		float_opts = {
 			height = 100,
 		},
-		on_open = function(arg)
+		on_open = function(_)
 			vim.cmd("startinsert!")
 			--vim.api.nvim_buf_del_keymap(arg.buf, "i", "<esc>")
 		end,
@@ -116,5 +114,6 @@ end)
 
 U.nmap("]]", "zj")
 U.nmap("[[", "zk")
+
 -- Session
 U.nmap("S", "<Cmd>Session<cr>")
